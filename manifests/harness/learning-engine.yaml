@@ -1,0 +1,78 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: learning-engine
+data:
+  https_port: "10800"
+  learning_env: on_prem
+  server_url: http://verification-svc:7070
+
+---
+
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: learning-engine
+stringData:
+  service_secret: 59MR5RlVARcdH7zb7pNx6GzqiglBmXR8
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: learning-engine
+    kots.io/placeholder: repl{{ printf "'true'" }}repl{{ ConfigOption "labels" | nindent 4 }} 
+  name: learning-engine
+spec:
+  replicas: repl{{ ConfigOption "learning_replica" }}
+  selector:
+    matchLabels:
+      app: learning-engine
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: learning-engine
+        kots.io/placeholder: repl{{ printf "'true'" }}repl{{ ConfigOption "labels" | nindent 8 }} 
+    spec:
+# repl{{ if ConfigOptionEquals "mode" "production_ha"}}      
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:	
+            - labelSelector:	
+                matchLabels:	
+                  app: learning-engine	
+              topologyKey: kubernetes.io/hostname 
+# repl{{ end }}                
+      containers:
+        - envFrom:
+            - configMapRef:
+                name: learning-engine
+            - secretRef:
+                name: learning-engine
+          image: harness/learning-engine-onprem-signed:63500
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsNonRoot: true
+          name: learning-engine
+          ports:
+            - containerPort: 8108
+              name: learning
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 'repl{{ ConfigOption "learning_cpu" }}'
+              memory: 'repl{{ ConfigOption "learning_memory" }}Mi'
+            requests:
+              cpu: 'repl{{ ConfigOption "learning_cpu" }}'
+              memory: 'repl{{ ConfigOption "learning_memory" }}Mi'
+      serviceAccountName: harness-default
+---

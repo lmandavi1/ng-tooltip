@@ -1,0 +1,266 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: harness-ingress-controller
+  annotations:
+    "kots.io/exclude": '{{repl ConfigOptionEquals "nginx_ingress_controller" "0"}}'
+data:
+  proxy-body-size: 1024m
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: harness-ingress-controller-tcp-services
+data:
+  9000: '{{repl Namespace}}/log-service-minio:9000'
+# repl{{ if ConfigOptionEquals "scheme" "http"}}  
+  9879: '{{repl Namespace}}/harness-manager:9879'
+# repl{{ end }}  
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: harness-serviceaccount
+  annotations:
+    "kots.io/exclude": '{{repl ConfigOptionEquals "nginx_ingress_controller" "0"}}'
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: harness-role
+  annotations:
+    "kots.io/exclude": '{{repl ConfigOptionEquals "nginx_ingress_controller" "0"}}'
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - pods
+  - secrets
+  - endpoints
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - services
+  verbs:
+  - get
+  - list
+  - update
+  - watch
+- apiGroups:
+  - extensions
+  - networking.k8s.io
+  resources:
+  - ingresses
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  - networking.k8s.io
+  resources:
+  - ingresses/status
+  verbs:
+  - update
+- apiGroups:
+  - ""
+  resourceNames:
+  - ingress-controller-leader-{{repl ConfigOption "ingress_class_name" }}
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - create
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
+  verbs:
+  - create
+  - get
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: harness-role-hsa-binding
+  annotations:
+    "kots.io/exclude": '{{repl ConfigOptionEquals "nginx_ingress_controller" "0"}}'
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: harness-role
+subjects:
+  - kind: ServiceAccount
+    name: harness-serviceaccount
+    namespace: '{{repl Namespace}}'
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: harness-ingress-controller
+  annotations:
+    "kots.io/exclude": '{{repl ConfigOptionEquals "nginx_ingress_controller" "0"}}'
+  labels:
+    kots.io/placeholder: repl{{ printf "'true'" }}repl{{ ConfigOption "labels" | nindent 4 }}    
+spec:
+  replicas: repl{{ ConfigOption "ingress_replica" }}
+  selector:
+    matchLabels:
+      app: harness-ingress-controller
+  progressDeadlineSeconds: 300
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: "harness-ingress-controller"
+        kots.io/placeholder: repl{{ printf "'true'" }}repl{{ ConfigOption "labels" | nindent 8 }} 
+    spec:
+# repl{{ if ConfigOptionEquals "mode" "production_ha"}}    
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:	
+            - labelSelector:	
+                matchLabels:	
+                  app: "harness-ingress-controller"	
+              topologyKey: kubernetes.io/hostname
+# repl{{ end }}             
+      serviceAccountName: harness-serviceaccount
+      terminationGracePeriodSeconds: 60
+      imagePullSecrets:
+      - name: regcred
+      securityContext:
+        runAsUser: 101
+      containers:
+      - image: us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v0.43.0
+        name: nginx-ingress-controller
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: harness-ingress-controller
+        resources:
+          limits:
+            cpu: 400m
+            memory: 250Mi
+          requests:
+            cpu: 400m
+            memory: 250Mi
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+          - name: https
+            containerPort: 8443
+            protocol: TCP
+          - name: minio
+            containerPort: 9000
+            protocol: TCP
+# repl{{ if ConfigOptionEquals "scheme" "http"}}            
+          - name: grpc
+            containerPort: 9879
+            protocol: TCP
+# repl{{ end }}               
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 10254
+            scheme: HTTP
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+        securityContext:
+          allowPrivilegeEscalation: false
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        args:
+        - /nginx-ingress-controller
+        - --ingress-class={{repl ConfigOption "ingress_class_name" }}
+        - --default-backend-service=$(POD_NAMESPACE)/default-backend
+        - --election-id=ingress-controller-leader
+        - --watch-namespace=$(POD_NAMESPACE)
+        - --update-status=true
+        - --configmap=$(POD_NAMESPACE)/harness-ingress-controller
+        - --http-port=8080
+        - --https-port=8443
+        - --tcp-services-configmap=$(POD_NAMESPACE)/harness-ingress-controller-tcp-services
+        - --default-ssl-certificate=$(POD_NAMESPACE)/harness-cert
+        - --publish-service=$(POD_NAMESPACE)/harness-ingress-controller
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: harness-ingress-controller
+  annotations:
+    "kots.io/exclude": '{{repl ConfigOptionEquals "nginx_ingress_controller" "0"}}'
+    kots.io/placeholder: repl{{ printf "'true'" }}repl{{ ConfigOption "annotations" | nindent 4 }}
+  labels:
+    kots.io/placeholder: repl{{ printf "'true'" }}repl{{ ConfigOption "labels" | nindent 4 }}   
+spec:
+  selector:
+    app: harness-ingress-controller 
+  type: '{{repl if ConfigOptionEquals "ingress_service_type" "ingress_service_type_loadbalancer" }}LoadBalancer{{repl else}}NodePort{{repl end}}'
+# repl{{ if ConfigOptionNotEquals "loadbalancer_ip" "0.0.0.0"}}
+  loadBalancerIP: '{{repl ConfigOption "loadbalancer_ip" }}'
+# repl{{ end }}
+  externalTrafficPolicy: Cluster 
+  ports:
+  - name: http
+    nodePort: repl{{ ConfigOption "nodeport" }}
+    port: 80
+    protocol: TCP
+    targetPort: http
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: https
+  - name: minio
+    port: 9000
+    protocol: TCP
+    targetPort: 9000
+# repl{{ if ConfigOptionEquals "scheme" "http"}}   
+  - name: grpc
+    port: 9879
+    protocol: TCP
+    targetPort: 9879
+# repl{{ end }}

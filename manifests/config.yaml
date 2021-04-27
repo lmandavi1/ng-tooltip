@@ -1,0 +1,309 @@
+apiVersion: kots.io/v1beta1
+kind: Config
+metadata:
+  name: harness-config
+spec:
+  groups:
+    - name: basic-configuration
+      title: Basic Configuration
+      description: Harness related configurations
+      items:  
+        - name: mode
+          title: Mode
+          default: production_ha
+          type: select_one
+          items:
+          - name: demo
+            title: Demo (Reduced resources cannot be upgraded to Production HA mode)
+          - name: production_single
+            title: Production - Single node (Can be converted to HA and extensible to 3+ nodes)
+          - name: production_ha
+            title: Production - High Availability (3+ nodes)
+        - name: ingress_service_type
+          type: select_one
+          title: Ingress Service Type
+          help_text: If Ingress is deployed separately, in Advanced Configurations, uncheck Install Nginx Ingress Controller.
+          when: '{{repl if (IsKurl) }}false{{repl else}}{{repl ConfigOptionEquals "nginx_ingress_controller" "1"}}{{repl end}}'
+          default: ingress_service_type_nodeport
+          items:
+            - name: ingress_service_type_nodeport
+              title: NodePort
+            - name: ingress_service_type_loadbalancer
+              title: External Loadbalancer
+        - name: nodeport
+          title: NodePort
+          help_text: Node port to be used (port to be used in LB backend)
+          when: '{{repl and (ConfigOptionEquals "ingress_service_type" "ingress_service_type_nodeport") (ConfigOptionEquals "nginx_ingress_controller" "1")}}'
+          type: text
+          default: '{{repl if (IsKurl) }}80{{repl else}}32500{{repl end}}'    
+        - name: loadbalancer_ip
+          title: Load Balancer IP Address
+          help_text: IP address of the load balancer 
+          default: "0.0.0.0"
+          type: text
+          when: '{{repl and (ConfigOptionEquals "ingress_service_type" "ingress_service_type_loadbalancer") (ConfigOptionEquals "nginx_ingress_controller" "1")}}'         
+        - name: loadbalancer_url
+          title: Application URL
+          help_text: URL to access Harness Application
+          type: text
+          required: true
+        - name: scheme
+          type: select_one
+          title: Scheme
+          help_text: Application Url Scheme
+          default: https
+          items:
+            - name: http
+              title: http
+            - name: https
+              title: https
+        - name: host_name
+          title: Host Name
+          help_text: Host Name to be used
+          type: text
+          required: true        
+        - name: storage_class
+          title: Storage Class
+          help_text: Storage Class to be used for Persistent Volumes
+          when: '{{repl if (IsKurl) }}false{{repl else}}true{{repl end}}'
+          type: text
+          default: "{{repl if (IsKurl) }}default{{repl end}}"
+    - name: advanced-configuration
+      title: Advanced Configuration
+      description: Advanced configurations for each component
+      items:          
+        - name: advanced_configuration
+          title: Advanced Configurations
+          help_text: Check the box to provide advanced configuraions
+          type: bool
+          default: "0"
+        - name: manager_config
+          type: heading
+          title: Manager Configurations
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}' 
+        - name: manager_replica
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Manager Replicas
+          help_text: Number of replicas for manager
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "production_ha"}}2{{repl else}}1{{repl end}}'
+        - name: manager_cpu
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Manager CPU
+          help_text: Number of CPU for Manager
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}0.5{{repl else}}2{{repl end}}'
+        - name: manager_memory
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Manager Memory (Mi)
+          help_text: Memory for Manager jvm
+          type: text
+          default: "2048"
+        - name: manager_pod_memory
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Manager Pod Memory (Mi)
+          help_text: Memory for Manager pod
+          type: text
+          default: "3000"
+        - name: verification_config
+          type: heading
+          title: Verification Service Configurations
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'   
+        - name: verification_replica
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Verification Service Replicas
+          help_text: Number of replicas for Verification service
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "production_ha"}}2{{repl else}}1{{repl end}}'
+        - name: verification_cpu
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Verification Service CPU
+          help_text: Number of CPU for Verification Service
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}0.5{{repl else}}1{{repl end}}'
+        - name: verification_memory
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Verification Service Memory (Mi)
+          help_text: Memory for Verification Service jvm
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}1024{{repl else}}2048{{repl end}}'
+        - name: verification_pod_memory
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Verification Service Pod Memory (Mi)
+          help_text: Memory for Verification Service pod
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}1400{{repl else}}3000{{repl end}}'
+        - name: mongo_config
+          type: heading
+          title: MongoDB Configurations
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'   
+        - name: mongo_replica
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Mongo Replicas
+          help_text: Number of replicas for Mongo
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "production_ha"}}3{{repl else}}1{{repl end}}'
+        - name: mongo_cpu
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Mongo CPU
+          help_text: Number of CPU for Mongo
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}0.5{{repl else}}{{repl if ConfigOptionEquals "mode" "production_single"}}2{{repl else}}4{{repl end}}{{repl end}}'
+        - name: mongo_memory
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Mongo Memory (Mi)
+          help_text: Memory for Mongo
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}1024{{repl else}}{{repl if ConfigOptionEquals "mode" "production_single"}}4096{{repl else}}8192{{repl end}}{{repl end}}'
+        - name: tsdb_config
+          type: heading
+          title: TimeScaleDB Configurations
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}' 
+        - name: timescale_replica
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: TimeScale Replicas
+          help_text: Number of replicas for Timescale DB
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "production_ha"}}2{{repl else}}1{{repl end}}'
+        - name: timescale_cpu
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: TimeScale CPU
+          help_text: Number of CPU for Timescale DB
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}0.3{{repl else}}1{{repl end}}'
+        - name: timescale_memory
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: TimeScale Memory (Mi)
+          help_text: Memory for Timescale DB
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}512{{repl else}}2048{{repl end}}'
+        - name: learning_config
+          type: heading
+          title: Learning Engine Configurations
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'   
+        - name: learning_replica
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Learning Engine Replicas
+          help_text: Number of replicas for Learning Engine
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "production_ha"}}2{{repl else}}1{{repl end}}'
+        - name: learning_cpu
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Learning Engine CPU
+          help_text: Number of CPU for Learning Engine
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}0.5{{repl else}}{{repl if ConfigOptionEquals "mode" "production_single"}}3{{repl else}}4{{repl end}}{{repl end}}'
+        - name: learning_memory
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Learning Engine Memory (Mi)
+          help_text: Memory for Learning Engine
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "demo"}}512{{repl else}}{{repl if ConfigOptionEquals "mode" "production_single"}}4096{{repl else}}6132{{repl end}}{{repl end}}'
+        - name: ui_config
+          type: heading
+          title: UI Configurations
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}' 
+        - name: ui_replica
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: UI Replicas
+          help_text: Number of replicas for UI
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "production_ha"}}2{{repl else}}1{{repl end}}'  
+        - name: redis_config
+          type: heading
+          title: Redis Configurations
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}' 
+        - name: redis_replica
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Redis Replicas
+          help_text: Number of replicas for Redis
+          type: text
+          default: "3"
+        - name: labels_config
+          type: heading
+          title: Kubernetes object Labels
+          when: '{{repl if (IsKurl) }}false{{repl else}}{{repl ConfigOptionEquals "advanced_configuration" "1"}}{{repl end}}'
+        - name: labels
+          type: textarea
+          title: Labels
+          help_text: |
+            Use this textarea to provide labels. These labels will be added to all Deployments, Statefulsets etc., at `metadata.labels` and `spec.template.metadata.labels`
+            For example, add `environment: production` 
+          when: '{{repl if (IsKurl) }}false{{repl else}}{{repl ConfigOptionEquals "advanced_configuration" "1"}}{{repl end}}'    
+        - name: ingress_controller_config
+          type: heading
+          title: Ingress Controller Configurations
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'   
+        - name: nginx_ingress_controller
+          when: 'repl{{ ConfigOptionEquals "advanced_configuration" "1"}}'
+          title: Install Nginx Ingress Controller
+          help_text: Uncheck if nginx is deployed seperately
+          type: bool
+          default: "1"
+        - name: ingress_replica
+          when: '{{repl and (ConfigOptionEquals "advanced_configuration" "1") (ConfigOptionEquals "nginx_ingress_controller" "1")}}'
+          title: Ingress controller  Replicas
+          help_text: Number of replicas for Ingress controller
+          type: text
+          default: '{{repl if ConfigOptionEquals "mode" "production_ha"}}2{{repl else}}1{{repl end}}'
+        - name: ingress_class_name
+          when: '{{repl if (IsKurl) }}false{{repl else}}{{repl and (ConfigOptionEquals "advanced_configuration" "1") (ConfigOptionEquals "nginx_ingress_controller" "1")}}{{repl end}}'
+          title: Ingress Class Name
+          help_text: Name of the ingress class
+          type: text
+          default: "harness"           
+        - name: annotations
+          type: textarea
+          title: Nginx Ingress Controller Service Annotations
+          help_text: |
+            Use this textarea to provide annotations specific to ingress controller service.
+            For example, add `service.beta.kubernetes.io/aws-load-balancer-internal: "true"` when deploying in aws.
+          when: '{{repl if (IsKurl) }}false{{repl else}}{{repl and (ConfigOptionEquals "advanced_configuration" "1") (ConfigOptionEquals "nginx_ingress_controller" "1")}}{{repl end}}'
+        - name: ingress_annotations
+          type: textarea
+          title: Ingress Rule Annotations
+          help_text: |
+            Use this textarea to provide annotations specific to ingress rules.
+            For example, add `nginx.ingress.kubernetes.io/ssl-redirect: "true"` if ingress should redirect to https.
+          when: '{{repl if (IsKurl) }}false{{repl else}}{{repl and (ConfigOptionEquals "advanced_configuration" "1") (ConfigOptionEquals "nginx_ingress_controller" "1")}}{{repl end}}'      
+        - name: mongo_storage_capacity
+          title: Mongo Storage capacity  
+          type: text
+          hidden: true
+          default:  '{{repl if ConfigOptionEquals "mode" "demo"}}10{{repl else}}200{{repl end}}'
+        - name: timescale_storage_capacity
+          title: TimescaleDB Storage capacity  
+          type: text
+          hidden: true
+          default:  '{{repl if ConfigOptionEquals "mode" "demo"}}10{{repl else}}120{{repl end}}'  
+        - name: redis_storage_capacity
+          title: Redis Storage capacity  
+          type: text
+          hidden: true
+          default:  '{{repl if ConfigOptionEquals "mode" "demo"}}2{{repl else}}10{{repl end}}'
+        - name: redis_server_memory
+          title: Redis Server memory   
+          type: text
+          hidden: true
+          default:  '{{repl if ConfigOptionEquals "mode" "production_ha"}}500{{repl else}}200{{repl end}}'
+        - name: redis_server_cpu
+          title: Redis Server CPU  
+          type: text
+          hidden: true
+          default:  '{{repl if ConfigOptionEquals "mode" "production_ha"}}0.5{{repl else}}0.1{{repl end}}'
+        - name: additional_cpu
+          title: Additional CPU  
+          type: text
+          hidden: true
+          default:  '{{repl if ConfigOptionEquals "mode" "production_ha"}}12{{repl else}}4{{repl end}}'  
+        - name: additional_memory
+          title: Additional Memory  
+          type: text
+          hidden: true
+          default:  '{{repl if ConfigOptionEquals "mode" "production_ha"}}24576{{repl else}}8192{{repl end}}'
+        - name: additional_storage
+          title: Additional Storage
+          type: text
+          hidden: true
+          default:  '{{repl if ConfigOptionEquals "mode" "demo"}}20{{repl else}}100{{repl end}}'               
+                 

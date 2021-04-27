@@ -1,0 +1,102 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Preflight
+metadata:
+  name: harness
+spec:
+  collectors:
+    - data:
+       name: static/kots-version.txt
+       data: '{{repl KotsVersion }}'
+  analyzers:
+    - storageClass:    
+        checkName: Required storage classes
+        storageClassName: 'repl{{ ConfigOption "storage_class" }}'
+        outcomes:
+          - fail:
+              message: 'The storage class repl{{ ConfigOption "storage_class" }} was not found'
+          - pass:
+              message: 'Storage class repl{{ ConfigOption "storage_class" }} is valid'
+    - clusterVersion:
+        outcomes:
+          - fail:
+              when: "< 1.13.0"
+              message: The application requires Kubernetes 1.13.0 or later, and recommends 1.15.0.
+              uri: https://www.kubernetes.io
+          - warn:
+              when: "< 1.15.0"
+              message: Your cluster meets the minimum version of Kubernetes, but we recommend you update to 1.15.0 or later.
+              uri: https://kubernetes.io
+          - pass:
+              message: Your cluster meets the recommended and required versions of Kubernetes.
+    - textAnalyze:
+        checkName: Required Kots Version
+        fileName: static/kots-version.txt
+        regexGroups: '(?P<Major>\d+)\.(?P<Minor>\d+)\.(?P<Patch>\d+)'
+        outcomes:
+          - fail:
+              when: 'Minor < 39'
+              message: The application requires Kots 1.39.0 or later, Please upgrade Kots.
+              uri: '{{repl if (IsKurl) }}https://docs.harness.io/article/kgvg58wg1g-on-prem-embedded-cluster-setup#upgrade_embedded_kubernetes_cluster_and_kots_2{{repl else}}https://docs.harness.io/article/v6x4n5j9lv-kubernetes-on-prem-existing-cluster-setup#upgrade_kots_admin_tool_2{{repl end}}'
+          - pass:
+              message: Your cluster meets the recommended and required versions of Kots.      
+    - containerRuntime:
+        outcomes:
+          - pass:
+              when: "== docker"
+              message: Docker container runtime was found.
+          - fail:
+              message: Did not find Docker container runtime.
+    - distribution:
+        checkName: Check Kubernetes environment.
+        outcomes:
+          - fail:
+              when: "== docker-desktop"
+              message: The application does not support Docker Desktop Clusters
+          - fail:
+              when: "== microk8s"
+              message: The application does not support Microk8s Clusters
+          - fail:
+              when: "== minikube"
+              message: The application does not support Minikube Clusters
+          - pass:
+              when: "== eks"
+              message: EKS is a supported distribution
+          - pass:
+              when: "== gke"
+              message: GKE is a supported distribution
+          - pass:
+              when: "== aks"
+              message: AKS is a supported distribution
+          # Will be supported in the future
+          - pass:
+              when: "== kurl"
+              message: KURL is a supported distribution
+          - pass:
+              when: "== digitalocean"
+              message: DigitalOcean is a supported distribution
+          - warn:
+              message: Unable to determine the distribution of Kubernetes
+    - nodeResources:
+        checkName: Total CPU Cores in the cluster is {{repl add (mul (ConfigOption "manager_cpu") (ConfigOption "manager_replica")) (mul (ConfigOption "verification_cpu") (ConfigOption "verification_replica")) (mul (ConfigOption "learning_cpu") (ConfigOption "learning_replica")) (mul (ConfigOption "mongo_cpu") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_cpu") (ConfigOption "timescale_replica")) (ConfigOption "additional_cpu") }} or greater
+        outcomes:
+          - fail:
+              when: sum(cpuCapacity) < {{repl add (mul (ConfigOption "manager_cpu") (ConfigOption "manager_replica")) (mul (ConfigOption "verification_cpu") (ConfigOption "verification_replica")) (mul (ConfigOption "learning_cpu") (ConfigOption "learning_replica")) (mul (ConfigOption "mongo_cpu") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_cpu") (ConfigOption "timescale_replica")) (ConfigOption "additional_cpu") }}
+              message: 'The cluster must contain at least {{repl add (mul (ConfigOption "manager_cpu") (ConfigOption "manager_replica")) (mul (ConfigOption "verification_cpu") (ConfigOption "verification_replica")) (mul (ConfigOption "learning_cpu") (ConfigOption "learning_replica")) (mul (ConfigOption "mongo_cpu") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_cpu") (ConfigOption "timescale_replica")) (ConfigOption "additional_cpu") }} cores'
+          - pass:
+              message: There are at least {{repl add (mul (ConfigOption "manager_cpu") (ConfigOption "manager_replica")) (mul (ConfigOption "verification_cpu") (ConfigOption "verification_replica")) (mul (ConfigOption "learning_cpu") (ConfigOption "learning_replica")) (mul (ConfigOption "mongo_cpu") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_cpu") (ConfigOption "timescale_replica")) (ConfigOption "additional_cpu") }} cores in the cluster
+    - nodeResources:
+        checkName: Total Memory in the cluster is {{repl div (add (mul (ConfigOption "manager_memory") (ConfigOption "manager_replica")) (mul (ConfigOption "verification_memory") (ConfigOption "verification_replica")) (mul (ConfigOption "learning_memory") (ConfigOption "learning_replica")) (mul (ConfigOption "mongo_memory") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_memory") (ConfigOption "timescale_replica")) (ConfigOption "additional_memory")) 1024 }} Gi or greater
+        outcomes:
+          - fail:
+              when: sum(memoryCapacity) < {{repl add (mul (ConfigOption "manager_memory") (ConfigOption "manager_replica")) (mul (ConfigOption "verification_memory") (ConfigOption "verification_replica")) (mul (ConfigOption "learning_memory") (ConfigOption "learning_replica")) (mul (ConfigOption "mongo_memory") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_memory") (ConfigOption "timescale_replica")) (ConfigOption "additional_memory")}}Mi
+              message: 'The cluster must contain at least {{repl div (add (mul (ConfigOption "manager_memory") (ConfigOption "manager_replica")) (mul (ConfigOption "verification_memory") (ConfigOption "verification_replica")) (mul (ConfigOption "learning_memory") (ConfigOption "learning_replica")) (mul (ConfigOption "mongo_memory") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_memory") (ConfigOption "timescale_replica")) (ConfigOption "additional_memory")) 1024 }} Gi'
+          - pass:
+              message: There is at least {{repl div (add (mul (ConfigOption "manager_memory") (ConfigOption "manager_replica")) (mul (ConfigOption "verification_memory") (ConfigOption "verification_replica")) (mul (ConfigOption "learning_memory") (ConfigOption "learning_replica")) (mul (ConfigOption "mongo_memory") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_memory") (ConfigOption "timescale_replica")) (ConfigOption "additional_memory")) 1024 }} Gi memory in the cluster
+    - nodeResources:
+        checkName: Total Disk Storage in the cluster is {{repl add (mul (ConfigOption "mongo_storage_capacity") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_storage_capacity") (ConfigOption "timescale_replica")) }} Gi or greater
+        outcomes:
+          - fail:
+              when: sum(ephemeralStorageCapacity) < {{repl add (mul (ConfigOption "mongo_storage_capacity") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_storage_capacity") (ConfigOption "timescale_replica")) }}Gi
+              message: 'The cluster must contain at least {{repl add (mul (ConfigOption "mongo_storage_capacity") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_storage_capacity") (ConfigOption "timescale_replica")) }}Gi'
+          - pass:
+              message: There is at least {{repl add (mul (ConfigOption "mongo_storage_capacity") (ConfigOption "mongo_replica")) (mul (ConfigOption "timescale_storage_capacity") (ConfigOption "timescale_replica")) }} Gi Disk Storage in the cluster

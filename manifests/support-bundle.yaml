@@ -1,0 +1,61 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Collector
+metadata:
+  name: harness-collector
+spec:
+  collectors:
+    - clusterInfo: {}
+    - clusterResources: {}
+    - logs:
+        name: mongodb
+        selector:
+          - app=mongodb-replicaset
+        namespace: '{{repl Namespace}}'
+        containers:
+          - mongodb-replicaset
+          - bootstrap
+          - install
+          - copy-config
+        limits:
+          maxAge: 720h
+          maxLines: 10000
+    - logs:
+        name: timescaledb
+        selector:
+          - app=timescaledb-single-chart
+        namespace: '{{repl Namespace}}'
+        limits:
+          maxAge: 720h
+          maxLines: 10000
+    - logs:
+        name: harness-ui
+        selector:
+          - app=harness-ui
+        namespace: '{{repl Namespace}}'
+        limits:
+          maxAge: 720h
+          maxLines: 10000
+    - logs:
+        name: harness-manager
+        selector:
+          - app=harness-manager
+        namespace: '{{repl Namespace}}'
+        limits:
+          maxAge: 720h
+          maxLines: 10000
+    - logs:
+        name: verification-service
+        selector:
+          - app=verification-svc
+        namespace: '{{repl Namespace}}'
+        limits:
+          maxAge: 720h
+          maxLines: 10000
+    - logs:
+        name: harness-learning-engine
+        selector:
+          - app=learning-engine
+        namespace: '{{repl Namespace}}'
+        limits:
+          maxAge: 720h
+          maxLines: 10000

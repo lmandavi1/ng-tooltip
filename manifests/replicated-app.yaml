@@ -1,0 +1,23 @@
+apiVersion: kots.io/v1beta1
+kind: Application
+metadata:
+  name: harness
+spec:
+  title: Harness
+  icon: https://storage.googleapis.com/harness-ui-thirdparty/third-party/harness.svg
+  proxyPublicImages: true
+  requireMinimalRBACPrivileges: true
+  additionalImages:
+    - harness/delegate:latest
+  statusInformers:
+    - deployment/harness-manager
+    - deployment/verification-svc
+    - deployment/learning-engine
+    - statefulset/mongodb-replicaset-chart
+    - statefulset/timescaledb-single-chart
+    - statefulset/redis-sentinel-harness-server
+    - service/harness-manager
+    - service/delegate-proxy
+    - service/harness-ui
+    - service/verification-svc
+    - service/harness-ingress-controller
