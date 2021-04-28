@@ -9,6 +9,16 @@ declare module '*.css' {
   export default css
 }
 
+declare module '*.yaml' {
+  const value: Record<string, any>
+  export default value
+}
+
+declare module '*.yml' {
+  const value: Record<string, any>
+  export default value
+}
+
 /* Extend Window to support NextJS properties (@see Button.tsx) */
 interface Window {
   next: any

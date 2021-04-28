@@ -66,6 +66,11 @@ module.exports = {
         test: /\.svg$/,
         exclude: /node_modules/,
         use: ['@svgr/webpack']
+      },
+      {
+        test: /\.ya?ml$/,
+        type: 'json',
+        use: 'yaml-loader'
       }
     ]
   },

@@ -1,9 +1,5 @@
 import React from 'react'
-
-export const tooltipDictionary: Record<string, string> = {
-  tagInputId: '**Sample tag input tooltip**',
-  idforexpressioninput: "Here's an [**important** anchor link](#example)"
-}
+import tooltipDictionary from './TooltipDictionary.yaml'
 
 export interface TooltipContextValue {
   tooltipDictionary: Record<string, string>
