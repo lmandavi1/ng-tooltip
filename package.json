@@ -11,6 +11,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "NODE_ENV=production webpack",
+    "release": "standard-version",
     "generate": ""
   },
   "license": "UNLICENSED",
