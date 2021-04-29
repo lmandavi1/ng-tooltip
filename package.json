@@ -57,6 +57,7 @@
     "react-dom": "16.13.1",
     "react-test-renderer": "^16.11.0",
     "snarkdown": "^2.0.0",
+    "standard-version": "^9.2.0",
     "style-loader": "^2.0.0",
     "stylelint": "^13.8.0",
     "stylelint-config-recommended": "^3.0.0",
