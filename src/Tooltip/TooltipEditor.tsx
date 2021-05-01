@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { TextArea, Button, Label, NavbarHeading as Heading } from '@blueprintjs/core'
-import { useTooltips } from './Tooltip'
 import css from './TooltipEditor.css'
+
+export interface TooltipEditorProps {
+  tooltipDictionary: Record<string, string>
+}
 
 export const getNodeTooltipId = (node: unknown): string => (node as HTMLElement)?.dataset?.tooltipId || ''
 
-export const TooltipEditor = () => {
+export const TooltipEditor = (props: TooltipEditorProps) => {
   const allTooltips = document.querySelectorAll('[data-tooltip-id]') || []
-  const { tooltipDictionary } = useTooltips()
+  const tooltipDictionary = props.tooltipDictionary
   const [editedTooltips, setEditedTooltips] = useState<Record<string, string>>(
     typeof localStorage.getItem('tooltipDictionary') === 'string'
       ? JSON.parse(localStorage.getItem('tooltipDictionary') || '')
