@@ -1,12 +1,19 @@
-Tooltip management for NextGen
-==================
+## Tooltip management for NextGen
 
 Contains the dataset & the editor.
 
-### Get started
+## Get started
 
-Add content in TooltipDictionary.yaml
+[Dev spec](https://harness.atlassian.net/wiki/spaces/CDNG/pages/1578598984/NG+Tooltips+design+spec)
 
-### License
+[Self help for devs](https://harness.atlassian.net/wiki/spaces/CDNG/pages/1626800543/NG+Tooltips+-+self+help+for+devs)
 
-MIT
+[Self help guide for docs](https://harness.atlassian.net/wiki/spaces/CDNG/pages/1626144816/NG+Tooltip+Framework+-+self+help+guide+for+docs)
+
+## Build
+
+`yarn build`
+
+## Publish
+
+As soon as the PR is merged into master, we trigger a Harness CIE pipeline to generate and publish the package to [Harness GitHub Package Registry](https://github.com/orgs/wings-software/packages).
