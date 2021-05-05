@@ -18,6 +18,22 @@ export interface TooltipEditorProps {
   onClose?: () => void;
 }
 
+const getDefaultTooltipRecord = (
+  tooltipDictionary: Record<string, string>
+): Record<string, string> => {
+  let toReturn: Record<string, string> = {};
+  if (typeof localStorage.getItem("tooltipDictionary") === "string") {
+    try {
+      toReturn = JSON.parse(localStorage.getItem("tooltipDictionary") || "");
+    } catch (_unused) {
+      toReturn = tooltipDictionary;
+    }
+  } else {
+    toReturn = tooltipDictionary;
+  }
+  return toReturn;
+};
+
 export const getNodeTooltipId = (node: unknown): string =>
   (node as HTMLElement)?.dataset?.tooltipId || "";
 
@@ -25,9 +41,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
   const allTooltips = document.querySelectorAll("[data-tooltip-id]") || [];
   const tooltipDictionary = props.tooltipDictionary;
   const [editedTooltips, setEditedTooltips] = useState<Record<string, string>>(
-    typeof localStorage.getItem("tooltipDictionary") === "string"
-      ? JSON.parse(localStorage.getItem("tooltipDictionary") || "")
-      : tooltipDictionary
+    getDefaultTooltipRecord(tooltipDictionary)
   );
   const [editMode, setEditMode] = useState<Record<string, boolean | undefined>>(
     {}
@@ -238,7 +252,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                 Tooltip Content (Markdown)&nbsp;
                 <a
                   title="See Markdown examples"
-                  href="//jsfiddle.net/tnhu/s6x4bmpq/"
+                  href="https://www.markdownguide.org/cheat-sheet"
                   target="_blank"
                 >
                   See how markdowns work?
