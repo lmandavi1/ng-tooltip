@@ -1,18 +1,8 @@
-.editor {
-  position: absolute;
-  width: 800px;
-  top: 100px;
-  right: 20px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 4px 8px rgba(16, 22, 26, 0.2), 0 18px 46px 6px rgba(16, 22, 26, 0.2);
-  background: white;
-  padding: 20px;
-  z-index: 2147483647;
-}
-
 .tooltipContentWrapper {
   max-height: 600px;
   overflow-y: auto;
+  padding: 0 20px;
+  background: #f8f9fa;
 }
 
 .draggable {
@@ -24,6 +14,22 @@
 .labelRow {
   align-items: center;
   display: flex;
+  margin-left: 15px;
+}
+
+.learnMore {
+  padding: 15px 15px 0 15px;
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+}
+
+.noTooltips {
+  padding: 20px;
+}
+
+.learnMoreText {
+  margin-left: 10px;
 }
 
 .searchInput {
@@ -35,6 +41,8 @@
 .editorHeadingRow {
   display: flex;
   align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid grey;
 }
 
 .tooltipEditRow {
@@ -63,8 +71,8 @@
 }
 
 .emptyTooltipContent {
-  color: red;
-  cursor: pointer;
+  color: red !important;
+  cursor: pointer !important;
 
   &:hover {
     font-weight: bold !important;
@@ -79,8 +87,42 @@
 .buttons {
   display: flex;
   align-items: center;
+  padding: 20px;
+  border-top: 1px solid grey;
 }
 
 .secondButton {
   margin-left: 10px;
+}
+
+.closeButton {
+  cursor: pointer !important;
+  padding: 0 10px !important;
+}
+
+.previewTooltipWrapper {
+  margin: 0;
+
+  :global {
+    .bp3-popover-content {
+      padding: 0;
+    }
+  }
+}
+
+.previewTooltipContentWrapper {
+  margin: 0;
+  padding: 10px;
+  height: 100%;
+
+  p {
+    margin: 0 !important;
+  }
+}
+
+.previewLabel {
+  cursor: pointer;
+  margin-left: 5px;
+  text-decoration: underline;
+  color: #106ba2;
 }

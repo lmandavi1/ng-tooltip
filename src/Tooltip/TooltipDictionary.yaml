@@ -1,2 +1,6 @@
-tagInputId: '**Sample tag input tooltip**'
+tagInputId: "**Sample tag input tooltip**"
 idforexpressioninput: Here's an [**important** anchor link](#example)
+jiraApprovalProject: Jira Project
+jiraApprovalIssueType: Project Issue Type
+jiraApprovalIssueKey: Jira Issue key
+ONNtooltipId: Your pipeline name
