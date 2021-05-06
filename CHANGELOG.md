@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.7.0 (2021-05-06)
+
+
+### Features
+
+* [Tooltips]: CR comments and removed jest package ([fb1a265](https://github.com/wings-software/ng-tooltip/commit/fb1a265659de99d1c12cbecb2216bb7c9e46b000))
+* [Tooltips]: Ready for alpha testing ([765b59f](https://github.com/wings-software/ng-tooltip/commit/765b59f0f9aa794182526f563ffe857a0e7f455b))
+* [Tooltips]: Removed context file and yaml-loader ([1949902](https://github.com/wings-software/ng-tooltip/commit/19499023c6aad7918dc35a85187cd5c3a39758ff))
+
 ## 1.6.0 (2021-05-06)
 
 
