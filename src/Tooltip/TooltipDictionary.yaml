@@ -4,3 +4,11 @@ jiraApprovalProject: Jira Project
 jiraApprovalIssueType: Project Issue Type
 jiraApprovalIssueKey: Jira Issue key
 ONNtooltipId: Your pipeline name
+specifyYourService: Harness Services represent your microservices/apps logically. You can propagate the same Service to as many stages as you need.
+stageOverviewDeploymentType: Select the platform for your deployment. When you select a platform, its specific specs and settings appear.
+deploymentTypeManifests: Add the configuration files that describe the desired state of your app in terms of Kubernetes API object descriptions. All files in **Manifests** must have the .yaml file extension. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
+deploymentTypeArtifacts: |-
+    If the image location is not specified in your Deployment manifest, you can add the image location to Harness as an Artifact. 
+    Next, you reference the Artifact you added to Harness in your manifest like this:
+    `image: <+artifact.image>` 
+    [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
