@@ -70,6 +70,10 @@
   }
 }
 
+.tooltipContentLabel {
+  max-width: 400px;
+}
+
 .emptyTooltipContent {
   color: red !important;
   cursor: pointer !important;
@@ -114,6 +118,7 @@
   margin: 0;
   padding: 10px;
   height: 100%;
+  max-width: 400px;
 
   p {
     margin: 0 !important;
