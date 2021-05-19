@@ -299,7 +299,9 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                   />
                 ) : (
                   <div className={css.labelRow}>
-                    <Label>{editedTooltips[tooltipId] || ""}</Label>
+                    <Label className={css.tooltipContentLabel}>
+                      {editedTooltips[tooltipId] || ""}
+                    </Label>
                     <Button
                       text="Edit"
                       icon="edit"
