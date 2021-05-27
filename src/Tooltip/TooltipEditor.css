@@ -7,7 +7,7 @@
 
 .draggable {
   cursor: move;
-  width: 490px;
+  width: 700px;
   font-weight: 600;
 }
 
@@ -57,13 +57,15 @@
 
 .tooltipIdLabelHeading {
   font-weight: 500;
-  min-width: 200px;
+  width: 220px;
 }
 
 .tooltipIdLabel {
   font-weight: 500;
-  min-width: 200px;
+  width: 220px;
   cursor: pointer;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     font-weight: bold !important;
@@ -71,7 +73,7 @@
 }
 
 .tooltipContentLabel {
-  max-width: 400px;
+  width: 550px;
 }
 
 .emptyTooltipContent {
@@ -130,4 +132,8 @@
   margin-left: 5px;
   text-decoration: underline;
   color: #106ba2;
+}
+
+.updateContext {
+  margin-left: 15px;
 }

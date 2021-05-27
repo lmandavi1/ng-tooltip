@@ -38,7 +38,9 @@ export const getNodeTooltipId = (node: unknown): string =>
   (node as HTMLElement)?.dataset?.tooltipId || "";
 
 export const TooltipEditor = (props: TooltipEditorProps) => {
-  const allTooltips = document.querySelectorAll("[data-tooltip-id]") || [];
+  const [allTooltips, setAllTooltips] = useState<NodeListOf<Element>>(
+    document.querySelectorAll("[data-tooltip-id]") || []
+  );
   const tooltipDictionary = props.tooltipDictionary;
   const [editedTooltips, setEditedTooltips] = useState<Record<string, string>>(
     getDefaultTooltipRecord(tooltipDictionary)
@@ -201,6 +203,14 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
     return cleanup;
   }, []);
 
+  const updateContext = () => {
+    const updatedList = document.querySelectorAll("[data-tooltip-id]") || [];
+    setAllTooltips(updatedList);
+    setSearchResults(updatedList);
+    attachEventHandlersToTooltipNodes(updatedList);
+    indicateTooltipsWithEmptyContent(updatedList, editedTooltips);
+  };
+
   const _asHtml = (content: string) => {
     return `${content
       .split("\n\n")
@@ -242,6 +252,13 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
             here
           </a>
         </div>
+        <Button
+          intent="primary"
+          icon="updated"
+          className={css.updateContext}
+          onClick={() => updateContext()}
+          text="Update Context"
+        />
       </div>
       {allTooltips?.length ? (
         <div className={css.tooltipContentWrapper}>
@@ -267,6 +284,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                 <Label
                   className={css.tooltipIdLabel}
                   id={tooltipId}
+                  title={tooltipId}
                   onMouseOver={() => {
                     node.classList.add(css.bold);
                   }}
@@ -282,8 +300,10 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                   <textarea
                     placeholder="Enter Markdown"
                     style={{
-                      minWidth: 400,
+                      minWidth: 550,
+                      maxWidth: 550,
                       minHeight: 100,
+                      maxHeight: 300,
                       padding: "15px",
                       marginLeft: "15px",
                     }}
