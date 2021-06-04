@@ -1,6 +1,6 @@
 ## Tooltip management for NextGen
 
-Contains the dataset & the editor.
+Contains the dataset & the editor code.
 
 ## Get started
 
