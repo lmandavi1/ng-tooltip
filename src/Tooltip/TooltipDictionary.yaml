@@ -12,3 +12,5 @@ deploymentTypeArtifacts: |-
     Next, you reference the Artifact you added to Harness in your manifest like this:
     `image: <+artifact.image>` 
     [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+ciEditStage_name: Enter a name for the stage. [Learn more](https://ngdocs.harness.io/article/2chyf1acil)
+ciEditStage_repoName: Enter the name of the Git Repo containing your codebase. [Learn more](https://ngdocs.harness.io/article/8l31vtr4hi)
