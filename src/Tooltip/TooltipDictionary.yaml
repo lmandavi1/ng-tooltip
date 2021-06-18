@@ -13,4 +13,7 @@ deploymentTypeArtifacts: |-
     `image: <+artifact.image>` 
     [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
 ciEditStage_name: Enter a name for the stage. [Learn more](https://ngdocs.harness.io/article/2chyf1acil)
-ciEditStage_repoName: Enter the name of the Git Repo containing your codebase. [Learn more](https://ngdocs.harness.io/article/8l31vtr4hi)
+ciEditStage_repoName: Enter the name of the Git repo containing your codebase. [Learn more](https://ngdocs.harness.io/article/8l31vtr4hi)
+ciBuildStage_name: Enter a name for the stage. [Learn More](https://ngdocs.harness.io/article/2chyf1acil-add-a-stage)
+dependencyBase_name: Enter a name for this Service Dependency step. [Learn More](https://ngdocs.harness.io/article/vo4sjbd09g-configure-service-dependency-step-settings)
+ciRunStep_name: The Run step executes one or more commands on a container image. Enter a name for this Run step. [Learn More](https://ngdocs.harness.io/article/1i1ttvftm4-run-step-settings)
