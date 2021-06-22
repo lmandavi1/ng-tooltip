@@ -225,7 +225,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
   };
 
   return (
-    <div>
+    <div id="ngTooltipEditorRoot" className={css.ngTooltipEditorRoot}>
       <div className={css.editorHeadingRow}>
         <Heading className={css.draggable} id="draggable">
           Total Tooltip ID(s) in context - {allTooltips?.length}

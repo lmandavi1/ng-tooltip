@@ -127,6 +127,18 @@
   }
 }
 
+.ngTooltipEditorRoot {
+  position: absolute;
+  width: 1024px;
+  top: 100px;
+  right: 20px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 4px 8px rgba(16, 22, 26, 0.2),
+    0 18px 46px 6px rgba(16, 22, 26, 0.2);
+  background: white;
+  z-index: 200;
+}
+
 .previewLabel {
   cursor: pointer;
   margin-left: 5px;
