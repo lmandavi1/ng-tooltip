@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import snarkdown from "snarkdown";
 import copy from "clipboard-copy";
-import { stringify } from "yaml";
+import { stringify, parse } from "yaml";
 import {
   Button,
   Icon,
@@ -10,6 +10,8 @@ import {
   Popover,
   PopoverInteractionKind,
   Position,
+  Tabs,
+  Tab,
 } from "@blueprintjs/core";
 import css from "./TooltipEditor.css";
 
@@ -21,15 +23,19 @@ export interface TooltipEditorProps {
 const getDefaultTooltipRecord = (
   tooltipDictionary: Record<string, string>
 ): Record<string, string> => {
-  let toReturn: Record<string, string> = {};
-  if (typeof localStorage.getItem("tooltipDictionary") === "string") {
+  let toReturn: Record<string, string> = tooltipDictionary;
+  const fromLocalStorage = localStorage.getItem("tooltipDictionary");
+  if (typeof fromLocalStorage === "string") {
+    // This means 'Save' has been clicked
     try {
-      toReturn = JSON.parse(localStorage.getItem("tooltipDictionary") || "");
-    } catch (_unused) {
-      toReturn = tooltipDictionary;
-    }
-  } else {
-    toReturn = tooltipDictionary;
+      const parsed = JSON.parse(fromLocalStorage);
+      const isExpired = Date.now() > parsed?.expiry;
+      if (!isExpired) {
+        toReturn = parsed.value;
+      } else {
+        localStorage.removeItem("tooltipDictionary");
+      }
+    } catch (_unused) {}
   }
   return toReturn;
 };
@@ -48,10 +54,11 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
   const [editMode, setEditMode] = useState<Record<string, boolean | undefined>>(
     {}
   );
-
   const [searchResults, setSearchResults] = useState<NodeListOf<Element>>(
     allTooltips
   );
+  const [mode, setMode] = useState("edit");
+  const [latestDataset, updateLatestDataset] = useState("");
 
   const indicateTooltipsWithEmptyContent = (
     tooltipNodes: NodeListOf<Element>,
@@ -230,158 +237,227 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
         <Heading className={css.draggable} id="draggable">
           Total Tooltip ID(s) in context - {allTooltips?.length}
         </Heading>
-        <input
-          className={css.searchInput}
-          placeholder="Search for ID"
-          onChange={(event) => filterDataForSearch((event.target as any).value)}
-        />
-        <Icon
-          icon="cross"
-          className={css.closeButton}
-          onClick={() => props.onClose?.()}
-        />
-      </div>
-      <div className={css.learnMore}>
-        <Icon icon="info-sign" />
-        <div className={css.learnMoreText}>
-          Learn more about the new tooltip framework{" "}
-          <a
-            href="https://harness.atlassian.net/wiki/spaces/CDNG/pages/1626144816/NG+Tooltip+Framework+-+self+help+guide+for+docs"
-            target="_blank"
-          >
-            here
-          </a>
-        </div>
-        <Button
-          intent="primary"
-          icon="updated"
-          className={css.updateContext}
-          onClick={() => updateContext()}
-          text="Update Context"
-        />
-      </div>
-      {allTooltips?.length ? (
-        <div className={css.tooltipContentWrapper}>
-          <div className={css.tooltipEditRow}>
-            <Heading className={css.tooltipIdLabelHeading}>ID</Heading>
-            <Heading>
-              <label>
-                Tooltip Content (Markdown)&nbsp;
-                <a
-                  title="See Markdown examples"
-                  href="https://www.markdownguide.org/cheat-sheet"
-                  target="_blank"
-                >
-                  See how markdowns work?
-                </a>
-              </label>
-            </Heading>
-          </div>
-          {Array.from(searchResults).map((node) => {
-            const tooltipId = getNodeTooltipId(node);
-            return (
-              <div className={css.tooltipEditRow} key={tooltipId}>
-                <Label
-                  className={css.tooltipIdLabel}
-                  id={tooltipId}
-                  title={tooltipId}
-                  onMouseOver={() => {
-                    node.classList.add(css.bold);
-                  }}
-                  onMouseOut={() => {
-                    if (node.classList.contains(css.bold)) {
-                      node.classList.remove(css.bold);
-                    }
-                  }}
-                >
-                  {tooltipId}
-                </Label>
-                {editMode[tooltipId] ? (
-                  <textarea
-                    placeholder="Enter Markdown"
-                    style={{
-                      minWidth: 550,
-                      maxWidth: 550,
-                      minHeight: 100,
-                      maxHeight: 300,
-                      padding: "15px",
-                      marginLeft: "15px",
-                    }}
-                    value={editedTooltips[tooltipId]}
-                    id={`${tooltipId}TextArea`}
-                    autoFocus={true}
-                    onChange={(e) => {
-                      setEditedTooltips({
-                        ...editedTooltips,
-                        ...{ [tooltipId]: e.target.value },
-                      });
-                    }}
+        <Tabs
+          id="mode"
+          className={css.tabList}
+          onChange={(id) => setMode(id as string)}
+          selectedTabId={mode}
+        >
+          <Tab
+            id="edit"
+            title="Edit Tooltips in context"
+            panel={
+              <>
+                <div className={css.learnMore}>
+                  <Icon icon="info-sign" />
+                  <div className={css.learnMoreText}>
+                    Learn more about the new tooltip framework{" "}
+                    <a
+                      href="https://harness.atlassian.net/wiki/spaces/CDNG/pages/1626144816/NG+Tooltip+Framework+-+self+help+guide+for+docs"
+                      target="_blank"
+                    >
+                      here
+                    </a>
+                  </div>
+                  <Button
+                    intent="primary"
+                    icon="updated"
+                    className={css.updateContext}
+                    onClick={() => updateContext()}
+                    text="Update Context"
                   />
+                </div>
+                {allTooltips?.length ? (
+                  <div className={css.tooltipContentWrapper}>
+                    <div className={css.tooltipEditRow}>
+                      <Heading className={css.tooltipIdLabelHeading}>
+                        ID
+                      </Heading>
+                      <Heading>
+                        <label>
+                          Tooltip Content (Markdown)&nbsp;
+                          <a
+                            title="See Markdown examples"
+                            href="https://www.markdownguide.org/cheat-sheet"
+                            target="_blank"
+                          >
+                            See how markdowns work?
+                          </a>
+                        </label>
+                      </Heading>
+                    </div>
+                    {Array.from(searchResults).map((node) => {
+                      const tooltipId = getNodeTooltipId(node);
+                      return (
+                        <div className={css.tooltipEditRow} key={tooltipId}>
+                          <Label
+                            className={css.tooltipIdLabel}
+                            id={tooltipId}
+                            title={tooltipId}
+                            onMouseOver={() => {
+                              node.classList.add(css.bold);
+                            }}
+                            onMouseOut={() => {
+                              if (node.classList.contains(css.bold)) {
+                                node.classList.remove(css.bold);
+                              }
+                            }}
+                          >
+                            {tooltipId}
+                          </Label>
+                          {editMode[tooltipId] ? (
+                            <textarea
+                              placeholder="Enter Markdown"
+                              style={{
+                                minWidth: 550,
+                                maxWidth: 550,
+                                minHeight: 100,
+                                maxHeight: 300,
+                                padding: "15px",
+                                marginLeft: "15px",
+                              }}
+                              value={editedTooltips[tooltipId]}
+                              id={`${tooltipId}TextArea`}
+                              autoFocus={true}
+                              onChange={(e) => {
+                                setEditedTooltips({
+                                  ...editedTooltips,
+                                  ...{ [tooltipId]: e.target.value },
+                                });
+                              }}
+                            />
+                          ) : (
+                            <div className={css.labelRow}>
+                              <Label className={css.tooltipContentLabel}>
+                                {editedTooltips[tooltipId] || ""}
+                              </Label>
+                              <Button
+                                text="Edit"
+                                icon="edit"
+                                className={css.editIcon}
+                                onClick={() => {
+                                  setEditMode({
+                                    ...{ [tooltipId]: true },
+                                  });
+                                }}
+                              />
+                            </div>
+                          )}
+                          {editedTooltips[tooltipId] ? (
+                            <Popover
+                              popoverClassName={css.previewTooltipWrapper}
+                              position={Position.RIGHT}
+                              usePortal={false}
+                              interactionKind={PopoverInteractionKind.HOVER}
+                              content={
+                                <div
+                                  className={css.previewTooltipContentWrapper}
+                                  dangerouslySetInnerHTML={{
+                                    __html: _asHtml(editedTooltips[tooltipId]),
+                                  }}
+                                />
+                              }
+                            >
+                              <span className={css.previewLabel}>Preview</span>
+                            </Popover>
+                          ) : null}
+                        </div>
+                      );
+                    })}
+                  </div>
                 ) : (
-                  <div className={css.labelRow}>
-                    <Label className={css.tooltipContentLabel}>
-                      {editedTooltips[tooltipId] || ""}
-                    </Label>
+                  <div className={css.noTooltips}>
+                    No toolip IDs found in the present context.
+                  </div>
+                )}
+                {allTooltips?.length ? (
+                  <div className={css.buttons}>
                     <Button
-                      text="Edit"
-                      icon="edit"
-                      className={css.editIcon}
+                      intent="primary"
+                      icon="clipboard"
+                      text="Copy to clipboard"
+                      onClick={() => copy(stringify(editedTooltips))}
+                    />
+                    <Button
+                      className={css.secondButton}
+                      text="Save"
+                      icon="saved"
                       onClick={() => {
-                        setEditMode({
-                          ...{ [tooltipId]: true },
-                        });
+                        // set expiry 6 hours from now
+                        const withExpiry = {
+                          value: editedTooltips,
+                          expiry: Date.now() + 6 * 60 * 60 * 1000,
+                        };
+                        localStorage.setItem(
+                          "tooltipDictionary",
+                          JSON.stringify(withExpiry)
+                        );
                       }}
                     />
                   </div>
-                )}
-                {editedTooltips[tooltipId] ? (
-                  <Popover
-                    popoverClassName={css.previewTooltipWrapper}
-                    position={Position.RIGHT}
-                    usePortal={false}
-                    interactionKind={PopoverInteractionKind.HOVER}
-                    content={
-                      <div
-                        className={css.previewTooltipContentWrapper}
-                        dangerouslySetInnerHTML={{
-                          __html: _asHtml(editedTooltips[tooltipId]),
-                        }}
-                      />
-                    }
-                  >
-                    <span className={css.previewLabel}>Preview</span>
-                  </Popover>
                 ) : null}
+              </>
+            }
+          />
+          <Tab
+            id="latest"
+            title="Update latest dataset"
+            panel={
+              <div className={css.latestDatasetEditor}>
+                <div>
+                  Copy the latest dataset from{" "}
+                  <a
+                    href="https://github.com/wings-software/ng-tooltip/blob/main/src/Tooltip/TooltipDictionary.yaml"
+                    target="_blank"
+                  >
+                    here
+                  </a>
+                  . Please note once you update the latest dataset, all current
+                  work will be lost.
+                </div>
+                <textarea
+                  className={css.latestDatasetTextarea}
+                  onChange={(ev) => {
+                    try {
+                      const latestDatasetParsed = parse(ev.target.value);
+                      updateLatestDataset(latestDatasetParsed);
+                    } catch (e) {
+                      console.log(e);
+                    }
+                  }}
+                />
+                <Button
+                  intent="primary"
+                  icon="clipboard"
+                  text="Update"
+                  onClick={() => {
+                    try {
+                      const jsStr = JSON.stringify(latestDataset);
+                      const toJson = JSON.parse(jsStr);
+                      setEditedTooltips(toJson);
+                    } catch (e) {
+                      console.log(e);
+                    }
+                  }}
+                />
               </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className={css.noTooltips}>
-          No toolip IDs found in the present context.
-        </div>
-      )}
-      {allTooltips?.length ? (
-        <div className={css.buttons}>
-          <Button
-            intent="primary"
-            icon="clipboard"
-            text="Copy to clipboard"
-            onClick={() => copy(stringify(editedTooltips))}
+            }
           />
-          <Button
-            className={css.secondButton}
-            text="Save"
-            icon="saved"
-            onClick={() => {
-              localStorage.setItem(
-                "tooltipDictionary",
-                JSON.stringify(editedTooltips)
-              );
-            }}
+          <Tabs.Expander />
+          <input
+            className={css.searchInput}
+            placeholder="Search for ID"
+            onChange={(event) =>
+              filterDataForSearch((event.target as any).value)
+            }
           />
-        </div>
-      ) : null}
+          <Icon
+            icon="cross"
+            className={css.closeButton}
+            onClick={() => props.onClose?.()}
+          />
+        </Tabs>
+      </div>
     </div>
   );
 };
