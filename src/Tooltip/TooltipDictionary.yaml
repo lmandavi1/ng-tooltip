@@ -58,3 +58,12 @@ jfrogArt_name: |-
     Enter a name for this step.
 
     The [Upload Artifacts to JFrog Artifactory](https://ngdocs.harness.io/article/gjoggc66fy) step creates a Docker image from a Dockerfile and pushes it to a JFrog Artifactory Docker repository.
+conditionalExecution: |-
+    Conditional Execution uses JEXL operators and expressions. [Learn More](https://commons.apache.org/proper/commons-jexl/reference/syntax.html)
+
+     
+    Examples:
+
+     
+    `<+steps.mystep.output.status> == “success”`
+    `<+environment.name> != “QA”`
