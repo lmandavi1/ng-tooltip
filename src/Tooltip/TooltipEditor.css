@@ -38,8 +38,25 @@
   padding-left: 8px;
 }
 
+.tabList {
+  :global {
+    .bp3-tab-list {
+      align-items: center;
+    }
+  }
+}
+
+.latestDatasetTextarea {
+  width: 100%;
+  max-width: 100%;
+  max-height: 550px;
+  padding: 10px;
+  height: 550px;
+  overflow: auto;
+  margin: 10px 0;
+}
+
 .editorHeadingRow {
-  display: flex;
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid grey;
@@ -93,7 +110,7 @@
 .buttons {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 20px 0;
   border-top: 1px solid grey;
 }
 
