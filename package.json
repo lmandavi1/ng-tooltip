@@ -13,8 +13,8 @@
     "build": "NODE_ENV=production webpack",
     "release": "standard-version",
     "release-patch": "standard-version -- --release-as patch",
-    "generate": "",
-    "yaml-validate": "yaml-validator src/Tooltip/TooltipDictionary.yaml"
+    "yaml-validate": "yaml-validator src/Tooltip/TooltipDictionary.yaml",
+    "generate": ""
   },
   "license": "UNLICENSED",
   "repository": "https://github.com/wings-software/ng-tooltip",
