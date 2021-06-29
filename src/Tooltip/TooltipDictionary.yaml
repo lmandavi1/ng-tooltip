@@ -21,7 +21,6 @@ pluginStep_name: |-
     Enter a unique name for this Plugin step. 
 
     Plugins are Docker containers that perform predefined tasks. Plugins are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more. [Learn More](https://ngdocs.harness.io/article/8r5c3yvb8k)
-conditionalExecution: The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution. [Learn More](https://ngdocs.harness.io/article/i36ibenkq2)
 restoreCacheS3_name: |-
     Enter a name for this step.
 
