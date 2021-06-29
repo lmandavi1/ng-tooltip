@@ -829,6 +829,11 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
+argparse@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
+  integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
+
 aria-query@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/aria-query/-/aria-query-4.2.2.tgz#0d2ca6c9aceb56b8977e9fed6aed7e15bbd2f83b"
@@ -1058,6 +1063,13 @@ character-reference-invalid@^1.0.0:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/character-reference-invalid/-/character-reference-invalid-1.1.4.tgz#083329cda0eae272ab3dbbf37e9a382c13af1560"
   integrity sha512-mKKUkUbhPpQlCOfIuZkvSEgktjPFIsZKRRbC6KWVEMvlzblj3i3asQv5ODsrwt0N3pHAEvjP8KTQPHkp0+6jOg==
+
+check-type@^0.4.11:
+  version "0.4.11"
+  resolved "https://registry.npmjs.org/check-type/-/check-type-0.4.11.tgz#abe3f534a51d31f5ce5726347bb74c0d0f910ccf"
+  integrity sha1-q+P1NKUdMfXOVyY0e7dMDQ+RDM8=
+  dependencies:
+    underscore "1.6.0"
 
 chokidar@^3.4.2:
   version "3.5.1"
@@ -2712,6 +2724,13 @@ js-yaml@^3.13.1:
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
+
+js-yaml@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
+  integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
+  dependencies:
+    argparse "^2.0.1"
 
 jsesc@^2.5.1:
   version "2.5.2"
@@ -4824,6 +4843,11 @@ unbox-primitive@^1.0.0:
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
 
+underscore@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.npmjs.org/underscore/-/underscore-1.6.0.tgz#8b38b10cacdef63337b8b24e4ff86d45aea529a8"
+  integrity sha1-izixDKze9jM3uLJOT/htRa6lKag=
+
 unified@^9.1.0:
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/unified/-/unified-9.2.1.tgz#ae18d5674c114021bfdbdf73865ca60f410215a3"
@@ -5098,6 +5122,15 @@ yaml-loader@^0.6.0:
   dependencies:
     loader-utils "^1.4.0"
     yaml "^1.8.3"
+
+yaml-validator@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/yaml-validator/-/yaml-validator-3.0.1.tgz#9fb47251a003b22765fc562926a33901670aa944"
+  integrity sha512-6mLR0UJ8P044TkgUYQyGbNXCUE/Ic5sY5qjy+5T1a/l5ur8tQe8n6MMtASuNvLwq1C2GFS/cD7l5iuGHHX2U0g==
+  dependencies:
+    check-type "^0.4.11"
+    js-yaml "^4.0.0"
+    optionator "^0.9.1"
 
 yaml@^1.10.0, yaml@^1.7.2, yaml@^1.8.3:
   version "1.10.2"

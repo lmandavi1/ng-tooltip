@@ -8,62 +8,61 @@ specifyYourService: Harness Services represent your microservices/apps logically
 stageOverviewDeploymentType: Select the platform for your deployment. When you select a platform, its specific specs and settings appear.
 deploymentTypeManifests: Add the configuration files that describe the desired state of your app in terms of Kubernetes API object descriptions. All files in **Manifests** must have the .yaml file extension. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
 deploymentTypeArtifacts: |-
-    If the image location is not specified in your Deployment manifest, you can add the image location to Harness as an Artifact. 
-    Next, you reference the Artifact you added to Harness in your manifest like this:
-    `image: <+artifact.image>` 
-    [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+  If the image location is not specified in your Deployment manifest, you can add the image location to Harness as an Artifact. 
+  Next, you reference the Artifact you added to Harness in your manifest like this:
+  `image: <+artifact.image>` 
+  [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
 ciEditStage_name: Enter a name for the stage. [Learn more](https://ngdocs.harness.io/article/2chyf1acil)
 ciEditStage_repoName: Enter the name of the Git repo containing your codebase. [Learn more](https://ngdocs.harness.io/article/8l31vtr4hi)
 ciBuildStage_name: Enter a name for the stage. [Learn More](https://ngdocs.harness.io/article/2chyf1acil-add-a-stage)
 dependencyBase_name: Enter a name for this Service Dependency step. [Learn More](https://ngdocs.harness.io/article/vo4sjbd09g-configure-service-dependency-step-settings)
 ciRunStep_name: The Run step executes one or more commands on a container image. Enter a name for this Run step. [Learn More](https://ngdocs.harness.io/article/1i1ttvftm4-run-step-settings)
 pluginStep_name: |-
-    Enter a unique name for this Plugin step. 
+  Enter a unique name for this Plugin step. 
 
-    Plugins are Docker containers that perform predefined tasks. Plugins are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more. [Learn More](https://ngdocs.harness.io/article/8r5c3yvb8k)
-conditionalExecution: The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution. [Learn More](https://ngdocs.harness.io/article/i36ibenkq2)
+  Plugins are Docker containers that perform predefined tasks. Plugins are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more. [Learn More](https://ngdocs.harness.io/article/8r5c3yvb8k)
 restoreCacheS3_name: |-
-    Enter a name for this step.
+  Enter a name for this step.
 
-    The [Save Cache to S3](https://ngdocs.harness.io/article/qtvjvrp9sn) step preserves files and directories between builds.
+  The [Save Cache to S3](https://ngdocs.harness.io/article/qtvjvrp9sn) step preserves files and directories between builds.
 
-    You can restore cache using the [Restore Cache from S3](https://ngdocs.harness.io/article/zlpx6lli6d) step.
+  You can restore cache using the [Restore Cache from S3](https://ngdocs.harness.io/article/zlpx6lli6d) step.
 restoreCacheGcs_name: |-
-    Enter a name for this step.
+  Enter a name for this step.
 
-    The [Restore Cache from GCS](https://ngdocs.harness.io/article/e2o4sektz1) step restores files and directories that were saved using the [Save Cache to GCS](https://ngdocs.harness.io/article/11nzeuntrz) step.
+  The [Restore Cache from GCS](https://ngdocs.harness.io/article/e2o4sektz1) step restores files and directories that were saved using the [Save Cache to GCS](https://ngdocs.harness.io/article/11nzeuntrz) step.
 savedS3Cache_name: |-
-    Enter a name for this step.
+  Enter a name for this step.
 
-    The [Save Cache to S3](https://ngdocs.harness.io/article/qtvjvrp9sn) step preserves files and directories between builds.
+  The [Save Cache to S3](https://ngdocs.harness.io/article/qtvjvrp9sn) step preserves files and directories between builds.
 
-    You can restore cache using the [Restore Cache from S3](https://ngdocs.harness.io/article/zlpx6lli6d) step.
+  You can restore cache using the [Restore Cache from S3](https://ngdocs.harness.io/article/zlpx6lli6d) step.
 savedCacheGcs_name: |-
-    Enter a name for this step.
+  Enter a name for this step.
 
-    The [Restore Cache from GCS](https://ngdocs.harness.io/article/e2o4sektz1) step restores files and directories that were saved using the [Save Cache to GCS](https://ngdocs.harness.io/article/11nzeuntrz) step.
+  The [Restore Cache from GCS](https://ngdocs.harness.io/article/e2o4sektz1) step restores files and directories that were saved using the [Save Cache to GCS](https://ngdocs.harness.io/article/11nzeuntrz) step.
 dockerHubStep_name: |-
-    Enter a name for this step.
+  Enter a name for this step.
 
-    The [Build and Push an Image to Docker Registry](https://ngdocs.harness.io/article/q6fr5bj63w) step creates a Docker image from a Dockerfile and pushes it to a Docker registry.
+  The [Build and Push an Image to Docker Registry](https://ngdocs.harness.io/article/q6fr5bj63w) step creates a Docker image from a Dockerfile and pushes it to a Docker registry.
 ciGcrStep_name: |-
-    Enter a name for this step.
+  Enter a name for this step.
 
-    The [Build and Push to GCR](https://ngdocs.harness.io/article/66ykcm0sf0) step creates a Docker image from a Dockerfile and pushes it to a GCR Docker repository.
+  The [Build and Push to GCR](https://ngdocs.harness.io/article/66ykcm0sf0) step creates a Docker image from a Dockerfile and pushes it to a GCR Docker repository.
 ciEcrStep_name: |-
-    Enter a name for this step.
+  Enter a name for this step.
 
-    The [Build and Push to ECR](https://ngdocs.harness.io/article/aiqbxaef15) step creates a Docker image from a Dockerfile and pushes it to an ECR Docker repository.
+  The [Build and Push to ECR](https://ngdocs.harness.io/article/aiqbxaef15) step creates a Docker image from a Dockerfile and pushes it to an ECR Docker repository.
 jfrogArt_name: |-
-    Enter a name for this step.
+  Enter a name for this step.
 
-    The [Upload Artifacts to JFrog Artifactory](https://ngdocs.harness.io/article/gjoggc66fy) step creates a Docker image from a Dockerfile and pushes it to a JFrog Artifactory Docker repository.
+  The [Upload Artifacts to JFrog Artifactory](https://ngdocs.harness.io/article/gjoggc66fy) step creates a Docker image from a Dockerfile and pushes it to a JFrog Artifactory Docker repository.
 conditionalExecution: |-
-    Conditional Execution uses JEXL operators and expressions. [Learn More](https://commons.apache.org/proper/commons-jexl/reference/syntax.html)
+  Conditional Execution uses JEXL operators and expressions. [Learn More](https://commons.apache.org/proper/commons-jexl/reference/syntax.html)
 
-     
-    Examples:
+   
+  Examples:
 
-     
-    `<+steps.mystep.output.status> == “success”`
-    `<+environment.name> != “QA”`
+   
+  `<+steps.mystep.output.status> == “success”`
+  `<+environment.name> != “QA”`
