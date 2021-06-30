@@ -136,4 +136,3 @@ vaultConfigForm_renewalInterv: Enter how often Harness Delegate should reload th
 vaultConfigForm_readOnly: Select to make secrets within this vault Read-Only. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault#step_4_read_only_vault)
 
 vaultConfigForm_default: Make this your default secrets manager.
-
