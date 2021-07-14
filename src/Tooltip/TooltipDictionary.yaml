@@ -66,7 +66,6 @@ conditionalExecution: |-
      
     `<+steps.mystep.output.status> == “success”`
     `<+environment.name> != “QA”`
-
 projectsForm_name: Enter a name for the project. [Learn more](https://ngdocs.harness.io/article/36fw2u92i4-create-an-organization)
 projectsForm_color: Select a color for the project. [Learn more](https://ngdocs.harness.io/article/36fw2u92i4-create-an-organization)
 projectsForm_orgIdentifier: Select an org for your project. [Learn more](https://ngdocs.harness.io/article/36fw2u92i4-create-an-organization)
@@ -103,3 +102,31 @@ vaultConfigForm_renewalInterv: Enter how often Harness Delegate should reload th
 vaultConfigForm_readOnly: Select to make secrets within this vault Read-Only. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
 vaultConfigForm_default: Make this your default secrets manager.
 stepGithubAuthForm_enableAPIAccess: Select this option if you are using this GitHub Connector for a Harness [Trigger](https://ngdocs.harness.io/article/hndnde8usz-triggering-pipelines), [Harness Git Experience](https://ngdocs.harness.io/article/utikdyxgfz-harness-git-experience-overview), or authenticating using a [GitHub App](https://ngdocs.harness.io/article/nze5evmqu1-git-hub-app-support).
+deployService_name: "Enter a name for this Service. You can propagate this Service in subsequent stages by selecting its name in that stage's Service settings. "
+specifyYourEnvironment: |-
+    Select or create a new Environment. You can select this Environment in subsequent stages.
+
+    Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many stages are you need. Infrastructure Definitions represent your target infrastructure physically. They are the actual clusters, hosts, etc.
+
+    By separating Environments and Infrastructure Definitions, you can use the same Environment in multiple stages while changing the target infrastructure settings with each stage.
+k8InfraConnector: |-
+    Select or create the Connector that connects Harness to your target cluster. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
+
+    Here's a [video](https://youtu.be/wUC23lmqfnY) that walks through setting up a Kubernetes Cluster Connector.
+k8InfraNamespace: |-
+    Enter the target namespace in target cluster. 
+
+    The namespace must already exist during deployment. Harness will not create a new namespace if you enter one here. If you leave this setting empty, the `default` namespace is used. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
+k8InfraReleaseName: ""
+manifestDetails_identifier: Enter a name that identifies this manifest. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
+manifestDetails_gitFetchType: Select a branch or commit ID for the manifest.
+manifestDetails_commitId: Enter the commit ID in the repo where the manifest is located.
+manifestDetails_branch: Enter the branch in the repo where the manifest is located, such as `main`.
+imagePath_imagePath: |+
+    Enter the name of the artifact you want to deploy, such as `library/nginx`. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+
+    Official images in public repos often need the label `library`, e.g. `library/tomcat`.
+
+    Wildcards are not supported.
+
+imagePath_tag: Enter the Docker [image tag](https://docs.docker.com/engine/reference/commandline/tag/).
