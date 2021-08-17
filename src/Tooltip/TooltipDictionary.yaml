@@ -299,3 +299,49 @@ awsCCDetailsForm_urlType: |-
 awsCCDetailsForm_url: Enter the path of the AWS CodeCommit repository to use.
 connectorDetailsStepFormBitbucket_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
 connectorDetailsStepFormJira_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/ud8rysntnz)
+k8InfraAllowSimultaneousDeployments: By default, Harness queues deployments to the same infrastructure to avoid conflicts. If you want to allow simultaneous deployments to this infrastructure, enable this option.
+infraProvisionerBase_provisionerEnabled: Select this option to use an infrastructure provisioner to dynamically provision the target infrastructure for the deployment. [Learn More](https://ngdocs.harness.io/article/boug6e884h)
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_name: |-
+    Enter a name for this step. 
+
+    The Terraform Plan step can provision any resource, including the target infrastructure for a deployment. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.configuration.command: Identify if the plan created by this step will be used with a Terraform Apply or Terraform Destroy step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.provisionerIdentifier: |-
+    Enter a unique value in **Provisioner Identifier**.
+
+    The Provisioner Identifier identifies the provisioning done in this step. You use the Provisioner Identifier in additional steps to refer to the provisioning done in this step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+    The most common use of Provisioner Identifier is between the Terraform Plan and Terraform Apply steps. To have the Terraform Apply step apply the provisioning from this Terraform Plan step, you use the same Provisioner Identifier in both steps.
+terraformEdit-TerraformApply-INFRASTRUCTURE_name: |-
+    Enter a name for this step. 
+
+    When provisioning target infrastructure, the Terraform Apply step simply inherits its configuration from the Terraform Plan step you already configured. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformApply-INFRASTRUCTURE_spec.configuration.type: |-
+    When provisioning target infrastructure, select **Inherit From Plan**. If you select **Inline**, then you aren't using the previous Terraform Plan step. You are entering separate Terraform files and settings.
+    [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformApply-INFRASTRUCTURE_spec.provisionerIdentifier: When provisioning target infrastructure, enter the same Provisioner Identifier you entered in the Terraform Plan step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_name: |-
+    Enter a name for this step. 
+    When provisioning target infrastructure, the Terraform Delete step deletes the infrastructure provisioned by the Terraform Apply step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_spec.configuration.type: |-
+    When provisioning target infrastructure, select **Inherit from Apply**.
+
+    The Terraform Delete step will delete the infrastructure provisioned by the Terraform Apply step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_spec.provisionerIdentifier: |-
+    The Provisioner Identifier uniquely identifies the provisioning done by specific Terraform steps.
+
+    When provisioning target infrastructure, enter the same Provisioner Identifier used but the Terraform Apply step.
+
+    The Terraform Delete step will delete the infrastructure provisioned by the Terraform Apply step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+jiraCreate_name: |-
+    Enter a name for this step.
+
+    You can use this step to create a Jira issue as part of the execution of a Pipeline. [Learn More](https://ngdocs.harness.io/article/yu40zr6cvm)
+
+    Jira issues are often used as part of a Jira Approval stage. [Learn More](https://ngdocs.harness.io/article/2lhfk506r8)
+
+    [Video walkthrough](https://youtu.be/xVeICozz4lU)
+jiraCreate_spec.projectKey: Select the Jira project where you want to create a ticket. [Learn More](https://ngdocs.harness.io/article/yu40zr6cvm)
+jiraCreate_spec.issueType: Select a Jira issue type from the list of types in the Jira project you selected. [Learn More](https://ngdocs.harness.io/article/yu40zr6cvm)
+jiraCreate_spec.summary: Add a summary for the new Jira ticket.
+terraformEdit-TerraformApply-EXECUTION_name: Enter in a name for this step.
