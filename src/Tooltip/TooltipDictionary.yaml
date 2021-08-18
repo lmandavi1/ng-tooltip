@@ -208,9 +208,7 @@ gitDetailsStepForm_url: |-
     Enter the URL for your repo or account:
 
     - **Repos:** copy the URL provided by the Git provider. For example, see GitHub's [**Code** setting](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository).
-    - **Accounts:** The URL of your Git provider account, such as `https://github.com/mycompany`. 
-
-    In **Test Repository**, enter a repo to test the connection. 
+    - **Accounts:** The URL of your Git provider account, such as `https://github.com/mycompany`. In **Test Repository**, enter a repo to test the connection. 
 
     [Learn More](https://ngdocs.harness.io/category/xyexvcc206)
 gitDetailsStepForm_validationRepo: |-
@@ -299,3 +297,193 @@ awsCCDetailsForm_urlType: |-
 awsCCDetailsForm_url: Enter the path of the AWS CodeCommit repository to use.
 connectorDetailsStepFormBitbucket_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
 connectorDetailsStepFormJira_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/ud8rysntnz)
+k8InfraAllowSimultaneousDeployments: By default, Harness queues deployments to the same infrastructure to avoid conflicts. If you want to allow simultaneous deployments to this infrastructure, enable this option.
+infraProvisionerBase_provisionerEnabled: Select this option to use an infrastructure provisioner to dynamically provision the target infrastructure for the deployment. [Learn More](https://ngdocs.harness.io/article/boug6e884h)
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_name: |-
+    Enter a name for this step. 
+
+    The Terraform Plan step can provision any resource, including the target infrastructure for a deployment. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.configuration.command: Identify if the plan created by this step will be used with a Terraform Apply or Terraform Destroy step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.provisionerIdentifier: |-
+    Enter a unique value in **Provisioner Identifier**.
+
+    The Provisioner Identifier identifies the provisioning done in this step. You use the Provisioner Identifier in additional steps to refer to the provisioning done in this step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+    The most common use of Provisioner Identifier is between the Terraform Plan and Terraform Apply steps. To have the Terraform Apply step apply the provisioning from this Terraform Plan step, you use the same Provisioner Identifier in both steps.
+terraformEdit-TerraformApply-INFRASTRUCTURE_name: |-
+    Enter a name for this step. 
+
+    When provisioning target infrastructure, the Terraform Apply step simply inherits its configuration from the Terraform Plan step you already configured. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformApply-INFRASTRUCTURE_spec.configuration.type: |-
+    When provisioning target infrastructure, select **Inherit From Plan**. If you select **Inline**, then you aren't using the previous Terraform Plan step. You are entering separate Terraform files and settings.
+    [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformApply-INFRASTRUCTURE_spec.provisionerIdentifier: When provisioning target infrastructure, enter the same Provisioner Identifier you entered in the Terraform Plan step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_name: |-
+    Enter a name for this step. 
+    When provisioning target infrastructure, the Terraform Delete step deletes the infrastructure provisioned by the Terraform Apply step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_spec.configuration.type: |-
+    When provisioning target infrastructure, select **Inherit from Apply**.
+
+    The Terraform Delete step will delete the infrastructure provisioned by the Terraform Apply step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_spec.provisionerIdentifier: |-
+    The Provisioner Identifier uniquely identifies the provisioning done by specific Terraform steps.
+
+    When provisioning target infrastructure, enter the same Provisioner Identifier used but the Terraform Apply step.
+
+    The Terraform Delete step will delete the infrastructure provisioned by the Terraform Apply step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+jiraCreate_name: |-
+    Enter a name for this step.
+
+    You can use this step to create a Jira issue as part of the execution of a Pipeline. [Learn More](https://ngdocs.harness.io/article/yu40zr6cvm)
+
+    Jira issues are often used as part of a Jira Approval stage. [Learn More](https://ngdocs.harness.io/article/2lhfk506r8)
+
+    [Video walkthrough](https://youtu.be/xVeICozz4lU)
+jiraCreate_spec.projectKey: Select the Jira project where you want to create a ticket. [Learn More](https://ngdocs.harness.io/article/yu40zr6cvm)
+jiraCreate_spec.issueType: Select a Jira issue type from the list of types in the Jira project you selected. [Learn More](https://ngdocs.harness.io/article/yu40zr6cvm)
+jiraCreate_spec.summary: Add a summary for the new Jira ticket.
+harnessApproval_name: Enter a name for this step. The Manual Approval step let's you specify Harness User Group(s) to approve or reject a Pipeline at any point in its execution. [Learn More](https://ngdocs.harness.io/article/fkvso46bok)
+harnessApproval_spec.includePipelineExecutionHistory: Enable this option to provide approvers with the execution history for this Pipeline. This can help approvers make their decision. [Learn More](https://ngdocs.harness.io/article/fkvso46bok)
+harnessApproval_spec.approvers.userGroups: Select the Harness User Groups that will approve the step. [Learn More](https://ngdocs.harness.io/article/fkvso46bok)
+harnessApproval_spec.approvers.minimumCount: Enter how many of the Users in the User Groups must approve the step. [Learn More](https://ngdocs.harness.io/article/fkvso46bok)
+harnessApproval_spec.approvers.disallowPipelineExecutor: Enable this option if you don't want to allow the User that initiated the Pipeline execution to approve this step. [Learn More](https://ngdocs.harness.io/article/fkvso46bok)
+terraformRollback_name: |+
+    Enter a name for this step. 
+    Use the Terraform Rollback step to roll back your infrastructure and resources and return your environment to its pre-deployment state. [Learn More](https://ngdocs.harness.io/article/jgi6d73noy)
+
+terraformRollback_spec.provisionerIdentifier: |-
+    Enter the same Provisioner Identifier you used in the Terraform Plan and/or Apply steps that provisioned the infrastructure you want to roll back. Harness will roll back the exact infrastructure provisioned in those steps.
+    [Learn More](https://ngdocs.harness.io/article/jgi6d73noy)
+shellScriptForm_name: |-
+    Enter a name for this step. The Shell Script step can execute scripts in the shell session of the stage in the following ways:
+
+    - Execute scripts on the host running a Harness Delegate. You can use **Delegate Selector** in **Advanced** to identify which Harness Delegate to use.
+    - Execute scripts on a remote target host.
+
+    See **Execution Target** in **Optional Configuration** to select where the script is run. [Learn More](https://ngdocs.harness.io/article/k5lu0u6i1i)
+shellScriptForm_spec.shell: |-
+    Enter a bash script. For example, here is a script that exports the variable names `BUILD_NO` and `LANG`:
+
+    ```
+    export BUILD_NO="345"
+    export LANG="en-us" 
+    ```
+
+    You must use quotes around the value because environment variables are Strings.
+
+    You can use Harness [variable expressions](https://ngdocs.harness.io/article/lml71vhsim-harness-variables) in your script and its comments. Harness will attempt to evaluate and render the variable expressions at runtime. Do not use variable expressions that Harness cannot evaluate at this step in the Execution.
+    [Learn More](https://ngdocs.harness.io/article/k5lu0u6i1i)
+k8BgSwap_name: Enter a name for this step. In this step, Harness swaps the primary service (prod traffic) to the pod set running the new app and the stage service (stage traffic) to the set running the old app. [Learn More](https://ngdocs.harness.io/article/mog5tnk5pi)
+k8BG_name: |-
+    Enter a name for this step. 
+
+    This step deploys your new app version to the stage pod set. 
+
+    The first time this step is run it creates any needed Kubernetes services and pod sets for the app.
+
+    The **Swap** step follows this step. It swaps the primary service to the new app version's pod set, and the stage service to old app version's stage pod set.
+
+    [Learn More](https://ngdocs.harness.io/article/mog5tnk5pi)
+k8Apply_name: |-
+    Enter a name for this step. The K8s Apply step allows you to deploy any resource you have set up in the **Manifests** section in **Service**.
+
+    By default, the Harness Kubernetes Rolling, Canary, and Blue Green steps will deploy all of the resources you have set up in the **Manifests** section.
+
+    In some cases, you might have resources in **Manifests** that you do not want to deploy as part of the main deployment, but want to apply as another step in the stage.
+
+    In these cases, you use the K8s Apply step to deploy those resources. [Learn More](https://ngdocs.harness.io/article/00el61pzok)
+k8DeleteData_name: Enter a name for this step. The K8s Delete step can remove any deployed Kubernetes resources. [Learn More](https://ngdocs.harness.io/article/eaj0xuegln)
+k8DeleteData_spec.deleteResources.type: |-
+    Select the resource(s) you want removed:
+
+    - **Resource Name:** Use a resource name in the format `[namespace]/Kind/Name`, with `namespace` being optional. For example, `Deployment/harness-example-deployment-canary`.
+    - **Manifest Path:** Enter the path to the manifest for the resource you want to delete. The path is relative to the folder path entered in **File/Folder Path** in the **Manifest Details** settings.
+    - **Release Name:** Deletes all of the resources for a release. If you select the **Delete namespace** option, Harness will delete the namespace(s) defined in the release.
+
+    [Learn More](https://ngdocs.harness.io/article/eaj0xuegln)
+k*CanaryDelete_name: Enter a name for this step. The **Canary Delete** step is used to clean up the workload deployed by the [Canary](https://ngdocs.harness.io/article/17wrdeuv0x-) step. [Learn More](https://ngdocs.harness.io/article/922mtcvank)
+k8RolloutDeploy_name: |-
+    Enter a name for this step. The **K8s Rollout Deploy** step performs a Kubernetes [rolling update strategy](https://ngdocs.harness.io/article/0zsf97lo3c-deployment-concepts). 
+
+    All nodes within a single environment are incrementally added one-by-one with a new service/artifact version. The rolling update uses the number of pods you specified in **Manifests** (number of replicas). [Learn More](https://ngdocs.harness.io/article/2bwlugh9gi)
+k8CanaryDeploy_name: Enter a name for this step. The **K8s Canary Deploy** step sets how many pods are created for a Canary deployment of the files in your Service Definition **Manifests** section. [Learn More](https://ngdocs.harness.io/article/i5p4feil89)
+k8Scale_name: Enter a name for this step. The **K8s Scale** step you can scale the number of running pods up or down by count or percentage. [Learn More](https://ngdocs.harness.io/article/jxe5z9domw-scale-kubernetes-replicas)
+k8Scale_spec.workload: |-
+    Enter the name of the resource to scale in the format `[namespace/]Kind/Name`, with `namespace` optional. For example: 
+
+    ```
+    default/Deployment/harness-example
+    ```
+
+    You can scale a Deployment, DaemonSet, or StatefulSet.
+
+    You can only enter one resource in **Workload**. To scale another resource, add another **K8s Scale** step. 
+
+    [Learn More](https://ngdocs.harness.io/article/jxe5z9domw-scale-kubernetes-replicas)
+k8RollingRB_name: |
+    Enter a name for this step. The **K8s Rollout Rollback** step will roll back the workloads deployed by the Rolling Deployment step. [Learn More](https://ngdocs.harness.io/article/xsla71qg8t)
+
+    **Rollback rolls back workloads only.** If there are other objects or operations executed in your stage, Harness does not roll those back.
+terraformEdit-TerraformDestroy-EXECUTION_name: |-
+    Enter a name for this step. The **Terraform Destroy** step removes any provisioned infrastructure, just like running the `terraform destroy` command. [Learn More](https://ngdocs.harness.io/article/j75xc704c8)
+
+    The **Terraform Destroy** step is independent of any other Terraform provisioning steps. It's not restricted to removing the infrastructure deployed in its stage. It can remove any infrastructure you've provisioned *using Harness*.
+
+    The **Terraform Destroy** step can also be used as part of target infrastructure provisioning. [Learn More](https://ngdocs.harness.io/article/uznls2lvod-provision-infra-dynamically-with-terraform)
+terraformEdit-TerraformDestroy-EXECUTION_spec.configuration.type: |-
+    There are three options:
+
+    - **Inline:** Removes the provisioned resources you identify using **Provisioner Identifier** and other settings. 
+
+    - **Inherit from Plan:** Removes the resources defined in the Harness **Terraform Plan** step that you identify using **Provisioner Identifier**. Similar to `terraform plan -destroy`.
+
+    - **Inherit from Apply:** Removes the resources defined in the Harness **Terraform Apply** step that you identify using **Provisioner Identifier**. Similar to `terraform destroy`.
+
+    [Learn More](https://ngdocs.harness.io/article/j75xc704c8)
+terraformEdit-TerraformDestroy-EXECUTION_spec.provisionerIdentifier: Enter the same **Provisioner Identifier** you used in the **Terraform Plan** or **Terraform Apply** step that planned/provisioned the resources you want to destroy. [Learn More](https://ngdocs.harness.io/article/j75xc704c8)
+terraformEdit-TerraformApply-EXECUTION_name: |-
+    Enter a name for this step.
+
+    You can apply a Terraform plan or script using the **Terraform Apply** step. [Learn More](https://ngdocs.harness.io/article/hdclyshiho)
+
+    Typically the **Terraform Apply** step is used with the **Terraform Plan** step to apply a plan. 
+
+    For steps on using the Terraform Plan step, see [Plan Terraform Provisioning with the Terraform Plan Step](https://ngdocs.harness.io/article/52n3j0ci72).
+terraformEdit-TerraformApply-EXECUTION_spec.configuration.type: |-
+    Select **Inline** or **Inherit from Plan**.
+
+    - If you select **Inherit from Plan**, you'll enter the unique Id used by a **Terraform Plan** step in **Provisioner Identifier**.
+
+    - If you select **Inline**, you'll configure this **Terraform Apply** step to use a Terraform script without any **Terraform Plan** step.
+
+    [Learn More](https://ngdocs.harness.io/article/hdclyshiho)
+terraformEdit-TerraformApply-EXECUTION_spec.provisionerIdentifier: |-
+    The **Provisioner Identifier** identifies the provisioning applied in this step. 
+
+    - If you selected **Inherit from Plan** in **Configuration Type**, enter the Id used by the **Terraform Plan** step for the plan you want to apply.
+
+    - If you selected **Inline** in **Configuration Type**, create a new Id.
+
+    [Learn More](https://ngdocs.harness.io/article/hdclyshiho)
+terraformPlanEditView-tfPlan-EXECUTION_name: |-
+    Enter a name for this step. The **Terraform Plan** step runs a Terraform script as a Terraform plan.
+
+    You can then add a **Terraform Apply** step later in your stage to apply the plan. [Learn More](https://ngdocs.harness.io/article/52n3j0ci72)
+terraformPlanEditView-tfPlan-EXECUTION_spec.configuration.command: |-
+    Select how you want this plan used later in the stage:
+
+    - **Apply:** The plan will be applied by a **Terraform Apply** step later in your stage.
+    - **Destroy:** The plan will be applied by a **Terraform Destroy** step later in your stage.
+
+    [Learn More](https://ngdocs.harness.io/article/52n3j0ci72)
+terraformPlanEditView-tfPlan-EXECUTION_spec.provisionerIdentifier: |-
+    Enter a unique string to identify the provisioning configured in this step. 
+
+    You will use this **Provisioner Identifier** in additional steps to refer to the provisioning set up in this step.
+
+    The most common use of **Provisioner Identifier** is between the **Terraform Plan** and **Terraform Apply** steps. [Learn More](https://ngdocs.harness.io/article/52n3j0ci72)
+barrierStep_name: Enter a name for this step. Barriers allow you to synchronize different stages in your Pipeline, and control the flow of your deployment systematically. [Learn More](https://ngdocs.harness.io/article/dmlf8w2aeh)
+barrierStep_spec.barrierRef: |-
+    Enter a name for a new barrier or select the name of an existing barrier for parallel execution. [Learn More](https://ngdocs.harness.io/article/dmlf8w2aeh)
+
+    You can have multiple barriers in a stage. Every barrier in the same stage must use a unique Barrier Reference.
