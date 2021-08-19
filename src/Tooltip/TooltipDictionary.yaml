@@ -117,7 +117,16 @@ k8InfraNamespace: |-
     Enter the target namespace in target cluster. 
 
     The namespace must already exist during deployment. Harness will not create a new namespace if you enter one here. If you leave this setting empty, the `default` namespace is used. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
-k8InfraReleaseName: ""
+k8InfraReleaseName: |-
+    During deployment Harness creates a ConfigMap listing the resources of the release and uses the **Release name** for tracking them. 
+
+    The **Release name** is a combination of `release-` and a unique string created using the Harness expression `<+INFRA_KEY>`. 
+
+    For example, in a Kubernetes deployment you can see `harness.io/release-name=release-2f9eadcc06e2c2225265ab3cbb1160bc5eacfd4f`.
+
+    The release name must be unique across the cluster. `release-<+INFRA_KEY>` ensures a unique name.
+
+    `release-` is used as a prefix because Kubernetes service and pod names must follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
 manifestDetails_identifier: Enter a name that identifies this manifest. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
 manifestDetails_gitFetchType: Select a branch or commit ID for the manifest.
 manifestDetails_commitId: Enter the commit ID in the repo where the manifest is located.
