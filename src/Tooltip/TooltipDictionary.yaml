@@ -143,7 +143,7 @@ timeout: |
     s for seconds
     ms for milliseconds
 image: The name and tag of a Docker image to use in this stage. For example, a database container or a container to run integration tests on. Include the image name and tag. Harness will default to the latest tag if unspecified. You can use any Docker image from any public or private Docker registry.
-privileged: Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker --privileged flag.
+privileged: Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker --privileged flag.
 tags: Specify one or more tags for the Docker image
 optimize: Enables redo snapshot mode
 dockerfile: If not provided assumed to be in the root folder of the codebase
@@ -405,7 +405,7 @@ k*CanaryDelete_name: Enter a name for this step. The **Canary Delete** step is u
 k8RolloutDeploy_name: |-
     Enter a name for this step. The **K8s Rollout Deploy** step performs a Kubernetes [rolling update strategy](https://ngdocs.harness.io/article/0zsf97lo3c-deployment-concepts). 
 
-    All nodes within a single environment are incrementally added one-by-one with a new service/artifact version. The rolling update uses the number of pods you specified in **Manifests** (number of replicas). [Learn More](https://ngdocs.harness.io/article/2bwlugh9gi)
+    All nodes within a single environment are incrementally added one-by-one with a new service/artifact version. The rolling update uses the number of pods you specified in **Manifests** (number of replicas). [Learn More](https://ngdocs.harness.io/article/2bwlugh9gi)
 k8CanaryDeploy_name: Enter a name for this step. The **K8s Canary Deploy** step sets how many pods are created for a Canary deployment of the files in your Service Definition **Manifests** section. [Learn More](https://ngdocs.harness.io/article/i5p4feil89)
 k8Scale_name: Enter a name for this step. The **K8s Scale** step you can scale the number of running pods up or down by count or percentage. [Learn More](https://ngdocs.harness.io/article/jxe5z9domw-scale-kubernetes-replicas)
 k8Scale_spec.workload: |-
@@ -487,3 +487,4 @@ barrierStep_spec.barrierRef: |-
     Enter a name for a new barrier or select the name of an existing barrier for parallel execution. [Learn More](https://ngdocs.harness.io/article/dmlf8w2aeh)
 
     You can have multiple barriers in a stage. Every barrier in the same stage must use a unique Barrier Reference.
+ff_ffListing_heading: Feature Flags (FF) is a feature management solution that enables users to change the software's functionality without deploying new code.
