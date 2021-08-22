@@ -473,7 +473,7 @@ shellScriptForm_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 shellScriptForm_spec.source.spec.script: |-
@@ -502,7 +502,7 @@ httpWidget_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 httpWidget_spec.url: Enter the URL for the HTTP call.
@@ -535,7 +535,7 @@ jiraApproval_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 jiraApproval_spec.connectorRef: Create or select the Jira Connector to use. [Learn More](https://ngdocs.harness.io/article/e6s32ec7i7)
@@ -562,7 +562,7 @@ k8BgSwap_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 K8sBlueGreenDeploy_stepName: |-
@@ -585,7 +585,7 @@ k8BG_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 k8BG_spec.skipDryRun: |-
@@ -604,7 +604,7 @@ k8Apply_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 K8sApply_stepName: |-
@@ -643,7 +643,7 @@ k8DeleteData_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 k8DeleteData_spec.deleteResources.spec.deleteNamespace: If you select the **Delete namespace** option, Harness will delete the namespace(s) defined in the release.
@@ -660,7 +660,7 @@ k*CanaryDelete_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 K8sRollingDeploy_stepName: |-
@@ -679,7 +679,7 @@ k8RolloutDeploy_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 k8RolloutDeploy_spec.skipDryRun: |-
@@ -699,7 +699,7 @@ k8CanaryDeploy_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 k8CanaryDeploy_spec.instanceSelection: |-
@@ -726,7 +726,7 @@ k8Scale_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 k8Scale_spec.instanceSelection: |-
@@ -756,7 +756,7 @@ k8RollingRB_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 TerraformDestroy_stepName: |-
@@ -777,7 +777,7 @@ terraformEdit-TerraformDestroy-EXECUTION_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 TerraformRollback_stepName: Use the Terraform Rollback step to roll back your infrastructure and resources and return your environment to its pre-deployment state. [Learn More](https://ngdocs.harness.io/article/jgi6d73noy)
@@ -793,7 +793,7 @@ terraformRollback_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 terraformEdit-TerraformApply-EXECUTION_timeout: |-
@@ -808,7 +808,7 @@ terraformEdit-TerraformApply-EXECUTION_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 TerraformApply_stepName: |-
@@ -847,7 +847,7 @@ terraformPlanEditView-tfPlan-EXECUTION_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 terraformPlanEditView-tfPlan-EXECUTION_spec.configuration.secretManagerRef: |-
@@ -867,7 +867,7 @@ harnessApproval_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 harnessApproval_spec.approvalMessage: Add the message for the Users in **Approvers**.
@@ -887,7 +887,7 @@ barrierStep_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 JiraCreate_stepName: |-
@@ -908,7 +908,7 @@ jiraCreate_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 jiraCreate_spec.connectorRef: Create or select the [Jira Connector](https://ngdocs.harness.io/article/e6s32ec7i7) to use.
@@ -935,7 +935,7 @@ jiraUpdate_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 jiraUpdate_spec.connectorRef: Create or select the [Jira Connector](https://ngdocs.harness.io/article/e6s32ec7i7) to use.
@@ -954,7 +954,7 @@ terraformPlanEditView-tfPlan-INFRASTRUCTURE_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.configuration.secretManagerRef: |-
@@ -973,7 +973,7 @@ terraformEdit-TerraformApply-INFRASTRUCTURE_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
 terraformEdit-TerraformDestroy-INFRASTRUCTURE_timeout: |-
@@ -988,6 +988,6 @@ terraformEdit-TerraformDestroy-INFRASTRUCTURE_timeout: |-
     - `s`  for seconds
     - `ms`  for milliseconds
 
-    The maximum is `3w 3d 20h 30m`.
+    The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
