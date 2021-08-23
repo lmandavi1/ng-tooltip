@@ -1311,3 +1311,4 @@ ShellScript_stepName_StepConfig: |
 
     - Execute scripts on the host running a Harness Delegate. You can use the **Delegate Selectors**  setting in **Advanced** to identify which Harness Delegate to use.
     - Execute scripts on a remote target host in the deployment Infrastructure Definition.
+Barrier_stepName_StepConfig: Barriers allow you to synchronize different stages in your Pipeline, and control the flow of your deployment systematically. [Learn More](https://ngdocs.harness.io/article/dmlf8w2aeh)
