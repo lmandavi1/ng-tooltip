@@ -313,10 +313,7 @@ connectorDetailsStepFormBitbucket_name: Enter a name for this Connector. You wil
 connectorDetailsStepFormJira_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/ud8rysntnz)
 k8InfraAllowSimultaneousDeployments: By default, Harness queues deployments to the same infrastructure to avoid conflicts. If you want to allow simultaneous deployments to this infrastructure, enable this option.
 infraProvisionerBase_provisionerEnabled: Select this option to use an infrastructure provisioner to dynamically provision the target infrastructure for the deployment. [Learn More](https://ngdocs.harness.io/article/boug6e884h)
-terraformPlanEditView-tfPlan-INFRASTRUCTURE_name: |-
-    Enter a name for this step. 
-
-    The Terraform Plan step can provision any resource, including the target infrastructure for a deployment. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_name: Enter a name for this step.
 terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.configuration.command: Identify if the plan created by this step will be used with a Terraform Apply or Terraform Destroy step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
 terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.provisionerIdentifier: |-
     Enter a unique value in **Provisioner Identifier**.
@@ -324,17 +321,12 @@ terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.provisionerIdentifier: |-
     The Provisioner Identifier identifies the provisioning done in this step. You use the Provisioner Identifier in additional steps to refer to the provisioning done in this step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
 
     The most common use of Provisioner Identifier is between the Terraform Plan and Terraform Apply steps. To have the Terraform Apply step apply the provisioning from this Terraform Plan step, you use the same Provisioner Identifier in both steps.
-terraformEdit-TerraformApply-INFRASTRUCTURE_name: |-
-    Enter a name for this step. 
-
-    When provisioning target infrastructure, the Terraform Apply step simply inherits its configuration from the Terraform Plan step you already configured. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformApply-INFRASTRUCTURE_name: Enter a name for this step.
 terraformEdit-TerraformApply-INFRASTRUCTURE_spec.configuration.type: |-
     When provisioning target infrastructure, select **Inherit From Plan**. If you select **Inline**, then you aren't using the previous Terraform Plan step. You are entering separate Terraform files and settings.
     [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
 terraformEdit-TerraformApply-INFRASTRUCTURE_spec.provisionerIdentifier: When provisioning target infrastructure, enter the same Provisioner Identifier you entered in the Terraform Plan step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
-terraformEdit-TerraformDestroy-INFRASTRUCTURE_name: |-
-    Enter a name for this step. 
-    When provisioning target infrastructure, the Terraform Delete step deletes the infrastructure provisioned by the Terraform Apply step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_name: Enter a name for this step.
 terraformEdit-TerraformDestroy-INFRASTRUCTURE_spec.configuration.type: |-
     When provisioning target infrastructure, select **Inherit from Apply**.
 
@@ -991,3 +983,331 @@ terraformEdit-TerraformDestroy-INFRASTRUCTURE_timeout: |-
     The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
+TerraformPlan_stepName_ProvisionerStepConfig: |-
+    When used in a stage's **Dynamic Provisioning** settings, the **Terraform Plan** step is where you connect Harness to your script repo and add your Terraform scripts. You can also define options like Workspace, etc. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+    Later, you will use the **Terraform Apply** step to apply the plan and provision the target infrastructure for the deployment.
+TerraformApply_stepName_ProvisionerStepConfig: When used in **Dynamic Provisioning**, the **Terraform Apply** step simply inherits its configuration from the **Terraform Plan** step you already configured. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.configuration.workspace: |-
+    Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
+
+    In the Workspace setting, you can simply enter the name of the workspace to use. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.configuration.backendConfig.spec.content: |-
+    The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+    Enter values for each backend config (remote state variable).
+
+    For example, if your config.tf file has the following backend:
+
+    ```
+    terraform {
+      backend "gcs" {
+        bucket  = "tf-state-prod"
+        prefix  = "terraform/state"
+      }
+    }
+    ```
+
+    In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables) doc.
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for credentials.
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.configuration.targets: |-
+    You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+    You simply identify the module using the standard format `module.name`, like you would using `terraform plan -target="module.s3_bucket"`.
+
+    If you have multiple modules in your script and you don't select one in Targets, all modules are used.
+
+    See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.configuration.environmentVariables: |-
+    If your Terraform script uses environment variables, you can provide values for those variables here.
+
+    For example:
+
+    ```
+    TF_LOG_PATH=./terraform.log
+    TF_VAR_alist='[1,2,3]'
+    ```
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for values.
+terraformEdit-TerraformApply-INFRASTRUCTURE_spec.configuration.spec.workspace: |-
+    Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
+
+    In the **Workspace** setting, you can simply enter the name of the workspace to use. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformApply-INFRASTRUCTURE_: |-
+    The **Terraform Var Files** section is for entering and/or linking to Terraform script Input variables.
+
+    You can use inline or remote var files.
+
+    Harness supports all [Terraform input types and values](https://www.terraform.io/docs/language/expressions/types.html).
+terraformEdit-TerraformApply-INFRASTRUCTURE_spec.configuration.spec.backendConfig.spec.content: |-
+    The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+    Enter values for each backend config (remote state variable).
+
+    For example, if your config.tf file has the following backend:
+
+    ```
+    terraform {
+      backend "gcs" {
+        bucket  = "tf-state-prod"
+        prefix  = "terraform/state"
+      }
+    }
+    ```
+
+    In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables) doc.
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for credentials.
+terraformEdit-TerraformApply-INFRASTRUCTURE_spec.configuration.spec.targets: |-
+    You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+    You simply identify the module using the standard format `module.name`, like you would using `terraform plan -target="module.s3_bucket"`.
+
+    If you have multiple modules in your script and you don't select one in Targets, all modules are used.
+
+    See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+terraformEdit-TerraformApply-INFRASTRUCTURE_spec.configuration.spec.environmentVariables: |-
+    If your Terraform script uses environment variables, you can provide values for those variables here.
+
+    For example:
+
+    ```
+    TF_LOG_PATH=./terraform.log
+    TF_VAR_alist='[1,2,3]'
+    ```
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for values.
+TerraformDestroy_stepName_ProvisionerStepConfig: When provisioning target infrastructure, the **Terraform Delete** step deletes the infrastructure provisioned by the **Terraform Apply** step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_spec.configuration.spec.workspace: |-
+    Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
+
+    In the **Workspace** setting, you can simply enter the name of the workspace to use. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_spec.configuration.spec.backendConfig.spec.content: |-
+    The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+    Enter values for each backend config (remote state variable).
+
+    For example, if your config.tf file has the following backend:
+
+    ```
+    terraform {
+      backend "gcs" {
+        bucket  = "tf-state-prod"
+        prefix  = "terraform/state"
+      }
+    }
+    ```
+
+    In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables) doc.
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for credentials.
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_spec.configuration.spec.targets: |-
+    You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+    You simply identify the module using the standard format `module.name`, like you would using `terraform plan -target="module.s3_bucket"`.
+
+    If you have multiple modules in your script and you don't select one in Targets, all modules are used.
+
+    See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+terraformEdit-TerraformDestroy-INFRASTRUCTURE_spec.configuration.spec.environmentVariables: |-
+    If your Terraform script uses environment variables, you can provide values for those variables here.
+
+    For example:
+
+    ```
+    TF_LOG_PATH=./terraform.log
+    TF_VAR_alist='[1,2,3]'
+    ```
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for values.
+TerraformRollback_stepName_ProvisionerStepConfig: The **Terraform Rollback** step rolls back your provisioned infrastructure and resources and returns your environment to its pre-deployment state. [Learn More](https://ngdocs.harness.io/article/jgi6d73noy)
+terraformPlanEditView-tfPlan-EXECUTION_spec.configuration.workspace: |-
+    Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
+
+    In the **Workspace** setting, you can simply enter the name of the workspace to use. [Learn More](https://ngdocs.harness.io/article/52n3j0ci72)
+TerraformPlan_stepName_StepConfig: |-
+    The **Terraform Plan** step runs a Terraform script as a Terraform plan. [Learn More](https://ngdocs.harness.io/article/52n3j0ci72)
+
+    You can run the **Terraform Plan** step to provision any resource. 
+
+    The [Terraform Apply](https://ngdocs.harness.io/article/hdclyshiho) and [Terraform Destroy](https://ngdocs.harness.io/article/j75xc704c8) steps can inherit the plan and perform their apply and destroy operations.
+terraformPlanEditView-tfPlan-EXECUTION_spec.configuration.backendConfig.spec.content: |-
+    The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values. [Learn More](https://ngdocs.harness.io/article/52n3j0ci72)
+
+    Enter values for each backend config (remote state variable).
+
+    For example, if your config.tf file has the following backend:
+
+    ```
+    terraform {
+      backend "gcs" {
+        bucket  = "tf-state-prod"
+        prefix  = "terraform/state"
+      }
+    }
+    ```
+
+    In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables) doc.
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for credentials.
+terraformPlanEditView-tfPlan-EXECUTION_spec.configuration.targets: |-
+    You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. [Learn More](https://ngdocs.harness.io/article/52n3j0ci72)
+
+    You simply identify the module using the standard format `module.name`, like you would using `terraform plan -target="module.s3_bucket"`.
+
+    If you have multiple modules in your script and you don't select one in Targets, all modules are used.
+
+    See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+terraformPlanEditView-tfPlan-EXECUTION_spec.configuration.environmentVariables: |-
+    If your Terraform script uses environment variables, you can provide values for those variables here.
+
+    For example:
+
+    ```
+    TF_LOG_PATH=./terraform.log
+    TF_VAR_alist='[1,2,3]'
+    ```
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for values.
+TerraformApply_stepName_StepConfig: |-
+    The **Terraform Apply** step can apply a Terraform script and provision any infrastructure. [Learn More](https://ngdocs.harness.io/article/hdclyshiho)
+
+    Typically the **Terraform Apply** step is used with the **Terraform Plan** step to apply a plan. [Learn More](https://ngdocs.harness.io/article/52n3j0ci72).
+terraformEdit-TerraformApply-EXECUTION_spec.configuration.spec.workspace: |-
+    Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
+
+    In the **Workspace** setting, you can simply enter the name of the workspace to use. [Learn More](https://ngdocs.harness.io/article/hdclyshiho)
+terraformEdit-TerraformApply-EXECUTION_spec.configuration.spec.backendConfig.spec.content: |-
+    The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values. [Learn More](https://ngdocs.harness.io/article/hdclyshiho)
+
+    Enter values for each backend config (remote state variable).
+
+    For example, if your config.tf file has the following backend:
+
+    ```
+    terraform {
+      backend "gcs" {
+        bucket  = "tf-state-prod"
+        prefix  = "terraform/state"
+      }
+    }
+    ```
+
+    In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables) doc.
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for credentials.
+terraformEdit-TerraformApply-EXECUTION_spec.configuration.spec.targets: |-
+    You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. [Learn More](https://ngdocs.harness.io/article/hdclyshiho)
+
+    You simply identify the module using the standard format `module.name`, like you would using `terraform plan -target="module.s3_bucket"`.
+
+    If you have multiple modules in your script and you don't select one in Targets, all modules are used.
+
+    See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+terraformEdit-TerraformApply-EXECUTION_spec.configuration.spec.environmentVariables: |-
+    If your Terraform script uses environment variables, you can provide values for those variables here.
+
+    For example:
+
+    ```
+    TF_LOG_PATH=./terraform.log
+    TF_VAR_alist='[1,2,3]'
+    ```
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for values.
+TerraformRollback_stepName_StepConfig: The **Terraform Rollback** step rolls back your provisioned infrastructure and resources and returns your environment to its pre-deployment state. [Learn More](https://ngdocs.harness.io/article/jgi6d73noy)
+TerraformDestroy_stepName_StepConfig: The **Terraform Destroy** step removes any provisioned infrastructure, just like running the `terraform destroy` command. See [destroy](https://www.terraform.io/docs/commands/destroy.html) from Terraform. [Learn More](https://ngdocs.harness.io/article/j75xc704c8)
+terraformEdit-TerraformDestroy-EXECUTION_spec.configuration.spec.workspace: |-
+    Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
+
+    In the **Workspace** setting, you can simply enter the name of the workspace to use. See the same Workspace setting in [Terraform Plan](https://ngdocs.harness.io/article/52n3j0ci72) for details.
+terraformEdit-TerraformDestroy-EXECUTION_spec.configuration.spec.backendConfig.spec.content: |-
+    The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values. See the same **Backend Configuration** setting in [Terraform Plan](https://ngdocs.harness.io/article/52n3j0ci72) for details.
+
+    Enter values for each backend config (remote state variable).
+
+    For example, if your config.tf file has the following backend:
+
+    ```
+    terraform {
+      backend "gcs" {
+        bucket  = "tf-state-prod"
+        prefix  = "terraform/state"
+      }
+    }
+    ```
+
+    In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables) doc.
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for credentials.
+terraformEdit-TerraformDestroy-EXECUTION_spec.configuration.spec.targets: |-
+    You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. See the same **Targets** setting in [Terraform Plan](https://ngdocs.harness.io/article/52n3j0ci72) for details.
+
+    You simply identify the module using the standard format `module.name`, like you would using `terraform plan -target="module.s3_bucket"`.
+
+    If you have multiple modules in your script and you don't select one in Targets, all modules are used.
+
+    See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+terraformEdit-TerraformDestroy-EXECUTION_spec.configuration.spec.environmentVariables: |-
+    If your Terraform script uses environment variables, you can provide values for those variables here.
+
+    For example:
+
+    ```
+    TF_LOG_PATH=./terraform.log
+    TF_VAR_alist='[1,2,3]'
+    ```
+
+    You can use [Harness secrets](https://ngdocs.harness.io/article/osfw70e59c) for values.
+inlineVarFileForm_varFile.identifier: |-
+    You can add inline variables just like you would in a tfvar file. See the same **Targets** setting in [Terraform Plan](https://ngdocs.harness.io/article/52n3j0ci72) for details.
+
+    In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
+inlineVarFileForm_varFile.spec.content: |-
+    Provide the input variables and values for your Terraform script. Harness follows the same format as Terraform.
+
+    For example, if your Terraform script has the following:
+
+    ```
+    variable "region" {
+      type = string
+    }
+    ```
+
+    You could enter:
+
+    ```
+    region = "asia-east1-a"
+    ```
+approverInputs: You can enter variables and when the approver views the step, they can provide new values for the variables. [Learn More](https://ngdocs.harness.io/article/fkvso46bok)
+K8sApply_stepName_StepConfig: |-
+    By default, the Harness Kubernetes Rolling, Canary, and Blue Green steps will deploy all of the resources you have set up in the Service Definition **Manifests** section.
+
+    In some cases, you might have resources in **Manifests** that you do not want to deploy as part of the main deployment, but want to apply as another step in the stage.
+
+    CD stages include an **K8s Apply** step that allows you to deploy any resource you have set up in the **Manifests** section. [Learn More](https://ngdocs.harness.io/article/00el61pzok)
+K8sRollingDeploy_stepName_StepConfig: |-
+    The **K8s Rollout** step preforms a rolling update strategy. 
+
+    It updates Kubernetes deployments with zero downtime by incrementally updating pod instances with new ones. New pods are scheduled on nodes using the available resources. [Learn More](https://ngdocs.harness.io/article/xsla71qg8t)
+K8sCanaryDeploy_stepName_StepConfig: The **K8s Canary Deploy** step defines how many pods are deployed for a Canary test of the configuration files in your Service Definition **Manifests** section. [Learn More](https://ngdocs.harness.io/article/i5p4feil89)
+K8sScale_stepName_StepConfig: |-
+    When you deploy a Kubernetes workload using Harness, the number of pods you want is set in your manifests and in the deployment steps.
+
+    With the **Scale** step, you can scale this number of running pods up or down by count or percentage. [Learn More](https://ngdocs.harness.io/article/jxe5z9domw)
+K8sRollingRollback_stepName_StepConfig: If a Harness Kubernetes deployment fails, Harness will rollback to the last successful version of your workload. [Learn More](https://ngdocs.harness.io/article/rt449t1xhy)
+K8sCanaryDelete_stepName_StepConfig: The **Canary Delete** step is used to clean up the workload deployed by the Canary Deployment step. [Learn More](https://ngdocs.harness.io/article/922mtcvank)
+K8sDelete_stepName_StepConfig: You can remove any deployed Kubernetes resources with the **K8s Delete** step. [Learn More](https://ngdocs.harness.io/article/eaj0xuegln)
+K8sBlueGreenDeploy_stepName_StepConfig: |
+    The **Stage** step is added automatically when you apply the Blue Green strategy. [Learn More](https://ngdocs.harness.io/article/mog5tnk5pi)
+
+    The **Stage** step creates the Kubernetes services and pod sets needed for your new app versions, and the deploys your new app version to the pod set receiving stage traffic.
+K8sBGSwapServices_stepName_StepConfig: In **Swap** step swaps the primary service to the pod set running the new app and the stage service to the pod set running the previous app version. [Learn More](https://ngdocs.harness.io/article/mog5tnk5pi)
+ShellScript_stepName_StepConfig: |
+    You can run shell scripts in a CD stage using the Shell Script step. [Learn More](https://ngdocs.harness.io/article/k5lu0u6i1i)
+
+    With the **Shell Script** step, you can execute scripts in the shell session of the stage in the following ways:
+
+    - Execute scripts on the host running a Harness Delegate. You can use the **Delegate Selectors**  setting in **Advanced** to identify which Harness Delegate to use.
+    - Execute scripts on a remote target host in the deployment Infrastructure Definition.
