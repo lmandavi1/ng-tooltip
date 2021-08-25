@@ -246,15 +246,17 @@ stepAwsAuthForm_externalId: |-
     If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
 
     For more information, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
-connectorDetailsStepFormGcp_name: Enter a name for this Connector. You will use this name to select the Connector.
-connectorDetailsStepFormK8sCluster_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+connectorDetailsStepFormGcp_name: Enter a name for this GCP Connector. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
+connectorDetailsStepFormK8sCluster_name: |-
+    Enter a name for this Kubernetes Cluster Connector. 
+
+    The Kubernetes Cluster Connector is platform-agnostic. Use it to access a cluster on any platform. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
 k8ClusterForm_masterUrl: |-
     The Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl:
 
     ```
     kubectl cluster-info
     ```
-
     [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
 connectorDetailsStepFormArtifactory_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/euueiiai4m)
 stepArtifactoryAuthForm_artifactoryServerUrl: |-
@@ -1312,3 +1314,135 @@ ShellScript_stepName_StepConfig: |
     - Execute scripts on the host running a Harness Delegate. You can use the **Delegate Selectors**  setting in **Advanced** to identify which Harness Delegate to use.
     - Execute scripts on a remote target host in the deployment Infrastructure Definition.
 Barrier_stepName_StepConfig: Barriers allow you to synchronize different stages in your Pipeline, and control the flow of your deployment systematically. [Learn More](https://ngdocs.harness.io/article/dmlf8w2aeh)
+"flowControl_barriers[0].name": |-
+    Barriers allow you to synchronize different stages in your Pipeline, and control the flow of your deployment systematically. [Learn More](https://ngdocs.harness.io/article/dmlf8w2aeh)
+
+    Once you add a Barrier here in **Flow Control**, you reference it in the **Barrier** steps you add to the stages of your Pipeline.
+Verify_stepName_StepConfig: |-
+    The **Verify** step in a CD stage uses Harness Continuous Verification (CV) to verify your deployments.
+
+    Harness CV integrates with your APMs and logging tools to:
+
+    - Verify that the deployed service is running safely and perform automatic rollbacks.
+    - Apply machine learning to every deployment to identify and flag anomalies in future deployments.
+
+    [Learn More](https://ngdocs.harness.io/article/3xhqq9xllp)
+cvData_name: Enter a name for this step.
+cvData_timeout: |-
+    Enter a timeout for this step. 
+
+    You can use:
+
+    - `w`  for weeks
+    - `d`  for days
+    - `h`  for hours
+    - `m`  for minutes
+    - `s`  for seconds
+    - `ms`  for milliseconds
+
+    The maximum is `53w`.
+
+    Timeouts can be set at the Pipeline level also.
+cvData_spec.type: |-
+    Select a type that matches your deployment strategy.
+
+    **Rolling**, **Canary**, and **Blue Green** refer to the strategy of the stage.
+
+    For example, Canary deployment strategies use the **Canary** Continuous Verification type, and so on.
+
+    Typically, **Load Test** is used in lower environments like QA where there is no continuous load and the deployments are usually verified by generating load via scripts, etc.
+
+    [Learn More](https://ngdocs.harness.io/article/3xhqq9xllp)
+cvData_spec.monitoredServiceRef: |-
+    Click **Click to autocreate a monitored service**.
+
+    Harness automatically creates a Monitored Service using a concatenation of the Service and Environment names. 
+
+    For example, a Service named `todolist` and an Environment named `dev` will result in a Monitored Service named `todolist_dev`.
+
+    If the stage Service or Environment settings are [Runtime Inputs](https://ngdocs.harness.io/article/f6yobn7iq0), the Monitored Service and Health Sources settings will show up in the Runtime Input settings when you run the Pipeline.
+
+    [Learn More](https://ngdocs.harness.io/article/3xhqq9xllp)
+cvData_spec.spec.sensitivity: |-
+    Select the risk level that will be used as failure criteria during the deployment. 
+
+    When the criteria are met, the **Failure Strategy** for the stage or step is executed.
+
+    For time-series analysis (APM), the risk level is determined using standard deviations, as follows: `5𝞼` (sigma) represents high risk, `4𝞼` represents medium risk, and `3𝞼` or below represents low risk.
+
+    Harness also takes into account the number of points that deviated: 50%+ is **High**, 25%-50% is **Medium**, and 25% or below is **Low**.
+
+    [Learn More](https://ngdocs.harness.io/article/3xhqq9xllp)
+cvData_spec.spec.duration: |-
+    Select the number of data points Harness uses. If you enter **10 min**, Harness will take the first 10 minutes worth of the log/APM data points and analyze it. [Learn More](https://ngdocs.harness.io/article/3xhqq9xllp)
+
+    The length of time it takes Harness to analyze the 10 min of data points depends on the number of instances being analyzed and the monitoring tool. If you have a 1000 instances, it can take some time to analyze the first 10 minutes of all of their logs/APM data points.
+
+    The recommended **Duration** is 10 minutes for logging providers and 15 minutes for APM and infrastructure providers.
+
+    Harness waits 2-3 minutes to allow enough time for the data to be sent to the verification provider before it analyzes the data. This wait time is a standard with monitoring tools. So, if you set the Duration to 10 minutes, the 10 minutes excludes the initial 2-3 minute wait, but the total sample time is 13 minutes.
+cvData_spec.spec.trafficsplit: ""
+cvData_spec.spec.deploymentTag: |-
+    Use a [Harness expression](https://newdocs.helpdocs.io/article/lml71vhsim) to reference the artifact in the stage Service settings.
+
+    The expression `<+serviceConfig.artifacts.primary.tag>` references the primary artifact. [Learn More](https://ngdocs.harness.io/article/3xhqq9xllp)
+awsAuthentication: Provide the credentials Harness will use to connect to AWS. [Learn More](https://ngdocs.harness.io/article/m5vkql35ca)
+stepAwsAuthForm_accessKey: |-
+    Enter the Access Key. You can either the key in plaintext or use an Encrypted [Harness Secret](https://ngdocs.harness.io/article/osfw70e59c).
+
+    See [Access Keys and Secret Keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) from AWS.
+stepAwsAuthForm_secretKeyRef: |-
+    Enter the Secret Key. You can either create a new Encrypted [Harness Secret](https://ngdocs.harness.io/article/osfw70e59c) or select an existing one.
+
+    See [Access Keys and Secret Keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) from AWS.
+Connectviaanyavailabledelegate: If you do not select specific Delegates, Harness uses any available Delegate to perform this Connector's tasks. [Learn More](https://ngdocs.harness.io/article/2k7lnc7lvl)
+Connectonlyviadelegateswhichhasallofthefollowingtags: If you select specific Delegates to perform this Connector's tasks, Harness uses those Delegate only. If these Delegates cannot perform the task, Harness does **not** use another Delegate. [Learn More](https://ngdocs.harness.io/article/2k7lnc7lvl)
+gcpAuthenticationDetails: |-
+    Choose the method for Harness to use when connecting to GCP. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
+
+    Select one of the following:
+
+    - **Specify credentials here**: Enter the **Service Account Key** below.
+    - **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in GCP.
+
+    **Note:** For connections to a Kubernetes cluster, use Harness' platform-agnostic Kubernetes Cluster Connector.
+gcpConnectorSecretKeyTooltip: |-
+    Select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu) that contains the Google Cloud's Account Service Key File. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
+
+    To obtain the Google Cloud's Account Service Key File, see [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) from Google.
+
+    Use JSON formatting. P12 service account keys are not recommended unless they are necessary for backwards compatibility.
+
+    Here's an [Account Service Key download example](https://files.helpdocs.io/kw8ldg1itf/articles/6x52zvqsta/1593629254966/image.png).
+K8sConnectorDetails: |+
+    Choose the method for Harness to use when connecting to the cluster. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+
+    Select one of the following:
+
+    - **Specify master URL and credentials**: Enter the **Service Account Key** below.
+    - **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in the cluster.
+
+K8sAuthenticationTooltip: |-
+    If you want to enter specific credentials manually, there are several options. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+
+    **Note**: Typically, username and password is not used. The cluster would need Basic authentication enabled and a specific username and password configured for authentication.
+k8ClusterForm_username: You can use an inline username or a [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu). [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_password: Select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu). [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_serviceAccountToken: |-
+    Add the service account token for the service account. The token should have the cluster-admin role. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+
+    The token must be pasted in decoded in the [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu) you create/select.
+k8ClusterForm_oidcIssuerUrl: The issuer URI for the provider authentication server. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_oidcUsername: Username for a user assigned to the provider app. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_oidcPassword: Password for a user assigned to the provider app. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_oidcCleintId: Public identifier for the client that is required for all OAuth flows. In Okta, this is located in the **Client Credentials** for the app. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_oidcCleintSecret: The client secret for the app. In Okta, this is located in the **Client Credentials** for the app. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_oidcScopes: OIDC scopes are used by an application during authentication to authorize access to a user's details, like name and picture. In Okta, you can find them in the **Authorization Server Scopes** tab. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_clientKey: Create or select a Harness secret to add the client key for the client certificate. The key can be pasted into the secret either Base64 encoded or decoded. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_clientKeyCertificate: |-
+    Create or select a Harness secret to add the client certificate for the cluster.
+
+    The public client certificate is generated along with the private client key used to authenticate. The certificate can be pasted in either Base64 encoded or decoded. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_clientKeyPassphrase: Create or select a Harness secret to add the client key passphrase. The passphrase can be pasted in either Base64 encoded or decoded. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_clientKeyAlgo: Specify the encryption algorithm used when the certificate was created. Typically, RSA. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+k8ClusterForm_clientKeyCACertificate: Create or select a Harness secret to add the Certificate authority root certificate used to validate client certificates presented to the API server. For more information, see [Authenticating](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) from Kubernetes. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
