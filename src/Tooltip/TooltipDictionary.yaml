@@ -262,7 +262,9 @@ connectorDetailsStepFormArtifactory_name: Enter a name for this Connector. You w
 stepArtifactoryAuthForm_artifactoryServerUrl: |-
     Enter in your base URL followed by your module name.
 
-    For most artifacts, use `https://mycompany.jfrog.io/module_name`.
+    For most artifacts, use `https://mycompany.jfrog.io/module_name/`.
+
+    For example: `https://harness.jfrog.io/artifactory/`
 
     In some cases, you can use `https://server_name/artifactory/module_name`.
 
@@ -271,35 +273,28 @@ stepArtifactoryAuthForm_artifactoryServerUrl: |-
     To ensure you use the correct URL, copy it from your Artifactory settings.
 
     [Learn More](https://ngdocs.harness.io/article/euueiiai4m)
+
+    **Note:** using `artifactory/` at the end of the URL often solves path issues.
 connectorDetailsStepFormDockerRegistry_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/u9bsd77g5a)
 dockerAuthForm_dockerRegistryUrl: |-
     Enter the URL of the Docker Registry. The Docker Registry URL for Docker Hub is `https://registry.hub.docker.com/v2/` or `https://index.docker.io/v2/`.
 
     [Learn More](https://ngdocs.harness.io/article/u9bsd77g5a)
-helmRepoAuthForm_helmRepoUrl: The URL of the chart repo. [Learn More](https://ngdocs.harness.io/article/a0jotsvsi7)
+helmRepoAuthForm_helmRepoUrl: |-
+    The URL of the chart repo. [Learn More](https://ngdocs.harness.io/article/a0jotsvsi7)
+
+    For example: `https://charts.bitnami.com/bitnami`
 connectorDetailsStepFormHttpHelmRepo_name: |+
     Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/a0jotsvsi7)
 
     For Helm charts stored in repos such as Amazon S3 or GCS (Google Cloud Storage), you will need to create a cloud platform Connector for that repo. For more information, see [Cloud Platform Connectors](https://ngdocs.harness.io/category/1ehb4tcksy).
 
 connectorDetailsStepFormNexus_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/faor0dc98d)
-nexusAuth_nexusServerUrl: |-
-    The URL that you use to connect to your Nexus server. For example, `https://nexus2.dev.mycompany.io`. [Learn More](https://ngdocs.harness.io/article/faor0dc98d)
-
-    Ensure the user account credentials you enter have the following permissions in the Nexus Server.
-
-    - Repo: All repositories (Read)
-    - Nexus UI: Repository Browser
-
-    If this Connector is used as a Docker Repo, the user account needs:
-
-    - List images and tags
-    - Pull images
+nexusAuth_nexusServerUrl: The URL that you use to connect to your Nexus server. For example, `https://nexus2.dev.mycompany.io`. [Learn More](https://ngdocs.harness.io/article/faor0dc98d)
 nexusAuth_nexusVersion: |-
     Harness lists the supported Nexus versions, 2.x and 3.x:
 
     - For Nexus 2.x, Harness supports repository formats Maven, npm, and NuGet. See Sonatype's website at [Supported Formats](https://help.sonatype.com/repomanager3/supported-formats).
-
     - For Nexus 3.x, Harness supports repository formats Docker 3.0 and greater, Maven, npm, NuGet.
 connectorDetailsStepFormCodecommit_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/jed9he2i45)
 awsCCDetailsForm_urlType: |-
@@ -310,7 +305,10 @@ awsCCDetailsForm_urlType: |-
     You must enter a repo URL even if you select region. Harness will use the repo URL Later to test this connection.
 
     [Learn More](https://ngdocs.harness.io/article/jed9he2i45)
-awsCCDetailsForm_url: Enter the path of the AWS CodeCommit repository to use.
+awsCCDetailsForm_url: |-
+    Enter the path of the AWS CodeCommit repository to use.
+
+    For example: `https://git-codecommit.us-east-2.amazonaws.com/v1/repos/MyDemoRepo`
 connectorDetailsStepFormBitbucket_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
 connectorDetailsStepFormJira_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/ud8rysntnz)
 k8InfraAllowSimultaneousDeployments: By default, Harness queues deployments to the same infrastructure to avoid conflicts. If you want to allow simultaneous deployments to this infrastructure, enable this option.
@@ -1380,7 +1378,7 @@ cvData_spec.spec.duration: |-
 
     The recommended **Duration** is 10 minutes for logging providers and 15 minutes for APM and infrastructure providers.
 
-    Harness waits 2-3 minutes to allow enough time for the data to be sent to the verification provider before it analyzes the data. This wait time is a standard with monitoring tools. So, if you set the Duration to 10 minutes, the 10 minutes excludes the initial 2-3 minute wait, but the total sample time is 13 minutes.
+    Harness waits 2-3 minutes to allow enough time for the data to be sent to the verification provider before it analyzes the data. This wait time is a standard with monitoring tools. So, if you set the Duration to 10 minutes, the 10 minutes excludes the initial 2-3 minute wait, but the total sample time is 13 minutes.
 cvData_spec.spec.trafficsplit: ""
 cvData_spec.spec.deploymentTag: |-
     Use a [Harness expression](https://newdocs.helpdocs.io/article/lml71vhsim) to reference the artifact in the stage Service settings.
@@ -1446,3 +1444,137 @@ k8ClusterForm_clientKeyCertificate: |-
 k8ClusterForm_clientKeyPassphrase: Create or select a Harness secret to add the client key passphrase. The passphrase can be pasted in either Base64 encoded or decoded. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
 k8ClusterForm_clientKeyAlgo: Specify the encryption algorithm used when the certificate was created. Typically, RSA. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
 k8ClusterForm_clientKeyCACertificate: Create or select a Harness secret to add the Certificate authority root certificate used to validate client certificates presented to the API server. For more information, see [Authenticating](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) from Kubernetes. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
+artifactRepositoryAuthentication: |-
+    Make sure the following permissions are granted to the user:
+
+    - **Privileged User** is required to access the API, whether Anonymous or a using a specific username (username and passwords are not mandatory).
+    - **Read** permission to all Repositories.
+
+    If used as a Docker Repo, user needs:
+
+    - List images and tags
+    - Pull images
+
+    See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions).
+artifactRepositoryDetails: Harness supports both cloud and on-prem versions of Artifactory. [Learn More](https://ngdocs.harness.io/article/euueiiai4m)
+stepArtifactoryAuthForm_username: Username for the Artifactory account user.
+stepArtifactoryAuthForm_password: Select or create a new Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c`).
+dockerConnectorProviderType: Select the Docker registry platform that you want to connect with Harness. [Learn More](https://ngdocs.harness.io/article/u9bsd77g5a)
+dockerConnectorAuthentication: |-
+    Make sure the connected user account has the following permissions:
+
+    - Read permission for all repositories.
+
+    The user needs access and permissions to the following:
+
+    - List images and tags
+    - Pull images
+
+    See [Docker Permissions](https://docs.docker.com/datacenter/dtr/2.0/user-management/permission-levels/).
+
+    **Note:** If you are using anonymous access to a Docker registry for a Kubernetes deployment, then `imagePullSecrets` should be removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.
+dockerAuthForm_username: The username for the Docker registry account.
+dockerAuthForm_password: The password uses a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c).
+helmRepoAuthForm_username: If the charts are backed by HTTP basic authentication, you can also supply the username. See [Share your charts with others](https://helm.sh/docs/topics/chart_repository/#share-your-charts-with-others) from Helm.
+helmRepoAuthForm_password: If the charts are backed by HTTP basic authentication, you can also supply the password. See [Share your charts with others](https://helm.sh/docs/topics/chart_repository/#share-your-charts-with-others) from Helm.
+NexusConnectorDetailsTooltip: Connect Harness to your Nexus artifact repo. [Learn More](https://ngdocs.harness.io/article/faor0dc98d)
+NexusConnectorAuthentication: |-
+    Ensure the connected user account has the following permissions in the Nexus Server. 
+
+    - Repo: All repositories (Read)
+    - Nexus UI: Repository Browser
+
+    In Nexus, it looks like [this](https://files.helpdocs.io/i5nl071jo5/articles/faor0dc98d/1609804056785/image.png).
+
+    If used as a Docker Repo, the user needs:
+
+    - List images and tags
+    - Pull images
+
+    See [Nexus Managing Security](https://help.sonatype.com/display/NXRM2/Managing+Security).
+nexusAuth_username: The username for the Nexus account.
+nexusAuth_password: The password uses a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c).
+awsCCDetailsTooltip: Connect Harness to AWS CodeCommit to fetch code or sync Projects. [Learn More](https://ngdocs.harness.io/article/jed9he2i45)
+awsCcAuthForm_accessKey: Enter the AWS Access for the account you want to use.
+awsCcAuthForm_secretKey: Enter the AWS Secret Key using a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c).
+githubURLType: |-
+    You can select **Git Account** (which is a GitHub **organization**) or **Git Repository**.
+
+    You can add a connection to your entire Git org or just a repo in the org. Selecting a Git org enables you to use one Connector for all of your subordinate repos.
+
+    Later when you test this connection, you will use a repo in the org.
+
+    In either case, when you use the Connector later in Harness, you will specify which repo to use.
+
+    [Learn More](https://ngdocs.harness.io/article/v9sigwjlgo)
+githubConnectionType: |-
+    You can select **HTTPS** or **SSH** for the connection. 
+
+    You will need to provide the protocol-relevant URL in **URL**.
+
+    If you use Two-Factor Authentication for your Git repo, you connect over HTTPS or SSH. HTTPS is required a personal access token.
+
+    [Learn More](https://ngdocs.harness.io/article/v9sigwjlgo)
+githubDetailsStepForm_url: |-
+    The GitHub URL is the URL for a Git org or repo. Ensure that it matches the **Connection Type** option you selected.
+
+    - If you selected **Git Repository** in **URL Type**, enter the full URL for the repo, such as `https://github.com/org-name/repo-name`.
+
+    - If you selected **Git Account** in **URL Type**, enter the URL without the repo name, like `https://github.com/org-name`. When you use this Connector in a Harness setting you will be prompted to provide a repo name.
+
+    [Learn More](https://ngdocs.harness.io/article/v9sigwjlgo)
+githubDetailsStepForm_validationRepo: Enter the full URL for a repo in your org.
+githubAuthentication: |-
+    Enter the credentials for the org or repo you selected.
+
+    You can use a password/token for HTTPS credentials.
+
+    If you selected SSH as the connection protocol, you must add the SSH Key for use with the connection. 
+
+    **Note:** Readonly GitHub repos also require username and password/token.
+
+    [Learn More](https://ngdocs.harness.io/article/v9sigwjlgo)
+stepGithubAuthForm_username: Your personal GitHub account username.
+stepGithubAuthForm_password: |-
+    A Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the credentials of your GitHub user account.
+
+    A Personal Access Token (PAC) is required if your GitHub authentication uses 2FA. Select **Username and Token** in **Authentication**.
+
+    Typically, you can validate your token from the command line before using it in Harness. For example:
+
+    `curl -i https://api.github.com -u <username>:<token>`
+gitHubPersonalAccessTooltip: |-
+    A Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the Personal Access Token (PAC).
+
+    A PAC is required if your GitHub authentication uses 2FA.
+
+    Typically, you can validate your token from the command line before using it in Harness. For example:
+
+    `curl -i https://api.github.com -u <username>:<token>`
+
+    **Note:** If you've set up 2FA in your Git repo, then you need to generate a PAC in your repo and enter that token in the **Personal Access Token** setting. See [GitHub settings](https://github.com/settings/tokens/new) for steps on setting up the personal access token. 
+stepGithubAuthForm_accessToken: |-
+    A Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the Personal Access Token (PAC).
+
+    A PAC is required if your GitHub authentication uses 2FA.
+
+    Typically, you can validate your token from the command line before using it in Harness. For example:
+
+    `curl -i https://api.github.com -u <username>:<token>`
+
+    **Note:** If you've set up 2FA in your Git repo, then you need to generate a PAC in your repo and enter that token in the **Personal Access Token** setting. See [GitHub settings](https://github.com/settings/tokens/new) for steps on setting up the personal access token. 
+stepGithubAuthForm_apiAccessToken: ""
+githubApiAuthentication: You can use a Personal Access Token or GitHub App for authentication. [Learn More about using a GitHub App with Harness](https://ngdocs.harness.io/article/nze5evmqu1)
+stepGithubAuthForm_installationId: |-
+    Enter the Installation ID located in the URL of the installed GitHub App.
+
+    See an [example](https://files.helpdocs.io/i5nl071jo5/articles/nze5evmqu1/1614213226801/image.png).
+stepGithubAuthForm_applicationId: |-
+    Enter the **GitHub App ID** from the GitHub App **General** tab.
+
+    See an [example](https://files.helpdocs.io/i5nl071jo5/articles/nze5evmqu1/1614213187702/image.png).
+createUpdateSecretForm_secretManagerIdentifier: Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines. [Learn More](https://ngdocs.harness.io/article/bo4qbrcggv)
+createUpdateSecretForm_name: Enter a name for the encrypted text. This is the name you will use to reference the text elsewhere in your resources. [Learn More](https://ngdocs.harness.io/article/osfw70e59c)
+createUpdateSecretForm_value: Enter a value for the encrypted text. [Learn More](https://ngdocs.harness.io/article/osfw70e59c)
+createUpdateSecretForm_description: Enter a description for the secret. A description can be very helpful when your team uses a lot of secrets for the same resource.
+createUpdateSecretForm_tags: Use tags to help you sort secrets.
