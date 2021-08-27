@@ -1583,3 +1583,5 @@ cfFlagBool_kind: Harness Feature Flags support Boolean and Multivariate flag typ
 "cfFlagBool_variations[0].value": In boolean, you can have only two variations true or false. In this step name the flag and set the value associated with it. The value can be true or false.
 "cfFlagBool_variations[1].name": In this step, give a name to other variation and set value associated with it.
 "cfFlagBool_variations[1].value": In this step give a value to the flag for which you have given a name.
+ff_ffListing_heading: Feature Flags (FF) is a feature management solution that enables users to change the software's functionality without deploying new code.
+
