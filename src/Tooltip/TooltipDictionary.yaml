@@ -1,4 +1,4 @@
-tagInputId: "**Sample tag input tooltip**"
+tagInputId: "**Sample tag input tooltip!**"
 idforexpressioninput: Here's an [**important** anchor link](#example)
 jiraApprovalProject: Select the Jira project that contains the issue you want to evaluate.
 jiraApprovalIssueType: Select the issue type of the issue you want to use.
