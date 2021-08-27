@@ -1596,4 +1596,5 @@ ff_ffCustomRules_heading: |
     •	On Request, check for condition and serve variation
 ff_targetTargetSettings_heading: Target Settings  are used to include or exclude Targets from the Target Group.
 ff_targetFlagSettings_heading: In this step the flag is added to the target group. Select the flag and serve its variation.
-
+ff_targetTargetGroups_manuallyAdded: In this step, the target group is added manually. Create a target group and add a name for your target group.
+ff_targetTargetGroups_exclusionList: In this step, the target group is selected that needs to be excluded from the list.
