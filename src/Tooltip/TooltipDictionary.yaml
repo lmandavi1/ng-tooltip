@@ -1578,3 +1578,4 @@ createUpdateSecretForm_name: Enter a name for the encrypted text. This is the na
 createUpdateSecretForm_value: Enter a value for the encrypted text. [Learn More](https://ngdocs.harness.io/article/osfw70e59c)
 createUpdateSecretForm_description: Enter a description for the secret. A description can be very helpful when your team uses a lot of secrets for the same resource.
 createUpdateSecretForm_tags: Use tags to help you sort secrets.
+ff_ffListing_heading: Feature Flags (FF) is a feature management solution that enables users to change the software's functionality without deploying new code.
