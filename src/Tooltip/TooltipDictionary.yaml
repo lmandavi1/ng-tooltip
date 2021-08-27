@@ -1578,3 +1578,8 @@ createUpdateSecretForm_name: Enter a name for the encrypted text. This is the na
 createUpdateSecretForm_value: Enter a value for the encrypted text. [Learn More](https://ngdocs.harness.io/article/osfw70e59c)
 createUpdateSecretForm_description: Enter a description for the secret. A description can be very helpful when your team uses a lot of secrets for the same resource.
 createUpdateSecretForm_tags: Use tags to help you sort secrets.
+cfFlagBool_kind: Harness Feature Flags support Boolean and Multivariate flag type. A boolean flag can have false set as its default off variation and true set as its default on variation.
+"cfFlagBool_variations[0].name": In boolean, you can have only two variations true or false. In this step give a name to your flag.
+"cfFlagBool_variations[0].value": In boolean, you can have only two variations true or false. In this step name the flag and set the value associated with it. The value can be true or false.
+"cfFlagBool_variations[1].name": In this step, give a name to other variation and set value associated with it.
+"cfFlagBool_variations[1].value": In this step give a value to the flag for which you have given a name.
