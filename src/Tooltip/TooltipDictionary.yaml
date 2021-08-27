@@ -1586,5 +1586,7 @@ cfFlagBool_kind: Harness Feature Flags support Boolean and Multivariate flag typ
 ff_ffListing_heading: Feature Flags (FF) is a feature management solution that enables users to change the software's functionality without deploying new code.
 ff_targets_heading: Targets are used to control which user sees the variation of a feature flag. Targets can be used to add users for internal testing or beta program before a broader rollout.
 ff_segments_heading: The Target Groups are a collection of targets. Target Groups allow you to serve flag variations to a list of targets in bulk.
+ff_env_heading: Harness Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many stages are you need.
+
 
 
