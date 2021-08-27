@@ -1594,3 +1594,6 @@ ff_ffCustomRules_heading: |
     Custom rules serve specific targets differently. In Custom Rules, you can add the following rules:
     •	Serve Variation to Target
     •	On Request, check for condition and serve variation
+ff_targetTargetSettings_heading: Target Settings  are used to include or exclude Targets from the Target Group.
+ff_targetFlagSettings_heading: In this step the flag is added to the target group. Select the flag and serve its variation.
+
