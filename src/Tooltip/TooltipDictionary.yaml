@@ -82,29 +82,29 @@ lockoutPolicyForm_lockOutPeriod: Enter the period for which user would be locked
 samlProviderForm_displayName: Enter a name for the SAML Provider. [Learn more](https://ngdocs.harness.io/article/mlpksc7s6c-single-sign-on-saml)
 samlProviderForm_groupMembershipAttr: Enter the Group Attribute Name from your SAML Provider. [Learn more](https://ngdocs.harness.io/article/mlpksc7s6c-single-sign-on-saml)
 connectorDetailsStepForm_name: Enter a name for the Connector. This is the name you will use to select this Connector in stage and step settings.
-awsKmsConfigForm_credType: Select a credential type for authentication. [Learn more](https://ngdocs.harness.io/article/pt52h8sb6z-add-an-aws-kms-secrets-manager)
-awsKmsConfigForm_accessKey: Enter your AWS Access Key ID. [Learn more](https://ngdocs.harness.io/article/pt52h8sb6z-add-an-aws-kms-secrets-manager)
-awsKmsConfigForm_secretKey: Enter the Secret Key for your AWS Access Key ID. [Learn more](https://ngdocs.harness.io/article/pt52h8sb6z-add-an-aws-kms-secrets-manager)
-awsKmsConfigForm_awsArn: Enter the Amazon Resource Name (ARN).  [Learn more](https://ngdocs.harness.io/article/pt52h8sb6z-add-an-aws-kms-secrets-manager)
-awsKmsConfigForm_region: Select the AWS Region for the Secrets Manager.  [Learn more](https://ngdocs.harness.io/article/pt52h8sb6z-add-an-aws-kms-secrets-manager#region)
-awsKmsConfigForm_default: Make this your default secrets manager.  [Learn more](https://ngdocs.harness.io/article/pt52h8sb6z-add-an-aws-kms-secrets-manager#region)
-azureKeyVaultForm_clientId: Enter the Application (client) ID of your Azure app.  [Learn more](https://ngdocs.harness.io/article/53jrd1cv4i-azure-key-vault)
-azureKeyVaultForm_tenantId: Enter the Directory (tenant) ID of the Azure App Directory.  [Learn more](https://ngdocs.harness.io/article/53jrd1cv4i-azure-key-vault)
-azureKeyVaultForm_subscription: Enter your Azure Subscription ID.  [Learn more](https://ngdocs.harness.io/article/53jrd1cv4i-azure-key-vault)
-azureKeyVaultForm_secretKey: Enter azure authentication key.  [Learn more](https://ngdocs.harness.io/article/53jrd1cv4i-azure-key-vault)
-azureKeyVaultForm_vaultName: Select the Vault you want to use. [Learn more](https://ngdocs.harness.io/article/53jrd1cv4i-azure-key-vault)
-azureKeyVaultForm_default: Make this your default secrets manager. [Learn more](https://ngdocs.harness.io/article/53jrd1cv4i-azure-key-vault)
-vaultConfigForm_vaultUrl: Enter the Vault URL. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
-vaultConfigForm_basePath: Enter the Base Secret Path. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
-vaultConfigForm_accessType: Select the Authentication Type.  [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
+awsKmsConfigForm_credType: Select a credential type for authentication. [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z)
+awsKmsConfigForm_accessKey: Enter your AWS Access Key ID. [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z)
+awsKmsConfigForm_secretKey: Enter the Secret Key for your AWS Access Key ID. [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z)
+awsKmsConfigForm_awsArn: Enter the Amazon Resource Name (ARN).  [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z)
+awsKmsConfigForm_region: Select the AWS Region for the Secrets Manager.  [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z#region)
+awsKmsConfigForm_default: Make this your default secrets manager.  [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z#region)
+azureKeyVaultForm_clientId: Enter the Application (client) ID of your Azure app.  [Learn More](https://ngdocs.harness.io/article/53jrd1cv4i)
+azureKeyVaultForm_tenantId: Enter the Directory (tenant) ID of the Azure App Directory.  [Learn More](https://ngdocs.harness.io/article/53jrd1cv4i)
+azureKeyVaultForm_subscription: Enter your Azure Subscription ID. [Learn More](https://ngdocs.harness.io/article/53jrd1cv4i)
+azureKeyVaultForm_secretKey: Enter Azure authentication key.  [Learn More](https://ngdocs.harness.io/article/53jrd1cv4i)
+azureKeyVaultForm_vaultName: Select the Vault you want to use. [Learn More](https://ngdocs.harness.io/article/53jrd1cv4i)
+azureKeyVaultForm_default: Make this your default secrets manager.  [Learn More](https://ngdocs.harness.io/article/53jrd1cv4i)
+vaultConfigForm_vaultUrl: Enter the Vault URL. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
+vaultConfigForm_basePath: Enter the Base Secret Path. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
+vaultConfigForm_accessType: Select the Authentication Type. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
 vaultConfigForm_authToken: Enter Periodic Token.  [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
-vaultConfigForm_appRoleId: Enter the App Role ID.  [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
-vaultConfigForm_secretId: Enter the Secret ID. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
-vaultConfigForm_engineType: Select Secret Engine Type. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
+vaultConfigForm_appRoleId: Enter the App Role ID. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
+vaultConfigForm_secretId: Enter the Secret ID.[Learn More](https://ngdocs.harness.io/article/s65mzbyags)
+vaultConfigForm_engineType: Select Secret Engine Type. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
 vaultConfigForm_secretEngineName: Enter the name of the Secret Engine. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
 vaultConfigForm_secretEngineVersion: Enter the engine version. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
 vaultConfigForm_renewalInterv: Enter how often Harness Delegate should reload the Vault access token. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
-vaultConfigForm_readOnly: Select to make secrets within this vault Read-Only. [Learn more](https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault)
+vaultConfigForm_readOnly: Select to make secrets within this vault Read-Only. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
 vaultConfigForm_default: Make this your default secrets manager.
 stepGithubAuthForm_enableAPIAccess: Select this option if you are using this GitHub Connector for a Harness [Trigger](https://ngdocs.harness.io/article/hndnde8usz-triggering-pipelines), [Harness Git Experience](https://ngdocs.harness.io/article/utikdyxgfz-harness-git-experience-overview), or authenticating using a [GitHub App](https://ngdocs.harness.io/article/nze5evmqu1-git-hub-app-support).
 deployService_name: "Enter a name for this Service. You can propagate this Service in subsequent stages by selecting its name in that stage's Service settings. "
@@ -309,7 +309,7 @@ awsCCDetailsForm_url: |-
     Enter the path of the AWS CodeCommit repository to use.
 
     For example: `https://git-codecommit.us-east-2.amazonaws.com/v1/repos/MyDemoRepo`
-connectorDetailsStepFormBitbucket_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
+connectorDetailsStepFormBitbucket_name: Enter a name for this Bitbucket Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
 connectorDetailsStepFormJira_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/ud8rysntnz)
 k8InfraAllowSimultaneousDeployments: By default, Harness queues deployments to the same infrastructure to avoid conflicts. If you want to allow simultaneous deployments to this infrastructure, enable this option.
 infraProvisionerBase_provisionerEnabled: Select this option to use an infrastructure provisioner to dynamically provision the target infrastructure for the deployment. [Learn More](https://ngdocs.harness.io/article/boug6e884h)
@@ -1592,9 +1592,157 @@ ff_ffPrerequisites_heading: "Prerequisites allow you to add a flag as a dependen
 ff_ffDefaultRules_heading: Using default rules, you can specify to serve a specific variation, or apply a percentage rollout of a variation
 ff_ffCustomRules_heading: |
     Custom rules serve specific targets differently. In Custom Rules, you can add the following rules:
-    •	Serve Variation to Target
-    •	On Request, check for condition and serve variation
+    •   Serve Variation to Target
+    •   On Request, check for condition and serve variation
 ff_targetTargetSettings_heading: Target Settings  are used to include or exclude Targets from the Target Group.
 ff_targetFlagSettings_heading: In this step the flag is added to the target group. Select the flag and serve its variation.
 ff_targetTargetGroups_manuallyAdded: In this step, the target group is added manually. Create a target group and add a name for your target group.
 ff_targetTargetGroups_exclusionList: In this step, the target group is selected that needs to be excluded from the list.
+bitbucketURLType: |-
+    You can select Account or Git Repository.
+
+    You can add a connection to your entire Git account or just a repo in the account. Selecting a Git account enables you to use one Connector for all of your subordinate repos.
+
+    Later when you test this connection, you will use a repo in the account.
+
+    In either case, when you use the Connector later in Harness, you will specify which repo to use. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
+bitbucketConnectionType: |-
+    You can select HTTPS or SSH for the connection.
+
+    Add the protocol-relevant URL in **Bitbucket Account URL**.
+
+    If you use 2FA for your Git repo, you connect over HTTPS or SSH. HTTPS requires a personal access token.
+    [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
+bitbucketDetailsStepForm_url: |-
+    The URL for your Git repo. Make sure that it matches the **Connection Type** option you selected.
+
+    - If you selected **Repository** in **URL Type**, enter the full URL for the repo.
+    - If you selected **Account** in **URL Type**, enter the URL without the repo name. When you use this Connector in a Harness setting you will be prompted to provide a repo name.
+
+    [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
+bitbucketDetailsStepForm_validationRepo: Enter a repo in the account for the URL you provided. Harness will use this repo to test the connection. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
+bitbAuthForm_username: The username for the Bitbucket account.
+bitbAuthForm_password: |-
+    Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the credentials of your Bitbucket user account.
+
+    **Note:** If you have set up 2FA in your Bitbucket account, then you need to generate a personal access token in your account and enter that token in **Password**.
+bitbAuthForm_enableAPIAccess: This option is required for using Git-based triggers, Webhooks management, and updating Git statuses.
+bitbAuthForm_apiAccessUsername: Enter the username connected to the personal access token.
+bitbAuthForm_accessToken: |-
+    Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the personal access token. 
+
+    See [Personal Access Tokens](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html) from Bitbucket.
+connectorDetailsStepFormGit_name: |-
+    Enter a name for this Connector.
+
+    The Git Connector is a Git platform-agnostic Connector. While you can use it with any Git provider, the most popular providers like GitHub have their own Harness Connectors. [Learn More](https://ngdocs.harness.io/category/xyexvcc206)
+gitURLType: |-
+    You can select Account or Repository.
+
+    You can add a connection to your entire Git account or just a repo in the account. Selecting a Git account enables you to use one Connector for all of your subordinate repos.
+
+    Later when you test this connection, you will use a repo in the account.
+
+    In either case, when you use the Connector later in Harness, you will specify which repo to use. [Learn More](https://ngdocs.harness.io/article/tbm2hw6pr6)
+gitConnectionType: |-
+    You can select HTTPS or SSH for the connection.
+
+    Add the protocol-relevant URL in **Git Account URL**.
+
+    If you use 2FA for your Git repo, you connect over HTTPS or SSH. HTTPS requires a personal access token. [Learn More](https://ngdocs.harness.io/article/tbm2hw6pr6)
+stepGitAuthForm_username: The username for the Git account to use in the Connector. You can use a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c).
+stepGitAuthForm_password: Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the password.
+connectorDetailsStepFormGitlab_name: Enter a name for this GitLab Connector. [Learn More](https://ngdocs.harness.io/article/5abnoghjgo)
+gitlabURLType: |-
+    You can select Account or Repository.
+
+    You can add a connection to your entire GitLab account or just a repo in the account. Selecting a GitLab account enables you to use one Connector for all of your subordinate repos.
+
+    Later when you test this connection, you will use a repo in the account.
+
+    In either case, when you use the Connector later in Harness, you will specify which repo to use. [Learn More](https://ngdocs.harness.io/article/5abnoghjgo)
+gitlabConnectionType: |-
+    You can select HTTPS or SSH for the connection.
+
+    You will need to provide the protocol-relevant URL in **GitLab Account URL**.
+
+    If you use 2FA for your GitLab repo, you connect over HTTPS or SSH. HTTPS is required a personal access token.
+
+    [Learn More](https://ngdocs.harness.io/article/5abnoghjgo)
+gitlabDetailsStepForm_url: |-
+    The URL for your GitLab repo. Ensure that it matches the **Connection Type** option you selected.
+
+    - If you selected **Repository** in **Type**, enter the full URL for the repo.
+    - If you selected **Account** in **Type**, enter the URL without the repo name. When you use this Connector in a Harness setting you will be prompted to provide a repo name.
+
+    [Learn More](https://ngdocs.harness.io/article/5abnoghjgo)
+gitlabDetailsStepForm_validationRepo: Enter the repo for Harness to use to test the connection.
+stepGitlabAuth_username: |-
+    Enter the GitLab account username for Harness to use. 
+
+    Often, the username `git` will work. [Learn More](https://ngdocs.harness.io/article/5abnoghjgo)
+stepGitlabAuth_password: |-
+    Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the credentials of your GitLab user account.
+
+     [Learn More](https://ngdocs.harness.io/article/5abnoghjgo)
+stepGitlabAuth_enableAPIAccess: This option is required for using Git-based triggers, Webhooks management, and updating Git statuses. [Learn More](https://ngdocs.harness.io/article/5abnoghjgo)
+stepGitlabAuth_apiAccessToken: Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the personal access token.
+jiraDetailsForm_jiraUrl: |-
+    Enter the base URL by which your users access your Jira applications. For example: `https://mycompany.atlassian.net`.
+
+    In Jira, the base URL is set to the same URL that Web browsers use to view your Jira instance. 
+
+    For details, see [Configuring the Base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html) from Atlassian.
+
+    If you are using the on-premises Jira server with HTTPS redirects enabled, use the HTTPS URL to ensure the [JIRA client follows redirects](https://confluence.atlassian.com/adminjiraserver/running-jira-applications-over-ssl-or-https-938847764.html).
+jiraDetailsForm_username: The Jira account username.
+jiraDetailsForm_passwordRef: |-
+    Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the API key.
+
+    See [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) from Atlassian.
+connectorDetailsStepFormAwsKms_name: Enter a name for this AWS KMS Connector. [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z)
+awsKmsConfigForm_roleArn: |-
+    Enter the Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target deployment AWS account.
+
+    Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the role ARN.
+
+    [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z)
+awsKmsConfigForm_externalName: |-
+    If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+
+    For more information, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
+
+    [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z)
+awsKmsConfigForm_assumeStsRoleDuration: |-
+    This is the AssumeRole Session Duration. See **Session Duration** in the [AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html) in AWS docs.
+
+    [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z)
+connectorDetailsStepFormAwsSecretManager_name: Enter a name for this AWS Secret Manager Connector.
+awsSMConfigForm_credType: |-
+    You can select the following options for authenticating with AWS:
+
+    - AWS Access Key
+    - Assume IAM Role on Delegate
+    - Assume Role Using STS on Delegate
+awsSMConfigForm_accessKey: Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) using the AWS Access Key ID for the IAM user you want to use for AWS Secrets Manager connections.
+awsSMConfigForm_secretKey: Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) using the contents of the Secret Key corresponding to the Access Key ID.
+awsSMConfigForm_secretNamePrefix: |-
+    Enter a prefix to be added to all secrets. 
+
+    For example, `devops` will result in secrets like `devops/mysecret`. The prefix is not a folder name, but a prefix. 
+
+    AWS Secrets Manager uses is a flat naming method.
+awsSMConfigForm_region: Select the AWS Region for the Secrets Manager.
+awsSMConfigForm_default: Enable this option to make this Secrets Manager the default for all secrets operations.
+awsSMConfigForm_roleArn: Enter the Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target deployment AWS account.
+awsSMConfigForm_externalId: |-
+    If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+
+    For more information, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
+awsSMConfigForm_assumeStsRoleDuration: |-
+    This is the AssumeRole Session Duration. 
+
+    See **Session Duration** in the [AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html) AWS docs.
+connectorDetailsStepFormAzureKeyVault_name: Enter a name for this Azure Key Vault Connector. [Learn More](https://ngdocs.harness.io/article/53jrd1cv4i)
+connectorDetailsStepFormVault_name: Enter a name for this HashiCorp Vault Connector. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
+vaultConfigForm_renewalIntervalMinutes: Enter how often Harness Delegate reloads the Vault access token. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
