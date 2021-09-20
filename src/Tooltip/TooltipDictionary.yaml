@@ -1780,7 +1780,7 @@ awsSMConfigForm_assumeStsRoleDuration: |-
 connectorDetailsStepFormAzureKeyVault_name: Enter a name for this Azure Key Vault Connector. [Learn More](https://ngdocs.harness.io/article/53jrd1cv4i)
 connectorDetailsStepFormVault_name: Enter a name for this HashiCorp Vault Connector. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
 vaultConfigForm_renewalIntervalMinutes: Enter how often Harness Delegate reloads the Vault access token. [Learn More](https://ngdocs.harness.io/article/s65mzbyags)
-autostoppingRule: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions. [Learn More](https://ngdocs.harness.io/article/https://ngdocs.harness.io/article/wzr5tz0ero)
+autostoppingRule: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions. [Learn More](https://ngdocs.harness.io/article/wzr5tz0ero)
 summaryOfRulesHeader: |-
     AutoStopping dashboard allows you to view a summary of all the AutoStopping rules you have created in a simple and intuitive interface. The following are the key features of the AutoStopping Rules dashboard:
 
@@ -1968,3 +1968,31 @@ resourceGroupModalForm_name: A Resource Group is a set of Harness resources that
 createDashboardForm_folderId: Select the dashboard folder for this dashboard. [Learn More](https://ngdocs.harness.io/article/ardf4nbvcy)
 createDashboardForm_name: Enter a name for this dashboard. [Learn More](https://ngdocs.harness.io/article/ardf4nbvcy)
 createDashboardForm_description: Tag this dashboard so you can locate it easily and group it with other dashboards and Harness entities. [Learn More](https://ngdocs.harness.io/article/ardf4nbvcy)
+coGetStarted: |-
+    AutoStopping Rules make sure that your non-production resources run only when used, and never when idle:
+    - Automatically detect idle times and shut down (on-demand) or terminate (spot) resources.
+    - Automatically restart resources whenever there is traffic or usage requests.
+    - Stopped/terminated machines are always accessible using the same access patterns that the team is used to – DNS link, SSH, RDP, background tasks.
+    - Enable running workloads on fully-orchestrated spot instances without worrying about spot interruptions.
+
+    To configure AutoStopping Rules, you first need to create a connector to connect Harness to your account and then create AutoStopping Rules.
+
+
+    Connectors allow Harness to connect to your deployment environments, such as Kubernetes Clusters, AWS, Google Cloud Platform, Azure, etc. For more information, see the following topics:
+    - [Create an AWS Connector for AutoStopping Rules](https://ngdocs.harness.io/article/hiyi6xvj36)
+    - [Create an Azure Connector for AutoStopping Rules](https://ngdocs.harness.io/article/e7yidxmtmj)
+
+
+    Once you have connected your cloud account to Harness, create intelligent AutoStopping Rules to optimize your cloud costs. For more information, see the following topics:
+    - [Create AutoStopping Rules for AWS](https://ngdocs.harness.io/article/7025n9ml7z)
+    - [Create AutoStopping Rules for Azure](https://ngdocs.harness.io/article/r5x5pvuqfn)
+awsSetupAccess: |-
+    Define how to access the underlying application running on the resources managed by this AutoStopping Rule. You can use any of the following methods:
+    - DNS Link: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
+    - SSH/RDP: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
+    See [Setup Access Using DNS Link](https://ngdocs.harness.io/article/7025n9ml7z-create-autostopping-rules-aws#setup_access_using_dns_link) and [Setup Access Using SSH/RDP](https://ngdocs.harness.io/article/7025n9ml7z-create-autostopping-rules-aws#setup_access_using_ssh_rdp)
+azureSetupAccess: |-
+    Define how to access the underlying application running on the resources managed by this AutoStopping Rule. You can use any of the following methods:
+    - DNS Link: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
+    - SSH/RDP: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
+    See [Setup Access Using DNS Link](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_dns_link) and [Setup Access Using SSH/RDP](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_ssh_rdp)
