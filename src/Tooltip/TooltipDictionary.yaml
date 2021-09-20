@@ -1996,3 +1996,28 @@ azureSetupAccess: |-
     - DNS Link: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
     - SSH/RDP: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
     See [Setup Access Using DNS Link](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_dns_link) and [Setup Access Using SSH/RDP](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_ssh_rdp)
+defineHealthsource_healthSourceName: Enter a name for the Health Source.
+mapGCOMetrics_metricTags: Select the desired query from the options displayed on the left side of the panel. The corresponding metric tag auto-populates in this field.
+mapGCOMetrics_metricName: Enter a name for the metric.
+mapGCOMetrics_riskCategory: Select a risk type.
+mapGCOMetrics_higherBaselineDeviation: Choose this option if a higher value of the selected risk type is a risk.
+mapGCOMetrics_lowerBaselineDeviation: Choose this option if a lower value of the selected risk type is a risk.
+mapGCOLogs_metricName: Enter a name for the query.
+mapGCOLogs_serviceInstance: Click the plus icon to select the path of the service instance.
+mapGCOLogs_messageIdentifier: Click the plus icon to select the message identifier.
+appDHealthSourceform_appdApplication: Select an AppDynamics application.
+appDHealthSourceform_metricData.Errors: Select this option if you want error metrics to be monitored.
+appDHealthSourceform_metricData.Performance: Select this option if you want performance metrics to be monitored.
+appDHealthSourceform_appDTier: Select an AppDynamics tier.
+mapPrometheus_metricName: Enter a name for the metric.
+mapPrometheus_groupName: Enter a name for the Prometheus group.
+mapPrometheus_prometheusMetric: Select a Prometheus metric.
+mapPrometheus_envFilter: Select a filter for the environment.
+mapPrometheus_serviceFilter: Select one or more filters for the service.
+mapPrometheus_additionalFilter: Select this option to add additional filters for the service.
+mapPrometheus_aggregator: Select an aggregator for the metric.
+mapPrometheus_riskCategory: Select a risk type.
+mapPrometheus_higherBaselineDeviation: Select this option if higher value of the selected risk type is a risk.
+mapPrometheus_lowerBaselineDeviation: Select this option if lower value of the selected risk type is a risk.
+newRelicHealthSourceform_newRelicApplication: Select a New Relic application.
+newRelicHealthSourceform_metricData.Performance: Select this option to monitor performance metrics.
