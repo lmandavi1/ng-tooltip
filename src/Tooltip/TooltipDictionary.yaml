@@ -127,9 +127,9 @@ k8InfraConnector: |-
 
     Here's a [video](https://youtu.be/wUC23lmqfnY) that walks through setting up a Kubernetes Cluster Connector.
 k8InfraNamespace: |-
-    Enter the target namespace in target cluster. 
+    Enter the target namespace in the target cluster. 
 
-    The namespace must already exist during deployment. Harness will not create a new namespace if you enter one here. If you leave this setting empty, the `default` namespace is used. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
+    The namespace must already exist during deployment. Harness will not create a new namespace using the one you entered here. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
 k8InfraReleaseName: |-
     During deployment Harness creates a ConfigMap listing the resources of the release and uses the **Release name** for tracking them. 
 
