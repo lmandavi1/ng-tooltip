@@ -1996,3 +1996,9 @@ azureSetupAccess: |-
     - DNS Link: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
     - SSH/RDP: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
     See [Setup Access Using DNS Link](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_dns_link) and [Setup Access Using SSH/RDP](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_ssh_rdp)
+defineHealthsource_healthSourceName: Enter a name for the Health Source.
+mapGCOMetrics_metricTags: Select a query from the options displayed on the left side of the panel. The corresponding metric tag auto-populates in this filed.
+mapGCOMetrics_metricName: Enter a name for the metric.
+mapGCOMetrics_riskCategory: Select a risk type.
+mapGCOMetrics_higherBaselineDeviation: Choose this option if a higher value of the selected risk type is a risk.
+mapGCOMetrics_lowerBaselineDeviation: Choose this option if a lower value of the selected risk type is a risk.
