@@ -2021,3 +2021,15 @@ mapPrometheus_higherBaselineDeviation: Select this option if higher value of the
 mapPrometheus_lowerBaselineDeviation: Select this option if lower value of the selected risk type is a risk.
 newRelicHealthSourceform_newRelicApplication: Select a New Relic application.
 newRelicHealthSourceform_metricData.Performance: Select this option to monitor performance metrics.
+whatToDeploy: A Stage can deploy Services, serverless functions, and other workloads. Select the type of deployment this Stage performs. [Learn More](https://ngdocs.harness.io/article/2chyf1acil)
+gcpInfraConnector: Google Cloud Platform (GCP) is integrated with Harness using a Harness GCP Connector. Create or select a GCP Connector to connect to the target Google Kubernetes Engine (GKE) cluster. [Learn More](https://ngdocs.harness.io/article/cii3t8ra3v)
+gcpInfraCluster: |-
+    Select the target GKE cluster. The GCP Connector you selected in **Connector** determine what clusters are displayed here. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
+
+    If you see an error like `Failed to list GCP clusters` the permissions assigned to the GCP service account used in the Connector might not be sufficient.
+
+    The GCP service account used for any credentials requires the **Kubernetes Engine Admin (GKE Admin)** role to get the Kubernetes master username and password. Harness also requires **Storage Object Viewer** permissions. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
+gcpInfraNamespace: |-
+    Enter the target namespace in target cluster. 
+    The namespace must already exist during deployment. Harness will not create a new namespace if you enter one here. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
+gcpInfraAllowSimultaneousDeployments: By default, Harness queues deployments to the same infrastructure to avoid conflicts. If you want to allow simultaneous deployments to this infrastructure, enable this option.
