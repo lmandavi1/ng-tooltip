@@ -535,7 +535,7 @@ httpWidget_spec.headers: |-
 httpWidget_spec.outputVariables: |-
     Create output variables to be used by other steps in the stage. The **Value** setting can contain any HTTP step input, output, or response information.
 
-    You can also use ​JSON and XML functors in the values for the output variable. [Learn More](https://ngdocs.harness.io/article/64hhfpbgbj)
+    You can also use JSON and XML functors in the values for the output variable. [Learn More](https://ngdocs.harness.io/article/64hhfpbgbj)
 JiraApproval_stepName: |-
     You can use Jira issues to approve or reject a Pipeline or stage at any point in its execution.
 
@@ -1617,10 +1617,19 @@ cfFlagBool_kind: Harness Feature Flags support Boolean and Multivariate flag typ
 "cfFlagBool_variations[0].value": In boolean, you can have only two variations true or false. In this step name the flag and set the value associated with it. The value can be true or false.
 "cfFlagBool_variations[1].name": In this step, give a name to other variation and set value associated with it.
 "cfFlagBool_variations[1].value": In this step give a value to the flag for which you have given a name.
-ff_ffListing_heading: Feature Flags (FF) is a feature management solution that enables users to change the software's functionality without deploying new code.
-ff_targets_heading: Targets are used to control which user sees the variation of a feature flag. Targets can be used to add users for internal testing or beta program before a broader rollout.
-ff_segments_heading: The Target Groups are a collection of targets. Target Groups allow you to serve flag variations to a list of targets in bulk.
-ff_env_heading: Harness Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many stages are you need.
+ff_ffListing_heading: |-
+    Feature Flags (FF) is a feature management solution that enables users to change the software's functionality without deploying new code.
+
+    [Learn more](https://ngdocs.harness.io/article/7n9433hkc0-cf-feature-flag-overview)
+ff_targets_heading: |
+    Targets are used to control which user sees the variation of a feature flag. Targets can be used to add users for internal testing or beta programs before a broader rollout.
+    [Learn More](https://ngdocs.harness.io/article/dbk9uoaid3-add-targets)
+ff_segments_heading: |-
+    The Target Groups are a collection of targets. Target Groups allow you to serve flag variations to a list of targets in bulk.
+
+    [Learn More](https://ngdocs.harness.io/article/5qz1qrugyk-add-target-groups)
+ff_env_heading: |
+    Harness Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many stages are you need.
 ff_ffVariations_heading: A Feature flag has default variations.  A boolean flag can have false set as its default off variation and true set as its default on variation. A multivariate flag could have variation 1 set as its default off variation and variation 2 set as its default on variation, with variation 3 configured to appear when a user has a certain email address
 ff_ffPrerequisites_heading: "Prerequisites allow you to add a flag as a dependency to enable a feature. You can add any other existing flags from your environment as a prerequisite. "
 ff_ffDefaultRules_heading: Using default rules, you can specify to serve a specific variation, or apply a percentage rollout of a variation
@@ -2033,3 +2042,6 @@ gcpInfraNamespace: |-
     Enter the target namespace in target cluster. 
     The namespace must already exist during deployment. Harness will not create a new namespace if you enter one here. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
 gcpInfraAllowSimultaneousDeployments: By default, Harness queues deployments to the same infrastructure to avoid conflicts. If you want to allow simultaneous deployments to this infrastructure, enable this option.
+cfFlagElem_name: "Enter a name for your boolean flag. When you name a feature flag, Harness automatically generates its identifier. "
+cfFlagElem_permanent: If you need to make the feature flag a permanent flag, select the checkbox This is a permanent flag.
+cfEnvDialog_name: Enter the name of your Environment.
