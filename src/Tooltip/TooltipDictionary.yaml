@@ -2045,3 +2045,9 @@ gcpInfraAllowSimultaneousDeployments: By default, Harness queues deployments to 
 cfFlagElem_name: "Enter a name for your boolean flag. When you name a feature flag, Harness automatically generates its identifier. "
 cfFlagElem_permanent: If you need to make the feature flag a permanent flag, select the checkbox This is a permanent flag.
 cfEnvDialog_name: Enter the name of your Environment.
+userGroupRleAssignmentForm_name: Assign role bindings for the user group. [Learn more](https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness#role_assignment)
+userRoleAssignementForm_users: Enter the name or email address of the user you want to invite. [Learn more](https://ngdocs.harness.io/article/hyoe7qcaz6-add-users#step_add_new_user) 
+userRoleAssignementForm_userGroups: Select user group(s) to add this user as a member. [Learn more](https://ngdocs.harness.io/article/dfwuvmy33m-add-user-groups)
+ServiceAccountRoleAssignementForm_name: Assign role bindings for this Service Account. [Learn more](https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness#role_assignment) 
+resourceGroupModalForm_color: Select a color for the resource group.
+roleForm_name: Enter a name for the role. [Learn more] (https://ngdocs.harness.io/article/tsons9mu0v-add-manage-roles#step_add_a_new_role)
