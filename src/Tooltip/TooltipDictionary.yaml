@@ -2051,7 +2051,7 @@ userRoleAssignementForm_userGroups: Select user group(s) to add this user as a m
 ServiceAccountRoleAssignementForm_name: Assign role bindings for this Service Account. [Learn more](https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness#role_assignment)
 resourceGroupModalForm_color: Select a color for the resource group.
 roleForm_name: Enter a name for the role. [Learn more] (https://ngdocs.harness.io/article/tsons9mu0v-add-manage-roles#step_add_a_new_role)
-ciRunStep_spec.connectorRef: The Run step executes one or more commands on a container image. Configure the Harness connectors for the container registry and add relevant parameters to execute your shell commands. [Learn More](hhttps://ngdocs.harness.io/article/ota4xj59le)
+ciRunStep_spec.connectorRef: The Run step executes one or more commands on a container image. Configure the Harness connectors for the container registry and add relevant parameters to execute your shell commands. [Learn More](hhttps://ngdocs.harness.io/article/ota4xj59le)
 imagePullPolicy: |-
     Set the image's pull policy by selecting an option.
     1. **Always** : the kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
@@ -2062,3 +2062,37 @@ shell: |-
     - **Bash**
     - **Shell**
 runAsUser: The **runAsUser** field specifies that all processes run with the user ID for any containers in the pod. Set the value to specify the user id for all processes in the pod. A typical example of  **runAsUser** field entry would be 1000.
+ccmOverviewTitle: |-
+    Harness Cloud Cost Management (CCM) is an intelligent cloud cost management solution for FinOps, Infrastructure, and Engineering teams. Harness CCM provides:
+
+    - Complete cost transparency across engineering and finance with robust business intelligence (BI)
+    - Ability to reduce wasted cloud costs by up to 75% with Intelligent Cloud AutoStopping
+    - ML-based recommendations
+     
+    [Learn more](https://ngdocs.harness.io/article/n8e7rddf8w)
+overviewSummaryTotalCost: For Kubernetes clusters, the total cost is the sum of all the node costs. For ECS clusters, the sum of all container instances.
+overviewSummaryForecastedCost: |
+    Forecasted costs are predictions based on your historical cost data. The forecasted date is applicable only where historical data exists. If there is insufficient data to compute the forecast, the value is not displayed. The forecasted cost is predicted for the same future time period as your selected date range.
+
+
+    [Learn more](https://ngdocs.harness.io/article/hs7cyi1nix-harness-key-cloud-cost-concepts#forecasted_cost)
+overviewCostEfficiencyScore: |-
+    A measure of how cost-optimized your resource usage is across your clusters. It is derived from the total and idle (and or unallocated) spend of your resources.  
+
+    [Learn more](https://ngdocs.harness.io/article/hs7cyi1nix-harness-key-cloud-cost-concepts#cost_efficiency_score)
+ccmPerspectives: Perspectives allow you to group your resources in ways that are more meaningful to your business needs. It provides a unified view of your cloud cost data across the cloud environment. For example, you can group and filter by Account, Environment, Service, Region, Product, Label, Namespace, Workload, etc. and create a perspective for your business, finance, and engineering teams. [Learn more](https://ngdocs.harness.io/article/dvspc6ub0v)
+perspectiveBuilder: |-
+    Perspectives allow you to group your resources in ways that are more meaningful to your business needs. It provides a unified view of your cloud cost data across the cloud environment.
+
+
+    You can create a Perspective by grouping your resources the way you wish. For example, if you want to create a perspective for your CFO, first add default or custom filters and then further group by Service, Account, Workload, Namespace, etc. that you would want to include in your Perspective.
+
+
+    [Learn more](https://ngdocs.harness.io/article/dvspc6ub0v)
+ccmRecommendations: |-
+    One of the most impactful ways to reduce spend on Kubernetes infrastructure is to make sure your clusters are optimally sized for the workloads and node pools they run. Harness CCM recommends optimal compute resources for your workloads and node pools. It can help you reduce costs and improve performance, by analyzing your historical utilization metrics.
+
+
+
+    [Workload Recommendations](https://ngdocs.harness.io/article/o75arkcg8i)
+    [Node Pool Recommendations](https://ngdocs.harness.io/article/x75xp0xime)
