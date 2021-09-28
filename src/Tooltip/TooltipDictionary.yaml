@@ -2046,8 +2046,19 @@ cfFlagElem_name: "Enter a name for your boolean flag. When you name a feature fl
 cfFlagElem_permanent: If you need to make the feature flag a permanent flag, select the checkbox This is a permanent flag.
 cfEnvDialog_name: Enter the name of your Environment.
 userGroupRleAssignmentForm_name: Assign role bindings for the user group. [Learn more](https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness#role_assignment)
-userRoleAssignementForm_users: Enter the name or email address of the user you want to invite. [Learn more](https://ngdocs.harness.io/article/hyoe7qcaz6-add-users#step_add_new_user) 
+userRoleAssignementForm_users: Enter the name or email address of the user you want to invite. [Learn more](https://ngdocs.harness.io/article/hyoe7qcaz6-add-users#step_add_new_user)
 userRoleAssignementForm_userGroups: Select user group(s) to add this user as a member. [Learn more](https://ngdocs.harness.io/article/dfwuvmy33m-add-user-groups)
-ServiceAccountRoleAssignementForm_name: Assign role bindings for this Service Account. [Learn more](https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness#role_assignment) 
+ServiceAccountRoleAssignementForm_name: Assign role bindings for this Service Account. [Learn more](https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness#role_assignment)
 resourceGroupModalForm_color: Select a color for the resource group.
 roleForm_name: Enter a name for the role. [Learn more] (https://ngdocs.harness.io/article/tsons9mu0v-add-manage-roles#step_add_a_new_role)
+ciRunStep_spec.connectorRef: The Run step executes one or more commands on a container image. Configure the Harness connectors for the container registry and add relevant parameters to execute your shell commands. [Learn More](hhttps://ngdocs.harness.io/article/ota4xj59le)
+imagePullPolicy: |-
+    Set the image's pull policy by selecting an option.
+    1. **Always** : the kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
+    2. **If Not Present** : the image is pulled only if it is not already present locally.
+    3. **Never** : the image is assumed to exist locally. No attempt is made to pull the image.
+shell: |-
+    Select your preferred shell script.
+    - **Bash**
+    - **Shell**
+runAsUser: The **runAsUser** field specifies that all processes run with the user ID for any containers in the pod. Set the value to specify the user id for all processes in the pod. A typical example of  **runAsUser** field entry would be 1000.
