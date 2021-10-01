@@ -15,15 +15,24 @@ import {
 } from "@blueprintjs/core";
 import css from "./TooltipEditor.css";
 
+export interface TooltipDictionaryValue {
+  content: string;
+  width: string;
+}
+
+export interface TooltipDictionaryInterface {
+  [tooltipId: string]: string | TooltipDictionaryValue;
+}
+
 export interface TooltipEditorProps {
-  tooltipDictionary: Record<string, string>;
+  tooltipDictionary: TooltipDictionaryInterface;
   onClose?: () => void;
 }
 
 const getDefaultTooltipRecord = (
-  tooltipDictionary: Record<string, string>
-): Record<string, string> => {
-  let toReturn: Record<string, string> = tooltipDictionary;
+  tooltipDictionary: TooltipDictionaryInterface
+): TooltipDictionaryInterface => {
+  let toReturn: TooltipDictionaryInterface = tooltipDictionary;
   const fromLocalStorage = localStorage.getItem("tooltipDictionary");
   if (typeof fromLocalStorage === "string") {
     // This means 'Save' has been clicked
@@ -48,7 +57,10 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
     document.querySelectorAll("[data-tooltip-id]") || []
   );
   const tooltipDictionary = props.tooltipDictionary;
-  const [editedTooltips, setEditedTooltips] = useState<Record<string, string>>(
+  const [
+    editedTooltips,
+    setEditedTooltips,
+  ] = useState<TooltipDictionaryInterface>(
     getDefaultTooltipRecord(tooltipDictionary)
   );
   const [editMode, setEditMode] = useState<Record<string, boolean | undefined>>(
@@ -62,11 +74,11 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
 
   const indicateTooltipsWithEmptyContent = (
     tooltipNodes: NodeListOf<Element>,
-    editedTooltips: Record<string, string>
+    editedTooltips: TooltipDictionaryInterface
   ): void => {
     Array.from(tooltipNodes).forEach((tooltipNode) => {
       const tooltipId = getNodeTooltipId(tooltipNode);
-      if (tooltipId && !editedTooltips[tooltipId]) {
+      if (tooltipId && !getTooltipContent(editedTooltips, tooltipId)) {
         // Remove this class on unmount
         tooltipNode.classList.add(css.emptyTooltipContent);
       }
@@ -231,6 +243,24 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
       .join("")}`;
   };
 
+  const getTooltipWidthValue = (
+    editedTooltips: TooltipDictionaryInterface,
+    tooltipId: string
+  ): string => {
+    if (typeof editedTooltips[tooltipId] === "object") {
+      return (editedTooltips[tooltipId] as TooltipDictionaryValue).width;
+    }
+    return "400";
+  };
+
+  const getTooltipContent = (
+    editedTooltips: TooltipDictionaryInterface,
+    tooltipId: string
+  ) =>
+    typeof editedTooltips[tooltipId] === "object"
+      ? (editedTooltips[tooltipId] as TooltipDictionaryValue).content
+      : (editedTooltips[tooltipId] as string);
+
   return (
     <div id="ngTooltipEditorRoot" className={css.ngTooltipEditorRoot}>
       <div className={css.editorHeadingRow}>
@@ -306,30 +336,70 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                             {tooltipId}
                           </Label>
                           {editMode[tooltipId] ? (
-                            <textarea
-                              placeholder="Enter Markdown"
-                              style={{
-                                minWidth: 550,
-                                maxWidth: 550,
-                                minHeight: 100,
-                                maxHeight: 300,
-                                padding: "15px",
-                                marginLeft: "15px",
-                              }}
-                              value={editedTooltips[tooltipId]}
-                              id={`${tooltipId}TextArea`}
-                              autoFocus={true}
-                              onChange={(e) => {
-                                setEditedTooltips({
-                                  ...editedTooltips,
-                                  ...{ [tooltipId]: e.target.value },
-                                });
-                              }}
-                            />
+                            <div className={css.textareaAndWidth}>
+                              <textarea
+                                placeholder="Enter Markdown"
+                                style={{
+                                  minWidth: 550,
+                                  maxWidth: 550,
+                                  minHeight: 100,
+                                  maxHeight: 300,
+                                  padding: "15px",
+                                  marginLeft: "15px",
+                                }}
+                                value={getTooltipContent(
+                                  editedTooltips,
+                                  tooltipId
+                                )}
+                                id={`${tooltipId}TextArea`}
+                                autoFocus={true}
+                                onChange={(e) => {
+                                  const changedValue = e.target.value;
+                                  setEditedTooltips({
+                                    ...editedTooltips,
+                                    ...{
+                                      [tooltipId]: {
+                                        content: changedValue,
+                                        width: getTooltipWidthValue(
+                                          editedTooltips,
+                                          tooltipId
+                                        ),
+                                      },
+                                    },
+                                  });
+                                }}
+                              />
+                              <div className={css.contentWidth}>
+                                <Label>Width</Label>
+                                <input
+                                  value={getTooltipWidthValue(
+                                    editedTooltips,
+                                    tooltipId
+                                  )}
+                                  onChange={(ev) => {
+                                    const tooltipContent = getTooltipContent(
+                                      editedTooltips,
+                                      tooltipId
+                                    );
+                                    const changedValue = ev.target.value;
+                                    setEditedTooltips({
+                                      ...editedTooltips,
+                                      ...{
+                                        [tooltipId]: {
+                                          content: tooltipContent,
+                                          width: changedValue,
+                                        },
+                                      },
+                                    });
+                                  }}
+                                />
+                              </div>
+                            </div>
                           ) : (
                             <div className={css.labelRow}>
                               <Label className={css.tooltipContentLabel}>
-                                {editedTooltips[tooltipId] || ""}
+                                {getTooltipContent(editedTooltips, tooltipId) ||
+                                  ""}
                               </Label>
                               <Button
                                 text="Edit"
@@ -343,7 +413,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                               />
                             </div>
                           )}
-                          {editedTooltips[tooltipId] ? (
+                          {getTooltipContent(editedTooltips, tooltipId) ? (
                             <Popover
                               popoverClassName={css.previewTooltipWrapper}
                               position={Position.RIGHT}
@@ -352,8 +422,19 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                               content={
                                 <div
                                   className={css.previewTooltipContentWrapper}
+                                  style={{
+                                    maxWidth: `${getTooltipWidthValue(
+                                      editedTooltips,
+                                      tooltipId
+                                    )}px`,
+                                  }}
                                   dangerouslySetInnerHTML={{
-                                    __html: _asHtml(editedTooltips[tooltipId]),
+                                    __html: _asHtml(
+                                      getTooltipContent(
+                                        editedTooltips,
+                                        tooltipId
+                                      )
+                                    ),
                                   }}
                                 />
                               }
