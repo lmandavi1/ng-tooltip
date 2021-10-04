@@ -156,14 +156,7 @@ setContainerResources: |
     Resources limits allow setting maximum values for the resources the container is allowed to use at runtime.
     Use **Limit Memory** to limit the memory that the container can use. Limits for memory are measured in bytes. You can express memory as a plain integer or as a fixed-point number using one of these suffixes: G, M. You can also use the power-of-two equivalents: Gi, Mi.
     Use **Limit CPU** to limit the number of cores that the container can use. Limits for CPU resources are measured in cpu units. Fractional requests are allowed. The expression 0.1 is equivalent to the expression 100m, which can be read as **one hundred millicpu**.
-timeout: |
-    You can use:
-    - **w** for weeks
-    - **d** for days
-    - **h** for hours
-    - **m** for minutes
-    - **s** for seconds
-    - **ms** for milliseconds
+timeout: ""
 image: The name and tag of a Docker image to use in this stage. For example, a database container or a container to run integration tests on. Include the image name and tag. Harness will default to the latest tag if unspecified. You can use any Docker image from any public or private Docker registry.
 privileged: Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker --privileged flag.
 tags: Specify one or more tags for the Docker image
@@ -175,8 +168,11 @@ buildArgs: Build-time variables
 target: Build the specified stage as defined inside the Dockerfile
 region: AWS Region
 imageName: The name of the image that will be pushed to the target container registry.
-gcsBucket: GCS Bucket
-sourcePath: Use regex to upload multiple files
+gcsBucket: Enter the GCS Bucket name. [Learn More](https://cloud.google.com/storage/docs/creating-buckets)
+sourcePath: |-
+    Path to the artifact file/folder you want to upload.
+    You can use regex to upload multiple files.
+    Harness will automatically create the compressed file.
 gcsS3Target: The path to store the cache in, relatively to the bucket. If not provided the cache will be save to [bucket]/
 connector: |-
     The Harness Connector for a container registry. This is the container registry for the image Harness will use run build commands on, such as DockerHub.
@@ -209,7 +205,7 @@ gcrConnector: GCP connector to use for uploading the image to GCR
 gcrHost: GCR Host
 gcrProjectID: GCR Project ID
 gcrRemoteCache: The remote cache repository needs to be created in the same host and project as the build image. The repository will be automatically created if it doesn’t exist.
-gcsConnector: GCP connector to use for uploading the artifact(s) to GCS
+gcsConnector: GCP connector to use for uploading the artifact(s) to GCS.
 jFrogArtifactoryTarget: Repository name relative to the server URL in the connector. If pom.xml is not present then target should be full path to artifacts folder (groupID/artifactID/version)
 pluginImage: The name of the Plugin Docker image. The image name should include the tag and will default to the latest tag if unspecified. You can use any docker image from any docker registry, including docker images from private registries
 pluginSettings: Plugin specific settings. Please refer to the plugin's documentation page
@@ -2120,3 +2116,8 @@ GitOpsProviderStepFormundefined_spec.adapterUrl: |-
     This URL allows customers to interact with the ArgoCD server directly from Harness UI with minimal configuration.
 
     [Learn more to Create Argo CD Adapter](https://ngdocs.harness.io/article/ptlvh7c6z2)
+ciBuildInfra_initTimeout: Enter the Timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
+ciBuildInfra_annotations: Kubernetes Annotation to the pod YAML that will be used to create the pod in which the stage's steps will be executed. [Learn More](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/)
+ciBuildInfra_labels: Key/Value pair that will be added to the Kubernetes pod YAML, which is used to create the pod in which the stage's steps will be executed. [Learn More](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+GCSUpload_stepName_StepConfig: Use this step to upload non-container artifacts to **Google Cloud Storage (GCS)**. [Learn More](https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact)
+ciGcsStep_name: Enter a name for the Step.
