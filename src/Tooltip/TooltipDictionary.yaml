@@ -1626,8 +1626,12 @@ ff_segments_heading: |-
     [Learn More](https://ngdocs.harness.io/article/5qz1qrugyk-add-target-groups)
 ff_env_heading: |
     Harness Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many stages are you need.
-ff_ffVariations_heading: A Feature flag has default variations.  A boolean flag can have false set as its default off variation and true set as its default on variation. A multivariate flag could have variation 1 set as its default off variation and variation 2 set as its default on variation, with variation 3 configured to appear when a user has a certain email address
-ff_ffPrerequisites_heading: "Prerequisites allow you to add a flag as a dependency to enable a feature. You can add any other existing flags from your environment as a prerequisite. "
+ff_ffVariations_heading: |-
+    A Feature flag has default variations.  A boolean flag can have false set as its default off variation and true set as its default on variation. A multivariate flag could have variation 1 set as its default off variation and variation 2 set as its default on variation, with variation 3 configured to appear when a user has a certain email address
+    [Learn More](https://ngdocs.harness.io/article/8bf3us11kz)
+ff_ffPrerequisites_heading: |-
+    Prerequisites allow you to add a flag as a dependency to enable a feature. You can add any other existing flags from your environment as a prerequisite. 
+    [Learn More](https://ngdocs.harness.io/article/iijdahygdm)
 ff_ffDefaultRules_heading: Using default rules, you can specify to serve a specific variation, or apply a percentage rollout of a variation
 ff_ffCustomRules_heading: |
     Custom rules serve specific targets differently. In Custom Rules, you can add the following rules:
