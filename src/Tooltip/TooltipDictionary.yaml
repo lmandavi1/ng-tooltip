@@ -2001,10 +2001,10 @@ azureSetupAccess: |-
     - DNS Link: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
     - SSH/RDP: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
     See [Setup Access Using DNS Link](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_dns_link) and [Setup Access Using SSH/RDP](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_ssh_rdp)
-defineHealthsource_healthSourceName: Enter a name for the Health Source.
+defineHealthsource_healthSourceName: Enter a name for the Health Source. [Learn More] (https://ngdocs.harness.io/article/e9z7944qhw-verify-deployment-with-prometheus#step_5_add_health_sources)
 mapGCOMetrics_metricTags: Select the desired query from the options displayed on the left side of the panel. The corresponding metric tag auto-populates in this field.
 mapGCOMetrics_metricName: Enter a name for the metric.
-mapGCOMetrics_riskCategory: Select a risk type.
+mapGCOMetrics_riskCategory: Select a risk type. [Learn More](https://ngdocs.harness.io/article/owqpo59gp5-verify-deployments-with-google-cloud-operations#step_5_add_health_sources)
 mapGCOMetrics_higherBaselineDeviation: Choose this option if a higher value of the selected risk type is a risk.
 mapGCOMetrics_lowerBaselineDeviation: Choose this option if a lower value of the selected risk type is a risk.
 mapGCOLogs_metricName: Enter a name for the query.
@@ -2121,3 +2121,7 @@ ciBuildInfra_annotations: Kubernetes Annotation to the pod YAML that will be use
 ciBuildInfra_labels: Key/Value pair that will be added to the Kubernetes pod YAML, which is used to create the pod in which the stage's steps will be executed. [Learn More](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 GCSUpload_stepName_StepConfig: Use this step to upload non-container artifacts to **Google Cloud Storage (GCS)**. [Learn More](https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact)
 ciGcsStep_name: Enter a name for the Step.
+manualInputQuery_metricName: Enter a name for the metrics. [Learn More](https://ngdocs.harness.io/article/owqpo59gp5-verify-deployments-with-google-cloud-operations#step_5_add_health_sources)
+mapSplunk_metricName: Enter a name for the query.
+mapSplunk_savedSearchQuery: Select a query from the list which is an optional step.
+mapSplunk_serviceInstance: Once the records are fetched, click the plus icon in Identify Service Instance to select the path for service instance.
