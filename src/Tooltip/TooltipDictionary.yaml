@@ -2096,3 +2096,27 @@ ccmRecommendations: |-
 
     [Workload Recommendations](https://ngdocs.harness.io/article/o75arkcg8i)
     [Node Pool Recommendations](https://ngdocs.harness.io/article/x75xp0xime)
+gitOps: |
+    Argo CD GitOps, as a tool, keeps all configurations in sync and applies the desired state directly (and only from Git). 
+    Harness provides GitOps by integrating Argo CD into the Harness Manager. Once integrated, you can perform your Harness deployments and create and manage your Argo CD Application from within the same interface.
+
+    [Learn more](https://ngdocs.harness.io/article/ptlvh7c6z2)
+GitOpsProviderStepFormundefined_name: |
+    Enter the name for your Adapter.
+    This is a mandatory field. The name you enter must be unique and should not contain any special characters.
+    Harness integrates with Argo CD by using a Harness Argo CD Adapter installed in the Argo CD cluster. The Harness Argo CD Adapter acts as a proxy server and enables Cross-Origin Resource Sharing (CORS). This allows Argo CD Server to be loaded in the Harness Manager. Because of the Harness Argo CD Adapter, no configuration changes are required in your Argo CD clusters.
+GitOpsProviderStepFormNameIdDescriptionTags_description: |-
+    Give a description for your Adapter.
+    Description field contains a summary of the Adapter.
+
+    Information in the description field is automatically and instantly saved so that you can work on the same item at the same time and see the changes you make in real time. 
+GitOpsProviderStepFormNameIdDescriptionTags_tags: |-
+    Enter a tag for your Adapter.
+    This is an optional field. 
+    A Tag field allows you to label the content with keywords (tags)
+    Note: You can have only one tag in this field.
+GitOpsProviderStepFormundefined_spec.adapterUrl: |-
+    Enter the Harness Argo CD Adapter URL. Do not enter any trailing slash in the URL.
+    This URL allows customers to interact with the ArgoCD server directly from Harness UI with minimal configuration.
+
+    [Learn more to Create Argo CD Adapter](https://ngdocs.harness.io/article/ptlvh7c6z2)
