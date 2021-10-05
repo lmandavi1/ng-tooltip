@@ -2129,3 +2129,6 @@ manualInputQuery_metricName: Enter a name for the metrics. [Learn More](https://
 mapSplunk_metricName: Enter a name for the query.
 mapSplunk_savedSearchQuery: Select a query from the list which is an optional step.
 mapSplunk_serviceInstance: Once the records are fetched, click the plus icon in Identify Service Instance to select the path for service instance.
+mapPrometheus_serviceInstance:
+    content: Click Service Instance Identifier to retrieve host specific metrics.
+    width: "400"
