@@ -1835,10 +1835,14 @@ HarnessApproval_stepName_StepConfig: |-
     You can specify Harness User Group(s) to approve or reject a Pipeline at any point in its execution. During deployment, the User Group members use the Harness Manager to approve or reject the Pipeline deployment manually. [Learn More](https://ngdocs.harness.io/article/fkvso46bok)
 
     Approvals are added in between Stages to prevent the Pipeline execution from proceeding without an approval.
-cdEditStage_name: |-
-    Enter a name for this stage. You added a name when you created the stage, but you can edit the name here. [Learn More](https://ngdocs.harness.io/article/2chyf1acil)
+cdEditStage_name:
+    content: |-
+        A Stage is a subset of a Pipeline that contains the logic to perform one major segment of the Pipeline process. Stages are based on the different milestones of your Pipeline, such as building, approving, and delivering.
 
-    Changing the stage name does not change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. [Learn More](https://ngdocs.harness.io/article/li0my8tcz3)
+        Enter a name for this stage. You added a name when you created the stage, but you can edit the name here. [Learn More](https://ngdocs.harness.io/article/2chyf1acil)
+
+        Changing the stage name does not change the stage identifier (Id). The stage identifier is created when you first name the stage and it cannot be changed. [Learn More](https://ngdocs.harness.io/article/li0my8tcz3)
+    width: "400"
 overviewStageVariables: |-
     Stage variables are custom variables you can add and reference in your stage and Pipeline. They are available across the Pipeline. You can override their values in subsequent stages. [Learn More](https://ngdocs.harness.io/article/2chyf1acil)
 
@@ -2416,3 +2420,19 @@ wizardForm_webhook_spec.workload:
 
         Select a [Secrets Manager](https://ngdocs.harness.io/article/hngrlb7rd6) to use for encrypting/decrypting and saving the Terraform plan file. [Learn More](https://ngdocs.harness.io/article/52n3j0ci72)
     width: "400"
+pipelineStep.infrastructureDefinition:
+    content: |-
+        Infrastructure Definitions represent the physical infrastructure of the Environment. They are the actual clusters, hosts, etc. 
+
+        For example, the target Infrastructure Definition for a Kubernetes deployment. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
+    width: "400"
+pipelineStep.infrastructureDefinitionMethod:
+    content: |-
+        There are different ways to connect to your target infrastructure: 
+
+        #### Direct Connection 
+        A vendor-agnostic connection to the cluster that uses a Harness [Kubernetes Cluster Connector](https://ngdocs.harness.io/article/1gaud2efd4). The Connector uses the cluster master URL and an auth method such as a Kubernetes service account or it inherits credentials from a Harness Delegate running in your infrastructure.
+
+        #### Cloud Provider
+        A connection to the cloud platform where your cluster is hosted, such as GKE on GCP. It uses a platform [Cloud Connector](https://ngdocs.harness.io/category/1ehb4tcksy) to connect to the cluster. The Connector uses platform-specific auth such as a GCP service account (with Kubernetes Engine Admin and Storage Object Viewer roles) or it inherits credentials from a Harness Delegate running in your infrastructure.
+    width: "500"
