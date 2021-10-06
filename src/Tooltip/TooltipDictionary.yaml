@@ -1424,16 +1424,18 @@ stepAwsAuthForm_secretKeyRef: |-
 
     See [Access Keys and Secret Keys](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) from AWS.
 Connectviaanyavailabledelegate: If you do not select specific Delegates, Harness uses any available Delegate to perform this Connector's tasks. [Learn More](https://ngdocs.harness.io/article/2k7lnc7lvl)
-Connectonlyviadelegateswhichhasallofthefollowingtags: If you select specific Delegates to perform this Connector's tasks, Harness uses those Delegate only. If these Delegates cannot perform the task, Harness does **not** use another Delegate. [Learn More](https://ngdocs.harness.io/article/2k7lnc7lvl)
-gcpAuthenticationDetails: |-
-    Choose the method for Harness to use when connecting to GCP. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
+Connectonlyviadelegateswhichhasallofthefollowingtags: If you select specific Delegates to perform tasks for this Connector, Harness uses those Delegates only. If these Delegates cannot perform the task, Harness does **not** use another Delegate. [Learn More](https://ngdocs.harness.io/article/2k7lnc7lvl)
+gcpAuthenticationDetails:
+    content: |-
+        Choose the method for Harness to use when connecting to GCP. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
 
-    Select one of the following:
+        Select one of the following:
 
-    - **Specify credentials here**: Enter the **Service Account Key** below.
-    - **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in GCP.
+        - **Specify credentials here**: Enter the **Service Account Key** below.
+        - **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in GCP.
 
-    **Note:** For connections to a Kubernetes cluster, use Harness' platform-agnostic Kubernetes Cluster Connector.
+        **Note:** For connections to a Kubernetes cluster, you can also use the Harness platform-agnostic [Kubernetes Cluster Connector](https://ngdocs.harness.io/article/1gaud2efd4).
+    width: "400"
 gcpConnectorSecretKeyTooltip: |-
     Select or create a new [Harness Encrypted Text secret](https://docs.harness.io/article/ygyvp998mu) that contains the Google Cloud's Account Service Key File. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
 
