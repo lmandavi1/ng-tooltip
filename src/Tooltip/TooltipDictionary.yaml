@@ -1572,31 +1572,31 @@ stepGithubAuthForm_username: Your personal GitHub account username.
 stepGithubAuthForm_password: |-
     A Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the credentials of your GitHub user account.
 
-    A Personal Access Token (PAC) is required if your GitHub authentication uses 2FA. Select **Username and Token** in **Authentication**.
+    A Personal Access Token (PAT) is required if your GitHub authentication uses 2FA. Select **Username and Token** in **Authentication**.
 
     Typically, you can validate your token from the command line before using it in Harness. For example:
 
     `curl -i https://api.github.com -u <username>:<token>`
 gitHubPersonalAccessTooltip: |-
-    A Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the Personal Access Token (PAC).
+    A Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the Personal Access Token (PAT).
 
-    A PAC is required if your GitHub authentication uses 2FA.
+    A PAT is required if your GitHub authentication uses 2FA.
 
     Typically, you can validate your token from the command line before using it in Harness. For example:
 
     `curl -i https://api.github.com -u <username>:<token>`
 
-    **Note:** If you've set up 2FA in your Git repo, then you need to generate a PAC in your repo and enter that token in the **Personal Access Token** setting. See [GitHub settings](https://github.com/settings/tokens/new) for steps on setting up the personal access token. 
+    **Note:** If you've set up 2FA in your Git repo, then you need to generate a PAT in your repo and enter that token in the **Personal Access Token** setting. See [GitHub settings](https://github.com/settings/tokens/new) for steps on setting up the personal access token. 
 stepGithubAuthForm_accessToken: |-
-    A Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the Personal Access Token (PAC).
+    A Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the Personal Access Token (PAT).
 
-    A PAC is required if your GitHub authentication uses 2FA.
+    A PAT is required if your GitHub authentication uses 2FA.
 
     Typically, you can validate your token from the command line before using it in Harness. For example:
 
     `curl -i https://api.github.com -u <username>:<token>`
 
-    **Note:** If you've set up 2FA in your Git repo, then you need to generate a PAC in your repo and enter that token in the **Personal Access Token** setting. See [GitHub settings](https://github.com/settings/tokens/new) for steps on setting up the personal access token. 
+    **Note:** If you've set up 2FA in your Git repo, then you need to generate a PAT in your repo and enter that token in the **Personal Access Token** setting. See [GitHub settings](https://github.com/settings/tokens/new) for steps on setting up the personal access token. 
 stepGithubAuthForm_apiAccessToken: ""
 githubApiAuthentication: You can use a Personal Access Token or GitHub App for authentication. [Learn More about using a GitHub App with Harness](https://ngdocs.harness.io/article/nze5evmqu1)
 stepGithubAuthForm_installationId: |-
