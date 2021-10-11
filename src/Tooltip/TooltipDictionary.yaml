@@ -2118,11 +2118,12 @@ GitOpsProviderStepFormNameIdDescriptionTags_description: |-
     Description field contains a summary of the Adapter.
 
     Information in the description field is automatically and instantly saved so that you can work on the same item at the same time and see the changes you make in real time. 
-GitOpsProviderStepFormNameIdDescriptionTags_tags: |-
-    Enter a tag for your Adapter.
-    This is an optional field. 
-    A Tag field allows you to label the content with keywords (tags)
-    Note: You can have only one tag in this field.
+GitOpsProviderStepFormNameIdDescriptionTags_tags:
+    content: |
+        Enter a tag for your Adapter.
+        This is an optional field. 
+        A Tag field allows you to label the content with keywords (tags)
+    width: "400"
 GitOpsProviderStepFormundefined_spec.adapterUrl: |-
     Enter the Harness Argo CD Adapter URL. Do not enter any trailing slash in the URL.
     This URL allows customers to interact with the ArgoCD server directly from Harness UI with minimal configuration.
@@ -2438,3 +2439,4 @@ pipelineStep.infrastructureDefinitionMethod:
         #### Cloud Provider
         A connection to the cloud platform where your cluster is hosted, such as GKE on GCP. It uses a platform [Cloud Connector](https://ngdocs.harness.io/category/1ehb4tcksy) to connect to the cluster. The Connector uses platform-specific auth such as a GCP service account (with Kubernetes Engine Admin and Storage Object Viewer roles) or it inherits credentials from a Harness Delegate running in your infrastructure.
     width: "500"
+
