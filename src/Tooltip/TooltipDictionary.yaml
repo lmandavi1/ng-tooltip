@@ -1621,9 +1621,12 @@ ff_ffListing_heading: |-
     Feature Flags (FF) is a feature management solution that enables users to change the software's functionality without deploying new code.
 
     [Learn more](https://ngdocs.harness.io/article/7n9433hkc0-cf-feature-flag-overview)
-ff_targets_heading: |
-    Targets are used to control which user sees the variation of a feature flag. Targets can be used to add users for internal testing or beta programs before a broader rollout.
-    [Learn More](https://ngdocs.harness.io/article/dbk9uoaid3-add-targets)
+ff_targets_heading:
+    content: |
+        Targets are used to control which user sees the variation of a feature flag. Targets can be used to add users for internal testing or beta programs before a broader rollout.
+        The targets added in your code are discovered automatically and populated in the Harness UI.
+        [Learn More](https://ngdocs.harness.io/article/dbk9uoaid3-add-targets)
+    width: "400"
 ff_segments_heading: |-
     The Target Groups are a collection of targets. Target Groups allow you to serve flag variations to a list of targets in bulk.
 
@@ -2439,4 +2442,3 @@ pipelineStep.infrastructureDefinitionMethod:
         #### Cloud Provider
         A connection to the cloud platform where your cluster is hosted, such as GKE on GCP. It uses a platform [Cloud Connector](https://ngdocs.harness.io/category/1ehb4tcksy) to connect to the cluster. The Connector uses platform-specific auth such as a GCP service account (with Kubernetes Engine Admin and Storage Object Viewer roles) or it inherits credentials from a Harness Delegate running in your infrastructure.
     width: "500"
-
