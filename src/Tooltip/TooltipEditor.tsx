@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import snarkdown from "snarkdown";
+import marked from "marked";
 import copy from "clipboard-copy";
 import { stringify, parse } from "yaml";
 import {
@@ -235,7 +235,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
       .split("\n\n")
       .map(
         (line) =>
-          `<p>${snarkdown(line).replace(
+          `<p>${marked(line).replace(
             new RegExp("href=", "g"),
             'target="_blank" href='
           )}</p>`
