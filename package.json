@@ -1,6 +1,6 @@
 {
   "name": "@wings-software/ng-tooltip",
-  "version": "1.30.54",
+  "version": "1.30.55",
   "description": "Tooltip Management for NextGen",
   "keywords": [
     "ng-tooltip"
@@ -24,9 +24,9 @@
   "peerDependencies": {
     "@blueprintjs/core": "3.20.0",
     "clipboard-copy": "^3.1.0",
+    "marked": "^3.0.8",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "marked": "^3.0.8"
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
