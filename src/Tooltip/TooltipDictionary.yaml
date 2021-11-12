@@ -2442,3 +2442,15 @@ pipelineStep.infrastructureDefinitionMethod:
         #### Cloud Provider
         A connection to the cloud platform where your cluster is hosted, such as GKE on GCP. It uses a platform [Cloud Connector](https://ngdocs.harness.io/category/1ehb4tcksy) to connect to the cluster. The Connector uses platform-specific auth such as a GCP service account (with Kubernetes Engine Admin and Storage Object Viewer roles) or it inherits credentials from a Harness Delegate running in your infrastructure.
     width: "500"
+    
+    apiKeyForm_name: Enter a name for the API Key. [Learn more](https://ngdocs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys)
+
+apiKeyForm_identifier: You can edit the automatically generated Id. [Learn more](https://ngdocs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys)
+
+The API Key name can be edited later, but Ids cannot be edited once an API Key has been saved.
+
+tokenForm_identifier: You can edit the automatically generated Id. [Learn more](https://ngdocs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token)
+
+The Token name can be edited later, but Ids cannot be edited once a Token has been generated.
+
+tokenForm_name: Enter a name for the Token. [Learn more](https://ngdocs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token)
