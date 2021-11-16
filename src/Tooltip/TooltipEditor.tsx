@@ -44,7 +44,9 @@ const getDefaultTooltipRecord = (
       } else {
         localStorage.removeItem("tooltipDictionary");
       }
-    } catch (_unused) {}
+    } catch (e) {
+      window.alert(`Error while parsing latest dataset - ${e}`);
+    }
   }
   return toReturn;
 };
@@ -503,7 +505,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                       const latestDatasetParsed = parse(ev.target.value);
                       updateLatestDataset(latestDatasetParsed);
                     } catch (e) {
-                      console.log(e);
+                      window.alert(`Error while copying latest dataset - ${e}`);
                     }
                   }}
                 />
@@ -517,7 +519,9 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                       const toJson = JSON.parse(jsStr);
                       setEditedTooltips(toJson);
                     } catch (e) {
-                      console.log(e);
+                      window.alert(
+                        `Error while updating latest dataset - ${e}`
+                      );
                     }
                   }}
                 />
