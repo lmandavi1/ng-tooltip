@@ -1316,7 +1316,7 @@ K8sApply_stepName_StepConfig: |-
 
     CD stages include an **K8s Apply** step that allows you to deploy any resource you have set up in the **Manifests** section. [Learn More](https://ngdocs.harness.io/article/00el61pzok)
 K8sRollingDeploy_stepName_StepConfig: |-
-    The **K8s Rollout Deploy** step preforms a rolling update strategy. 
+    The **K8s Rollout Deploy** step performs a rolling update strategy. 
 
     It updates Kubernetes deployments with zero downtime by incrementally updating pod instances with new ones. New pods are scheduled on nodes using the available resources. [Learn More](https://ngdocs.harness.io/article/xsla71qg8t)
 K8sCanaryDeploy_stepName_StepConfig: The **K8s Canary Deploy** step defines how many pods are deployed for a Canary test of the configuration files in your Service Definition **Manifests** section. [Learn More](https://ngdocs.harness.io/article/i5p4feil89)
