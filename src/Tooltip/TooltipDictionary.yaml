@@ -2163,7 +2163,7 @@ webhookTrigger_tags:
         [Learn More about Tags](https://ngdocs.harness.io/article/i8t053o0sq)
     width: "400"
 wizardForm_webhook_sourceRepo:
-    content: Select your Git provider. This setting is populated with the Git provider you selected automatically. [Learn More](https://ngdocs.harness.io/article/hndnde8usz)
+    content: Select the Git provider used for your resources. The Git provider you select determines what Git events you can select. [Learn More](https://ngdocs.harness.io/article/hndnde8usz)
     width: "400"
 wizardForm_webhook_event:
     content: |-
@@ -2182,7 +2182,7 @@ wizardForm_webhook_autoAbortPreviousExecutions:
     content: |-
         Use this option if you want to override active Pipeline executions whenever the branch is updated.
 
-        If you select this option, when the branch you specified in the **Connector** is updated, then any active Pipeline executions using the branch and this Trigger are cancelled.
+        If you select this option, when the branch you specified in the **Connector** is updated, then any active Pipeline executions using both that branch and this Trigger are cancelled.
 
         The updated branch will initiate a new Trigger execution. [Learn More](https://ngdocs.harness.io/article/hndnde8usz)
     width: "400"
@@ -2473,4 +2473,300 @@ rightBarForm_depth:
     width: "400"
 rightBarForm_sslVerify:
     content: Verifies your git SSL certificate verification if set True. Skips your git SSL certificate if set False.
+    width: "400"
+manifestStore_connectorRef:
+    content: |-
+        Select or add a Connector to connect Harness to the repo or registry for your manifests or charts. See:
+
+        - [Connect to a Git Repo](https://ngdocs.harness.io/article/zbhehjzsnv) for Kubernetes manifests, etc.
+        - [Connect to an Artifact Repo](https://ngdocs.harness.io/article/xxvnk67c5x) for Helm charts from an HTTP Helm server.
+        - [Connect to a Cloud Provider](https://ngdocs.harness.io/article/s9j6cggx1p-connect) for AWS S3 or Google Cloud Storage.
+    width: "400"
+helmWithHttp_identifier:
+    content: Enter a name that identifies this Helm chart. It doesn't have to be the chart name. It can be the name of the service you are deploying or another name. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+    width: "400"
+helmWithHttp_chartName:
+    content: |-
+        Enter the name of the Helm chart for Harness to pull. Don't include the chart version. You will add that in the **Chart Version** setting. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+
+        If you want to provide the chart name later, you have the following options: 
+
+        - Configure this setting as a [Runtime Input](https://ngdocs.harness.io/article/f6yobn7iq0) and provide the name at runtime.
+        - Configure this setting as a Runtime Input and use [Input Sets](https://ngdocs.harness.io/article/3fqwa8et3d) to provide the chart name.
+        - Configure this setting as an [Expression](https://ngdocs.harness.io/article/f6yobn7iq0) and enter a Stage, Service, or custom [variable expression](https://ngdocs.harness.io/article/lml71vhsim). The value for the expression will be added at runtime.
+    width: "400"
+helmWithHttp_chartVersion:
+    content: |-
+        Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart. 
+
+        You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
+
+        If you leave **Chart Version** empty Harness gets the latest chart. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+
+        If you are going to use a Harness Trigger to run this Pipeline when a new version is added to your chart repo, select the [Runtime Input](https://ngdocs.harness.io/article/f6yobn7iq0) option. When you set up the Trigger, you will select this chart and Harness will listen on the repo for new versions. [Learn More](https://ngdocs.harness.io/article/54eqk0d1bd)
+    width: "400"
+helmWithHttp_helmVersion:
+    content: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm.
+    width: "450"
+helmWithHttp_skipResourceVersioning:
+    content: |-
+        By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters. 
+
+        In some cases, such as when using public manifests or Helm charts, you cannot add the annotation.
+
+        When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and Secrets for the resource.
+
+        If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and Secrets.
+    width: "400"
+helmWithHttp_commandFlags:
+    content: |
+        You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart.
+
+        Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
+    width: "400"
+"helmWithHttp_commandFlags[0].commandType":
+    content: |-
+        Select the Helm command type you want to use. For example:
+
+        - [Template](https://v2.helm.sh/docs/helm/#helm-template): `helm template` to render the helm template files.
+        - [Fetch](https://v2.helm.sh/docs/helm/#helm-fetch): `helm fetch` (v1) or [`helm pull`](https://helm.sh/docs/helm/helm_pull/) (v2) to get the Helm chart.
+    width: "400"
+"helmWithHttp_commandFlags[0].flag":
+    content: Add any options for the command, such as `--debug`.
+    width: "400"
+artifactManifestLabel:
+    content: |-
+        Select the manifest that Harness will listen on for this Trigger. This is a manifest in the **Service Definition** section of one of this Pipeline's stages. [Learn More](https://ngdocs.harness.io/article/54eqk0d1bd)
+
+        Depending on how the **Service Definition** is set up, the manifest might be a Helm Chart package or other package.
+
+        For manifests stored in a Git repo, like Kubernetes manifests, use a [Git-based Trigger](https://ngdocs.harness.io/article/hndnde8usz) instead.
+
+        If this setting is not enabled, it is because the version setting in the **Service Definition** is not a [Runtime Input](https://ngdocs.harness.io/article/f6yobn7iq0) (`<+input>`). For example, for a Helm Chart package in **Service Definition**, the **Chart Version** setting must be `<+input>`.
+    width: "400"
+wizardForm_artifacts_identifier:
+    content: |-
+        Harness entities and resources use a unique Id (entity identifier) that's immutable once the entity is created. Identifiers provide a permanent way to refer to an entity and avoid issues that can arise when a name is changed.
+
+        This unique Id is generated automatically using the name you entered in **Name**, but you can edit it as needed. [Learn More](https://ngdocs.harness.io/article/li0my8tcz3)
+    width: "400"
+wizardForm_artifacts_name:
+    content: Enter a name for this Trigger. The name will identify the Trigger on the Deployments page and this Pipeline's Execution History page so you can see which Trigger executed the Pipeline.
+    width: "400"
+artifactTrigger_description:
+    content: "Enter a description for this Trigger that tells other Project members when this Trigger is used. "
+    width: "400"
+artifactTrigger_tags:
+    content: You can add Tags to Harness entities and then use the Tags to search for all matching entities. For example, you can add a Tag to a Trigger and then filter the list of Triggers by Tag. [Learn More](https://ngdocs.harness.io/article/i8t053o0sq)
+    width: "400"
+listenOnNewArtifactManifest:
+    content: |-
+        Harness will listen on the manifest (Helm Chart, etc) that you select. When a new version of the manifest is added to its repo, the Trigger will execute this Pipeline. 
+
+        For example, see [ Helm Chart Triggers](https://ngdocs.harness.io/article/54eqk0d1bd).
+    width: "400"
+"wizardForm_artifacts_stages[0].stage.spec.serviceConfig.serviceDefinition.spec.manifests[0].manifest.spec.store.spec.connectorRef":
+    content: This setting appears because it is configured as a Runtime Input in the manifest you selected.
+    width: "400"
+"wizardForm_artifacts_stages[0].stage.spec.serviceConfig.serviceDefinition.spec.manifests[0].manifest.spec.chartVersion":
+    content: |-
+        The **Chart Version** setting appears because it is configured as a Runtime Input in the manifest you selected.
+
+        The expression `<+trigger.manifest.version>` tells Harness to obtain the chart version that initiated this Trigger and use it during deployment. [Learn More](https://ngdocs.harness.io/article/54eqk0d1bd)
+    width: "400"
+artifactManifestConditions:
+    content: Enter a condition that must be matched in order for the Trigger to execute. [Learn More](https://ngdocs.harness.io/article/54eqk0d1bd)
+    width: "400"
+version:
+    content: |-
+        Enter the condition that must be matched in order for the Trigger to execute. 
+
+        You can use wildcards in the condition's value and you can select **Regex** and use regular expressions. 
+
+        For example, if the build is todolist-v2.0: 
+
+        - With Regex **not selected**, both `todolist*` or `*olist*` will match. 
+        - With Regex selected, the regex `todolist-v\d.\d` will match. 
+
+        [Learn More](https://ngdocs.harness.io/article/54eqk0d1bd)
+    width: "400"
+pipelineInputLabel:
+    content: |-
+        If your Pipeline uses [Input Sets](https://ngdocs.harness.io/article/3fqwa8et3d), you can select the Input Set to use when the Trigger executes the Pipeline.
+
+        Any settings in the Pipeline that are configured as [Runtime Inputs](https://ngdocs.harness.io/article/f6yobn7iq0) require values. Provide the values or expressions these settings will use when the Pipeline runs.
+
+        The setting that is used to initiate this Trigger will have an expression that tells Harness to use the new version of the resource. 
+
+        For example, for a New Helm Chart Trigger the **Chart Version** setting uses `<+trigger.manifest.version>`. You cannot change this setting. 
+
+        [Learn More about Helm chart Triggers](https://ngdocs.harness.io/article/54eqk0d1bd)
+    width: "400"
+triggerConfigurationLabel:
+    content: |-
+        You can trigger Pipelines in response to Git events automatically.
+
+        For example, when a pull request or push event occurs on a Git repo, a CI or CD Pipeline can execute. [Learn More](https://ngdocs.harness.io/article/hndnde8usz)
+    width: "400"
+wizardForm_webhook_identifier:
+    content: |-
+        Harness entities and resources use a unique Id (entity identifier) that's immutable once the entity is created. 
+
+        Identifiers provide a permanent way to refer to an entity and avoid issues that can arise when a name is changed.
+
+        This unique Id is generated automatically using the name you entered in **Name**, but you can edit it as needed. [Learn More](https://ngdocs.harness.io/article/li0my8tcz3)
+    width: "400"
+listenOnNewWebhook:
+    content: Define the Webhook for this Trigger. The Webhook events you select determine what Git events initiate this Trigger. [Learn More](https://ngdocs.harness.io/article/hndnde8usz)
+    width: "400"
+wizardForm_webhook_connectorRef:
+    content: Select or add the Harness Connector to connect Harness with your Git Provider. [Learn More](https://ngdocs.harness.io/article/hndnde8usz)
+    width: "400"
+conditionsOptional:
+    content: |
+        Enter conditions that must be matched in order for the Trigger to execute. [Learn More](https://ngdocs.harness.io/article/rset0jry8q)
+
+        **Note:** Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger.
+    width: "400"
+sourceBranch:
+    content: |-
+        Enter a value or pattern for the Source Branch condition. This is the source branch of the Git merge.
+
+        For example: Source Branch starts with `new-`.
+
+        You can enter multiple values separated by commas and use wildcards. [Learn More](https://ngdocs.harness.io/article/rset0jry8q)
+    width: "400"
+targetBranch:
+    content: |-
+        Enter a value for the Target Branch condition. This is the target branch of the Git merge.
+
+        For example: Target Branch starts with `new-`.
+
+        You can enter multiple values separated by commas and use wildcards. [Learn More](https://ngdocs.harness.io/article/rset0jry8q)
+    width: "400"
+changedFiles:
+    content: |
+        Enter a value for the **Changed Files** condition. These are the changed files in the Git merge.
+
+        You can enter multiple values separated by commas and use wildcards. [Learn More](https://ngdocs.harness.io/article/rset0jry8q)
+    width: "400"
+headerConditions:
+    content: |-
+        Enter the header attribute for comparison. 
+
+        The header expression format is `<+trigger.header['key-name']>`. 
+
+        For example `<+trigger.header['X-GitHub-Event']>`.
+
+        <img src="https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1624919275031/clean-shot-2021-06-28-at-15-27-08.png" width="95%" height="95%">
+
+        **Notes:** 
+        - When Harness evaluates the header key you enter, the comparison is case insensitive.
+        - Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger.
+        - If you want to use OR, NOT or other operators across the payload, simply use **JEXL Condition** and leave the rest empty.
+
+        [Learn More](https://ngdocs.harness.io/article/rset0jry8q)
+    width: "600"
+payloadConditions:
+    content: |-
+        Payload conditions are based on the values of the JSON payload. [Learn More](https://ngdocs.harness.io/article/rset0jry8q)
+
+        Harness treats the JSON payload as a data model and parses the payload and listens for events on a JSON payload key.
+
+        To reference payload values, you use `<+eventPayload.` followed by the path to the key name. For example, `<+eventPayload.repository.name>`.
+
+        <img src="https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1624919275031/clean-shot-2021-06-28-at-15-27-08.png" width="95%" height="95%">
+
+        **Notes:** 
+        - Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the Trigger.
+        - If you want to use OR, NOT or other operators across the payload, simply use **JEXL Condition** and leave the rest empty.
+
+        [Learn More](https://ngdocs.harness.io/article/rset0jry8q)
+    width: "600"
+wizardForm_scheduled_name:
+    content: Enter a name for this Trigger. The name will identify the Trigger on the Deployments page and this Pipeline's Execution History page so you can see which Trigger executed the Pipeline.
+    width: "400"
+triggerOverview_description:
+    content: Enter a description for this Trigger that tells other Project members when this Trigger is used.
+    width: "400"
+triggerOverview_tags:
+    content: You can add Tags to Harness entities and then use the Tags to search for all matching entities. For example, you can add a Tag to a Trigger and then filter the list of Triggers by Tag. [Learn More](https://ngdocs.harness.io/article/i8t053o0sq)
+    width: "400"
+cronExpression:
+    content: This checks if the Cron expression is valid. If it is highlighted in red, it is invalid. Revise the expression to try again. [Learn More](https://ngdocs.harness.io/article/4z9mf24m1b)
+    width: "400"
+expressionBreakdown:
+    content: This is the how the Cron expression is evaluated as a scedule. [Learn More](https://ngdocs.harness.io/article/4z9mf24m1b)
+    width: "400"
+schedulePanel:
+    content: |-
+        Use the settings to schedule the Trigger. 
+
+        You can use the schedule options to define the Cron expression or type in a Cron expression of your own and see how it evaluates. [Learn More](https://ngdocs.harness.io/article/4z9mf24m1b)
+    width: "400"
+kustomizeGit_identifier:
+    content: Enter a unique name for the Kustomize manifest. This doesn't have to be the same as the actual file or folder name. Enter a name that tells other Project members what Kustomization this is. [Learn More](https://ngdocs.harness.io/article/uiqe6jz9o1)
+    width: "400"
+kustomizeGit_gitFetchType:
+    content: Select if you want Harness to fetch the latest file from the branch or a specific Commit Id. [Learn More](https://ngdocs.harness.io/article/uiqe6jz9o1)
+    width: "400"
+kustomizeGit_branch:
+    content: Enter the branch name or CommitId, depending on what you selected in **Git Fetch Type**. [Learn More](https://ngdocs.harness.io/article/uiqe6jz9o1)
+    width: "400"
+kustomizePathHelperText:
+    content: Enter the path from the root of the repo to the Kustomize folder. [Learn More](https://ngdocs.harness.io/article/uiqe6jz9o1)
+    width: "400"
+pluginPathHelperText:
+    content: |-
+        Enter the path from the root of the repo to a Kustomize plugin.
+
+        Kustomize offers a plugin framework to generate and/or transform a Kubernetes resource as part of a kustomization.
+
+        When Harness deploys, it will apply the plugin you reference just like you would with the `--enable_alpha_plugins` parameter. See [No Security from Kustomize](https://github.com/kubernetes-sigs/kustomize/tree/master/docs/plugins#no-security).
+    width: "400"
+helmSkipResourceVersion:
+    content: |-
+        By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters. Harness uses a ConfigMap for release versioning.
+
+        In some cases, you might want to skip versioning.
+
+        When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and Secrets for the deployment.
+
+        If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and Secrets.
+
+        [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
+    width: "400"
+osTemplateWithGit_identifier:
+    content: Enter a unique name for the OpenShift manifest. This doesn't have to be the same as the actual file or folder name. Enter a name that tells other Project members what OpenShift manifest this is.
+    width: "400"
+osTemplateWithGit_gitFetchType:
+    content: Select if you want Harness to fetch the latest file from the branch or a specific Commit Id.
+    width: "400"
+osTemplateWithGit_branch:
+    content: Enter the branch name or CommitId, depending on what you selected in **Git Fetch Type**.
+    width: "400"
+osTemplateWithGit_path:
+    content: Enter the path from the root of the repo to the OpenShift manifest folder.
+    width: "400"
+osTemplateWithGit_skipResourceVersioning:
+    content: |-
+        By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters. Harness uses a ConfigMap for release versioning.
+
+        In some cases, you might want to skip versioning.
+
+        When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and Secrets for the deployment.
+
+        If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and Secrets.
+    width: "400"
+osWithGit_identifier:
+    content: Enter a unique name for the OpenShift param file. This doesn't have to be the same as the actual file name. Enter a name that tells other Project members what OpenShift param file this is.
+    width: "400"
+osWithGit_gitFetchType:
+    content: Select if you want Harness to fetch the latest file from the branch or a specific Commit Id.
+    width: "400"
+osWithGit_branch:
+    content: Enter the branch name or CommitId, depending on what you selected in **Git Fetch Type**.
+    width: "400"
+osWithGit_paths:
+    content: Enter the path from the root of the repo to the param file.
     width: "400"
