@@ -2770,3 +2770,7 @@ osWithGit_branch:
 osWithGit_paths:
     content: Enter the path from the root of the repo to the param file.
     width: "400"
+samlProviderForm_entityIdentifier:
+    content: Enter your custom Entity ID. The default Entity ID is `app.harness.io`. The value you enter here will override the default Entity ID. [Learn more](https://ngdocs.harness.io/article/mlpksc7s6c-single-sign-on-saml)
+    width: "400"
+    
