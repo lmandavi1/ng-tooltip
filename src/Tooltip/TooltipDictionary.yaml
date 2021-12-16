@@ -1846,11 +1846,9 @@ HarnessApproval_stepName_StepConfig: |-
     Approvals are added in between Stages to prevent the Pipeline execution from proceeding without an approval.
 cdEditStage_name:
     content: |-
-        A Stage is a subset of a Pipeline that contains the logic to perform one major segment of the Pipeline process. Stages are based on the different milestones of your Pipeline, such as building, approving, and delivering.
+        A Stage is a subset of a Pipeline that contains the logic to perform one major segment of the Pipeline process. Stages are based on the different milestones of your Pipeline, such as building, approving, and delivering. [Learn More](https://ngdocs.harness.io/article/2chyf1acil)
 
-        Enter a name for this stage. You added a name when you created the stage, but you can edit the name here. [Learn More](https://ngdocs.harness.io/article/2chyf1acil)
-
-        Changing the stage name does not change the stage identifier (Id). The stage identifier is created when you first name the stage and it cannot be changed. [Learn More](https://ngdocs.harness.io/article/li0my8tcz3)
+        The stage identifier (Id) is created when you first name the stage and it cannot be changed. Changing the stage name does not change the stage Id. [Learn More](https://ngdocs.harness.io/article/li0my8tcz3)
     width: "400"
 overviewStageVariables: |-
     Stage variables are custom variables you can add and reference in your stage and Pipeline. They are available across the Pipeline. You can override their values in subsequent stages. [Learn More](https://ngdocs.harness.io/article/2chyf1acil)
