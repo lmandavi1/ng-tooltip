@@ -215,8 +215,12 @@ runCommand: POSIX shell script executed inside the container. The script is invo
 runTestsArgs:
     content: The arguments to be passed to the build tool. For Maven, it will be goal.
     width: "400"
-runTestsBuildTool: Enter the build automation tool. Currently, Harness only supports Maven.
-runTestsLanguage: Enter the programming language of the source code to build, such as Java.
+runTestsBuildTool:
+    content: "Select the build automation tool. "
+    width: "400"
+runTestsLanguage:
+    content: Select the programming language of the source code to build, such as Java or Csharp.
+    width: "400"
 runTestsPackages:
     content: List of source code package prefixes separated by a comma. E.g. com.company., io.company., migrations. If you do not provide the list and leave it empty, Harness will auto-detect the package.
     width: "400"
@@ -2785,4 +2789,19 @@ kustomizePath_paths:
         Enter the path to the patch file(s) from the root of the repo. The files you add should be the same files listed in `patchesStrategicMerge` of the main kustomize file in your Service. [Learn More](https://ngdocs.harness.io/article/98u2hvzj0t-use-kustomize-for-kubernetes-deployments#option_kustomize_patches)
 
         **Important:** You cannot use Harness [variables](https://ngdocs.harness.io/article/lml71vhsim) in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add here in Kustomize Patches **Manifest Details**.
+    width: "400"
+ciBuildInfra_serviceAccountName:
+    content: Enter the Kubernetes Service Account name. [Learn More](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+    width: "400"
+ciRunStep_timeout:
+    content: The default **Timeout** limit for the step is **10 minutes**. The Step fails when the Timeout is reached, and the Pipeline execution continues.
+    width: "400"
+limitMemory:
+    content: "The default **Limit Memory** value is **500 MiB** if not specified explicitly. "
+    width: "400"
+limitCPULabel:
+    content: The default **CPU** value is **400 m**  if not specified explicitly.
+    width: "400"
+ciRunTests_timeout:
+    content: The default **Timeout** for the CI step is **10 minutes**. The Step fails when the Timeout is reached, and the Pipeline execution continues.
     width: "400"
