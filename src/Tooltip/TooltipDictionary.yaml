@@ -2805,3 +2805,35 @@ limitCPULabel:
 ciRunTests_timeout:
     content: The default **Timeout** for the CI step is **10 minutes**. The Step fails when the Timeout is reached, and the Pipeline execution continues.
     width: "400"
+addEditStageCustomVariableForm_name:
+    content: |-
+        Enter a name for the stage variable.
+
+        You reference stage variables **within their stage** using the expression `<+stage.variables.[variable name]>`. You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage name].variables.[variable name]>`.
+
+        [Learn More](https://ngdocs.harness.io/article/2chyf1acil-add-a-stage)
+    width: "400"
+addEditStageCustomVariableForm_type:
+    content: |-
+        Select the variable type.
+
+        If you select **Secret**, you can select the secret to use once you click **Save**.
+    width: "400"
+addEditServiceCustomVariableForm_name:
+    content: |-
+        Enter the name of the variable.
+
+        To reference this variable in configuration files (like a values.yaml file) or Execution steps, use the expressions `<+serviceVariables.[var_name]>`.
+
+        The variables can also be referenced in sequence, starting with `0`: `<+serviceVariables[0].name>`, `<+serviceVariables[1].name>`, etc.
+
+        You can also reference the Service variable using the FQN `<+stage.spec.serviceConfig.serviceDefinition.spec.variables.[var_name]>`.
+
+        [Learn More](https://ngdocs.harness.io/article/lml71vhsim-harness-variables)
+    width: "550"
+addEditServiceCustomVariableForm_type:
+    content: |-
+        Select the variable type.
+
+        If you select **Secret**, you can select the secret to use once you click **Save**.
+    width: "400"
