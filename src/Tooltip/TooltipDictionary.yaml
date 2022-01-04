@@ -2837,3 +2837,17 @@ addEditServiceCustomVariableForm_type:
 
         If you select **Secret**, you can select the secret to use once you click **Save**.
     width: "400"
+workloadRecommendationTimeWeighted:
+    content: |-
+        Time-weighted considers the active duration of pods when calculating the CPU and memory utilization. Let's try to understand how time-weighted values are calculated using the following examples:
+
+        - [Example 1](https://ngdocs.harness.io/article/o75arkcg8i-workload-recommendations#example_1)
+        - [Example 2](https://ngdocs.harness.io/article/o75arkcg8i-workload-recommendations#example_2)
+    width: "400"
+workloadRecommendationAbsolute:
+    content: |-
+        Absolute simply aggregates the CPU and memory utilization values. Let's try to understand how absolute values are calculated using the following examples:
+
+        - [Example 1](https://ngdocs.harness.io/article/o75arkcg8i-workload-recommendations#example_1)
+        - [Example 2](https://ngdocs.harness.io/article/o75arkcg8i-workload-recommendations#example_2)
+    width: "400"
