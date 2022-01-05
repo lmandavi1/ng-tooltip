@@ -2851,3 +2851,26 @@ workloadRecommendationAbsolute:
         - [Example 1](https://ngdocs.harness.io/article/o75arkcg8i-workload-recommendations#example_1)
         - [Example 2](https://ngdocs.harness.io/article/o75arkcg8i-workload-recommendations#example_2)
     width: "400"
+selectPerspective_perspective:
+    content: Select the Perspective for which you want to set a budget. Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. [Learn More](https://ngdocs.harness.io/article/08r3t4z0jo-create-a-budget#create_a_new_budget)
+    width: "400"
+selectPerspective_budgetName:
+    content: Enter a name for your budget that will appear in the budget dashboard to identify this budget.
+    width: "400"
+budgetPeriod:
+    content: Select the period for which you want to set the budget.
+    width: "400"
+selectPerspective_type:
+    content: |-
+        Select a budget type:
+
+        - **Specified Amount**: Enter the amount that you want to set as the budget limit.
+        - **Previous Month Spend**: Sets the previous month spent as your budget.
+    width: "400"
+growthRateCheckbox:
+    content: |
+        To add growth rate to your budgeted amount, select the checkbox Add growth rate to budget amount. Growth rate refers to the percentage change of the budgeted amount within the specified time period. When you've decided to add growth rate to the budget amount, specify the growth rate percentage. 
+
+
+        In Specify Growth rate, enter the percentage of the growth rate to the budget amount. You can view the increased amount of your budget in the graph. The graph displays the amount and budget period.
+    width: "400"
