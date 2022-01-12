@@ -1870,7 +1870,7 @@ addEditCustomVariableForm_name: |-
     You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage name].variables.[variable name]>`.  [Learn More](https://ngdocs.harness.io/article/2chyf1acil)
 addEditCustomVariableForm_type: Select the variable type. If you select **Secret**, click **Save** and then create or select a Harness secret for the **Value**. [Learn More](https://ngdocs.harness.io/article/osfw70e59c)
 delegateSetupStepForm_name: Enter a name for the Delegate. The name you enter is added as metadata in the StatefulSet for the Kubernetes Delegate. [Learn More](https://ngdocs.harness.io/article/f9bd10b3nj)
-delegateSetupStepForm_delegateConfigurationId: A Delegate Configuration enables you to run a startup script on the host/container/pod for a Harness Delegate during or after installation. You can create a single Delegate Configuration and apply it to multiple Delegates. [Learn More](https://ngdocs.harness.io/article/h8zacls2rv)
+delegateSetupStepForm_delegateConfigurationId: Delegate Configurations profiles are depricated, please use `INIT_SCRIPT` instead. [Learn More](https://ngdocs.harness.io/article/yte6x6cyhn-run-scripts-on-delegates)
 delegateSetupStepForm_k8sConfigDetails.namespace: |
     By default, the Delegate resides in a namespace in the target cluster with a service account attached to it. The service account uses a ClusterRole for permission to deploy to all namespaces in the cluster.
 
