@@ -1,5 +1,5 @@
 {
-  "name": "@wings-software/ng-tooltip",
+  "name": "@harness/ng-tooltip",
   "version": "1.30.67",
   "description": "Tooltip Management for NextGen",
   "keywords": [
@@ -17,7 +17,7 @@
     "generate": ""
   },
   "license": "UNLICENSED",
-  "repository": "https://github.com/wings-software/ng-tooltip",
+  "repository": "https://github.com/harness/ng-tooltip",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },

@@ -490,7 +490,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                 <div>
                   Copy the latest dataset from{" "}
                   <a
-                    href="https://github.com/wings-software/ng-tooltip/blob/main/src/Tooltip/TooltipDictionary.yaml"
+                    href="https://github.com/harness/ng-tooltip/blob/main/src/Tooltip/TooltipDictionary.yaml"
                     target="_blank"
                   >
                     here
