@@ -1,4 +1,4 @@
-## Tooltip management for NextGen
+## Tooltip management for NextGen.
 
 Contains the dataset & the editor code.
 
