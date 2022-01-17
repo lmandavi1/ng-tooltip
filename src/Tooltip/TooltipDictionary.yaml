@@ -2874,3 +2874,11 @@ growthRateCheckbox:
 
         In Specify Growth rate, enter the percentage of the growth rate to the budget amount. You can view the increased amount of your budget in the graph. The graph displays the amount and budget period.
     width: "400"
+createBudgetSetBudget:
+    content: |
+        In Set Budget Amount you can specify the budget period, amount, type, etc. The Set Budget Amount window also displays the Total cost last period and Projected cost end of this period.
+
+        - [Set Budget Amount](https://ngdocs.harness.io/article/08r3t4z0jo-create-a-budget#set_budget_amount)
+
+        - [Projected Cost](https://ngdocs.harness.io/article/08r3t4z0jo-create-a-budget#projected_cost)
+    width: "400"
