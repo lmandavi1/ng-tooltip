@@ -2534,7 +2534,7 @@ helmWithHttp_commandFlags:
         - [Fetch](https://v2.helm.sh/docs/helm/#helm-fetch): `helm fetch` (v1) or [`helm pull`](https://helm.sh/docs/helm/helm_pull/) (v2) to get the Helm chart.
     width: "400"
 "helmWithHttp_commandFlags[0].flag":
-    content: Add any options for the command, such as `--debug`.
+    content: Add any options for the command. The option `--debug` is not supported.
     width: "400"
 artifactManifestLabel:
     content: |-
@@ -2881,4 +2881,214 @@ createBudgetSetBudget:
         - [Set Budget Amount](https://ngdocs.harness.io/article/08r3t4z0jo-create-a-budget#set_budget_amount)
 
         - [Projected Cost](https://ngdocs.harness.io/article/08r3t4z0jo-create-a-budget#projected_cost)
+    width: "400"
+helmWithGit_identifier:
+    content: Enter a name that identifies this Helm chart. It doesn't have to be the chart name. It can be the name of the service you are deploying or another name. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+    width: "400"
+helmWithGit_repoName:
+    content: |-
+        If you selected an account in the Git Connector, then you need to specify the repo here. 
+
+        Put the full repo path, such as `https://github.com/myorg/reponame.git` if you selected `HTTP` in the Connector or `git@github.com:myorg/reponame.git` if you selected `SSH` in the Connector. [Learn More](https://ngdocs.harness.io/article/tbm2hw6pr6-git-connector-settings-reference)
+    width: "400"
+helmWithGit_gitFetchType:
+    content: |-
+        Select **Latest from Branch** or **Specific Commit ID**, and then enter the branch or commit ID for the repo.
+
+        For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
+    width: "400"
+helmWithGit_folderPath:
+    content: Enter the path to the chart folder from the root of the repo.
+    width: "400"
+helmWithGit_helmVersion:
+    content: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm.
+    width: "400"
+helmWithGit_skipResourceVersioning:
+    content: |-
+        By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters. 
+
+        In some cases, such as when using public manifests or Helm charts, you cannot add the annotation.
+
+        When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and Secrets for the resource.
+
+        If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and Secrets.
+    width: "400"
+helmWithGit_commandFlags:
+    content: |-
+        You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart.
+
+        Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
+    width: "400"
+"helmWithGit_commandFlags[0].commandType":
+    content: |-
+        Select the Helm command type you want to use. For example:
+
+        - [Template](https://v2.helm.sh/docs/helm/#helm-template): `helm template` to render the helm template files.
+    width: "400"
+"helmWithGit_commandFlags[0].flag":
+    content: Add any options for the command. The option `--debug` is not supported.
+    width: "400"
+helmWithGit_branch:
+    content: |-
+        Enter the branch or commit ID for the repo. 
+
+        For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
+    width: "400"
+helmWithS3_identifier:
+    content: Enter a name that identifies this Helm chart. It doesn't have to be the chart name. It can be the name of the service you are deploying or another name. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+    width: "400"
+helmWithS3_region:
+    content: "Select the AWS region you want to use, such as `US East (N. Virginia)`. "
+    width: "400"
+helmWithS3_bucketName:
+    content: Select the S3 bucket where the chart is located.
+    width: "400"
+helmWithS3_folderPath:
+    content: Enter the path to the chart in the bucket you selected.
+    width: "400"
+helmWithS3_chartName:
+    content: |-
+        Enter the name of the Helm chart for Harness to pull. Don't include the chart version. You will add that in the **Chart Version** setting. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+
+        If you want to provide the chart name later, you have the following options: 
+
+        - Configure this setting as a [Runtime Input](https://ngdocs.harness.io/article/f6yobn7iq0) and provide the name at runtime.
+        - Configure this setting as a Runtime Input and use [Input Sets](https://ngdocs.harness.io/article/3fqwa8et3d) to provide the chart name.
+        - Configure this setting as an [Expression](https://ngdocs.harness.io/article/f6yobn7iq0) and enter a Stage, Service, or custom [variable expression](https://ngdocs.harness.io/article/lml71vhsim). The value for the expression will be added at runtime.
+    width: "400"
+helmWithS3_chartVersion:
+    content: |-
+        Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart. 
+
+        You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
+
+        If you leave **Chart Version** empty Harness gets the latest chart. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+
+        If you are going to use a Harness Trigger to run this Pipeline when a new version is added to your chart repo, select the [Runtime Input](https://ngdocs.harness.io/article/f6yobn7iq0) option. When you set up the Trigger, you will select this chart and Harness will listen on the repo for new versions. [Learn More](https://ngdocs.harness.io/article/54eqk0d1bd)
+    width: "400"
+helmWithS3_helmVersion:
+    content: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm.
+    width: "400"
+helmWithS3_skipResourceVersioning:
+    content: |-
+        By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters. 
+
+        In some cases, such as when using public manifests or Helm charts, you cannot add the annotation.
+
+        When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and Secrets for the resource.
+
+        If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and Secrets.
+    width: "400"
+helmWithS3_commandFlags:
+    content: |-
+        You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart.
+
+        Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
+    width: "400"
+"helmWithS3_commandFlags[0].commandType":
+    content: |-
+        Select the Helm command type you want to use. For example:
+
+        - [Template](https://v2.helm.sh/docs/helm/#helm-template): `helm template` to render the helm template files.
+        - [Fetch](https://v2.helm.sh/docs/helm/#helm-fetch): `helm fetch` (v1) or [`helm pull`](https://helm.sh/docs/helm/helm_pull/) (v2) to get the Helm chart.
+    width: "400"
+"helmWithS3_commandFlags[0].flag":
+    content: Add any options for the command. The option `--debug` is not supported.
+    width: "400"
+helmWithGcs_identifier:
+    content: Enter a name that identifies this Helm chart. It doesn't have to be the chart name. It can be the name of the service you are deploying or another name. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+    width: "400"
+helmWithGcs_bucketName:
+    content: Select the GCS bucket where the chart is located.
+    width: "400"
+helmWithGcs_folderPath:
+    content: Enter the folder path to the chart in the GCS bucket you selected.
+    width: "400"
+helmWithGcs_chartName:
+    content: |-
+        Enter the name of the Helm chart for Harness to pull. Don't include the chart version. You will add that in the **Chart Version** setting. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+
+        If you want to provide the chart name later, you have the following options: 
+
+        - Configure this setting as a [Runtime Input](https://ngdocs.harness.io/article/f6yobn7iq0) and provide the name at runtime.
+        - Configure this setting as a Runtime Input and use [Input Sets](https://ngdocs.harness.io/article/3fqwa8et3d) to provide the chart name.
+        - Configure this setting as an [Expression](https://ngdocs.harness.io/article/f6yobn7iq0) and enter a Stage, Service, or custom [variable expression](https://ngdocs.harness.io/article/lml71vhsim). The value for the expression will be added at runtime.
+    width: "400"
+helmWithGcs_chartVersion:
+    content: |-
+        Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart. 
+
+        You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
+
+        If you leave **Chart Version** empty Harness gets the latest chart. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
+
+        If you are going to use a Harness Trigger to run this Pipeline when a new version is added to your chart repo, select the [Runtime Input](https://ngdocs.harness.io/article/f6yobn7iq0) option. When you set up the Trigger, you will select this chart and Harness will listen on the repo for new versions. [Learn More](https://ngdocs.harness.io/article/54eqk0d1bd)
+    width: "400"
+helmWithGcs_helmVersion:
+    content: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm.
+    width: "400"
+helmWithGcs_skipResourceVersioning:
+    content: |-
+        By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters. 
+
+        In some cases, such as when using public manifests or Helm charts, you cannot add the annotation.
+
+        When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and Secrets for the resource.
+
+        If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and Secrets.
+    width: "400"
+helmWithGcs_commandFlags:
+    content: |-
+        You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart.
+
+        Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
+    width: "400"
+"helmWithGcs_commandFlags[0].commandType":
+    content: |-
+        Select the Helm command type you want to use. For example:
+
+        - [Template](https://v2.helm.sh/docs/helm/#helm-template): `helm template` to render the helm template files.
+        - [Fetch](https://v2.helm.sh/docs/helm/#helm-fetch): `helm fetch` (v1) or [`helm pull`](https://helm.sh/docs/helm/helm_pull/) (v2) to get the Helm chart.
+    width: "400"
+"helmWithGcs_commandFlags[0].flag":
+    content: Add any options for the command. The option `--debug` is not supported.
+    width: "400"
+gcrImagePath_registryHostname:
+    content: Select the registry where the artifact source is located.
+    width: "400"
+gcrImagePath_imagePath:
+    content: |-
+        Enter the name of the artifact you want to deploy. 
+
+        Images in repos need to reference a path starting with the project ID that the artifact is in, for example: `myproject-id/image-name`.
+    width: "400"
+gcrImagePath_tag:
+    content: |-
+        Enter the GCR image tag for the image.
+
+        If you use a Runtime Input, you can select the GCR image tag when you run this Pipeline. 
+    width: "400"
+ecrArtifact_identifier:
+    content: Enter a name that identifies this artifact.
+    width: "400"
+ecrArtifact_region:
+    content: Select the region where the artifact source is located.
+    width: "400"
+ecrArtifact_imagePath:
+    content: |-
+        Enter the name of the artifact you want to deploy. 
+
+        Often, images in repos need to reference a path, for example: `app/myImage`.
+    width: "400"
+ecrArtifact_tag:
+    content: Enter the Docker image tag.
+    width: "400"
+artifactConnForm_connectorId:
+    content: |-
+        Select or add a cloud Connector to connect Harness with your cloud registry. For example, an AWS Elastic Container Registry (ECR) or Google Container Registry (GCR).
+
+          - **AWS ECR:** The IAM role you use for this Connector must have the `AmazonEC2ContainerRegistryReadOnly` policy to pull images from ECR and the `AmazonEC2ContainerRegistryFullAccess` policy to push images to ECR. [Learn More](https://ngdocs.harness.io/article/m5vkql35ca-aws-connector-settings-reference)
+          - **GCR**: The IAM roles required for this Connector are `Storage Object Viewer (roles/storage.objectViewer)` and `Storage Object Admin (roles/storage.objectAdmin)`. [Learn More](https://ngdocs.harness.io/article/yykfduond6-gcs-connector-settings-reference) 
+
+        CD Pipelines typically pull from registries only. CI Pipelines typically pull and push with registries.
     width: "400"
