@@ -3092,3 +3092,27 @@ artifactConnForm_connectorId:
 
         CD Pipelines typically pull from registries only. CI Pipelines typically pull and push with registries.
     width: "400"
+ServiceNowApproval_stepName_StepConfig:
+    content: Enter the name of the ServiceNow Approval step.
+    width: "400"
+serviceNowApproval_identifier:
+    content: Enter a name that identifies this Approval step.
+    width: "400"
+serviceNowApproval_name:
+    content: Enter the name of the ServiceNow Approval.
+    width: "400"
+serviceNowApproval_timeout:
+    content: Enter how long you want Harness to try to complete the step before failing. [Learn More](https://ngdocs.harness.io/article/h1so82u9ub-service-now-approvals)
+    width: "400"
+serviceNowApproval_spec.connectorRef:
+    content: Create or select the ServiceNow Connector to use. [Learn More](https://ngdocs.harness.io/article/h1so82u9ub-service-now-approvals)
+    width: "400"
+serviceNowApprovalTicketType:
+    content: Select the ServiceNow Ticket Type.
+    width: "400"
+serviceNowApprovalTicketNumber:
+    content: Enter the Ticket Number.
+    width: "400"
+servicenowApprovalapprovalCriteria:
+    content: The Approval Criteria in the step determines if the Pipeline or stage is approved or rejected. [Learn More](https://ngdocs.harness.io/article/h1so82u9ub-service-now-approvals)
+    width: "400"
