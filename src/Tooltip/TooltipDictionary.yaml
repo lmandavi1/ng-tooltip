@@ -1753,7 +1753,7 @@ jiraDetailsForm_jiraUrl: |-
     For details, see [Configuring the Base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html) from Atlassian.
 
     If you are using the on-premises Jira server with HTTPS redirects enabled, use the HTTPS URL to ensure the [JIRA client follows redirects](https://confluence.atlassian.com/adminjiraserver/running-jira-applications-over-ssl-or-https-938847764.html).
-jiraDetailsForm_username: The Jira account username.
+jiraDetailsForm_username: The Jira account username. Use the full email address you use to log into Jira.
 jiraDetailsForm_passwordRef: |-
     Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the API key.
 
