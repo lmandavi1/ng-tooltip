@@ -3116,3 +3116,9 @@ serviceNowApprovalTicketNumber:
 servicenowApprovalapprovalCriteria:
     content: The Approval Criteria in the step determines if the Pipeline or stage is approved or rejected. [Learn More](https://ngdocs.harness.io/article/h1so82u9ub-service-now-approvals)
     width: "400"
+ceGcpBillingExport_datasetId:
+    content: Enter the dataset name. From the GCP console, copy the dataset name where the billing export is available. [Learn More](https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#step_2_gcp_billing_export)
+    width: "400"
+ceGcpBillingExport_tableId:
+    content: Enter the table name. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named gcp_billing_export_v1_*BILLING_ACCOUNT_ID*.  [Learn More](https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#step_2_gcp_billing_export)
+    width: "400"
