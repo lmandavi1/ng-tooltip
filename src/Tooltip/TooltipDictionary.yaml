@@ -3122,3 +3122,6 @@ ceGcpBillingExport_datasetId:
 ceGcpBillingExport_tableId:
     content: Enter the table name. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named gcp_billing_export_v1_*BILLING_ACCOUNT_ID*.  [Learn More](https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#step_2_gcp_billing_export)
     width: "400"
+stepGitAuthForm_sshKey:
+    content: Enter the SSH key to use for authentication with your Git provider account. [GitHub example](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+    width: "400"
