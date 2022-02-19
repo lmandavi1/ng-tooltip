@@ -156,19 +156,41 @@ setContainerResources: |
     Resources limits allow setting maximum values for the resources the container is allowed to use at runtime.
     Use **Limit Memory** to limit the memory that the container can use. Limits for memory are measured in bytes. You can express memory as a plain integer or as a fixed-point number using one of these suffixes: G, M. You can also use the power-of-two equivalents: Gi, Mi.
     Use **Limit CPU** to limit the number of cores that the container can use. Limits for CPU resources are measured in cpu units. Fractional requests are allowed. The expression 0.1 is equivalent to the expression 100m, which can be read as **one hundred millicpu**.
-timeout: ""
-image: The name and tag of a Docker image to use in this stage. For example, a database container or a container to run integration tests on. Include the image name and tag. Harness will default to the latest tag if unspecified. You can use any Docker image from any public or private Docker registry.
+timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
+image:
+    content: |-
+        The FQN (fully-qualified name) of the Docker image to use when running build commands. For example: `us.gcr.io/playground/quickstart-image`.
+
+        The image name should include the tag and will default to the latest tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries. [Learn More](https://ngdocs.harness.io/article/1i1ttvftm4)
+    width: "400"
 privileged: Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker --privileged flag.
 tags: Specify one or more tags for the Docker image
 optimize: Enables redo snapshot mode
 dockerfile: If not provided assumed to be in the root folder of the codebase
 context: Context represents a directory containing a Dockerfile which kaniko will use to build your image. For example, a COPY command in your Dockerfile should refer to a file in the build context.
-labels: Use Labels to add metadata to the Docker image
+labels:
+    content: Use Labels to add metadata to the Docker image.
+    width: "400"
 buildArgs: Build-time variables
 target: Build the specified stage as defined inside the Dockerfile
-region: AWS Region
+region:
+    content: |-
+        The AWS region to use when pushing the image.
+
+        The registry format for ECR is:
+
+        `docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo:tag>` 
+
+        A region is required.
+
+        See [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html) from AWS.
+    width: "400"
 imageName: The name of the image that will be pushed to the target container registry.
-gcsBucket: Enter the GCS Bucket name. [Learn More](https://cloud.google.com/storage/docs/creating-buckets)
+gcsBucket:
+    content: Enter the source GCS bucket name. [Learn More](https://cloud.google.com/storage/docs/creating-buckets)
+    width: "400"
 sourcePath: |-
     Path to the artifact file/folder you want to upload.
     You can use regex to upload multiple files.
@@ -177,10 +199,17 @@ gcsS3Target: The path to store the cache in, relatively to the bucket. If not pr
 connector: |-
     The Harness Connector for a container registry. This is the container registry for the image Harness will use run build commands on, such as DockerHub.
     [Learn More](https://ngdocs.harness.io/article/u9bsd77g5a)
-restoreCacheKey: The key that can be used to restore this cache. You can use the checksum macro to create a key that is based on a file’s checksum. For example, myApp-{ { checksum filePath1 } }
+restoreCacheKey:
+    content: |-
+        The key that can be used to restore this cache. You can use the checksum macro to create a key that is based on a file’s checksum.
+
+        For example, `myApp-{ { checksum filePath1 } }`.
+    width: "400"
 archiveFormat: Select archive format. Default is Tar
 failIfKeyNotFound: Fail step if the key doesn’t exist. Default is False.
-s3Bucket: S3 Bucket
+s3Bucket:
+    content: The S3 bucket name for the uploaded artifact.
+    width: "400"
 endpoint: Endpoint for S3 compatible providers (not needed for AWS).
 pathStyle: Select whether to use Virtual Hosted Style (http://bucket.host/key) or Path Style (http://host/bucket/key). For MinIO use Path Style (true). Default value is false.
 reportPaths: Enter paths to file(s) that store results in the JUnit XML format. Regex is supported.
@@ -196,10 +225,22 @@ dependencyEnvironmentVariables: Environment variables injected into the containe
 dependencyEntryPoint: Overrides the image ENTRYPOINT. Commands should be in exec form. Each command and parameter should be added separately. [Learn More](https://ngdocs.harness.io/article/vo4sjbd09g-configure-service-dependency-step-settings)
 dependencyArgs: Overrides the image COMMAND
 dockerHubConnector: Docker Connector to use for uploading the image
-dockerHubRepository: Docker repository. For example, "plugins/s3"
+dockerHubRepository:
+    content: |-
+        The name of the registry. For example, `plugins/s3`.
+
+        When using private Docker registries, use a fully qualified repo name.
+    width: "400"
 dockerHubRemoteCache: The remote cache repository needs to be created in the same account and organization as the build image. The repository must already exist for caching to work
 ecrConnector: AWS connector to use for uploading the image to ECR
-ecrAccount: AWS Account ID
+ecrAccount:
+    content: |-
+        The AWS account ID to use when pushing the image.
+
+        An account ID is required.
+
+        See [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html) from AWS.
+    width: "400"
 ecrRemoteCache: The remote cache repository needs to be created in the same account and region as the build image. The repository must already exist for caching to work
 gcrConnector: GCP connector to use for uploading the image to GCR
 gcrHost: GCR Host
@@ -222,7 +263,10 @@ runTestsLanguage:
     content: Select the programming language of the source code to build, such as Java or Csharp.
     width: "400"
 runTestsPackages:
-    content: List of source code package prefixes separated by a comma. E.g. com.company., io.company., migrations. If you do not provide the list and leave it empty, Harness will auto-detect the package.
+    content: |-
+        List of source code package prefixes separated by a comma. For example, `com.company.`, `io.company.migrations`. 
+
+        If you do not provide the list and leave it empty, Harness will auto-detect the package.
     width: "400"
 runTestsTestAnnotations: "List of test annotations used in unit testing. They should be separated by comma. Any method annotated with this will be treated as test method. The defaults are: org.junit.Test, org.junit.jupiter.api.Test, org.testng.annotations.Test"
 runTestsPreCommand: Commands used for setting up the environment before running tests.
@@ -1815,7 +1859,9 @@ summaryOfRulesHeader: |-
     - Number of active AutoStopping rules in your setup
 
     [Learn More](https://ngdocs.harness.io/article/ehmi6kiynl)
-ciRunTests_name: Enter a unique test name.
+ciRunTests_name:
+    content: Enter a unique step name.
+    width: "400"
 ciRunTests_description: Description for the step.
 RunTests_stepName_StepConfig: The Run Tests step can be used to run tests in your CI stages. When you use Run Tests, you enable Test Intelligence for your CI stage. [Learn More](https://ngdocs.harness.io/article/ota4xj59le)
 ciRunTests_spec.runOnlySelectedTests: This option enables Test Intelligence. If this option is unchecked and set to False, then the Test Intelligence will be disabled and all tests will run. [Learn More](https://ngdocs.harness.io/article/vtu9k1dsfa)
@@ -2068,7 +2114,9 @@ userRoleAssignementForm_userGroups: Select user group(s) to add this user as a m
 ServiceAccountRoleAssignementForm_name: Assign role bindings for this Service Account. [Learn more](https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness#role_assignment)
 resourceGroupModalForm_color: Select a color for the resource group.
 roleForm_name: Enter a name for the role. [Learn more] (https://ngdocs.harness.io/article/tsons9mu0v-add-manage-roles#step_add_a_new_role)
-ciRunStep_spec.connectorRef: The Run step executes one or more commands on a container image. Configure the Harness connectors for the container registry and add relevant parameters to execute your shell commands. [Learn More](hhttps://ngdocs.harness.io/article/ota4xj59le)
+ciRunStep_spec.connectorRef:
+    content: The Harness Connector for the container registry hosting the container image Harness will use run build commands on, such as DockerHub. [Learn More](https://ngdocs.harness.io/article/1i1ttvftm4)
+    width: "400"
 imagePullPolicy: |-
     Set the image's pull policy by selecting an option.
     1. **Always** : the kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
@@ -2141,7 +2189,12 @@ GitOpsProviderStepFormundefined_spec.adapterUrl: |-
 ciBuildInfra_initTimeout: Enter the Timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
 ciBuildInfra_annotations: Kubernetes Annotation to the pod YAML that will be used to create the pod in which the stage's steps will be executed. [Learn More](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/)
 ciBuildInfra_labels: Key/Value pair that will be added to the Kubernetes pod YAML, which is used to create the pod in which the stage's steps will be executed. [Learn More](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
-GCSUpload_stepName_StepConfig: Use this step to upload non-container artifacts to **Google Cloud Storage (GCS)**. [Learn More](https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact)
+GCSUpload_stepName_StepConfig:
+    content: |-
+        Use this step to upload non-container artifacts to Google Cloud Storage (GCS). [Learn More](https://ngdocs.harness.io/article/3qeqd8pls7)
+
+        See [Uploads and downloads](https://cloud.google.com/storage/docs/uploads-downloads) from GCS.
+    width: "400"
 ciGcsStep_name: Enter a name for the Step.
 manualInputQuery_metricName: Enter a name for the metrics. [Learn More](https://ngdocs.harness.io/article/owqpo59gp5-verify-deployments-with-google-cloud-operations#step_5_add_health_sources)
 mapSplunk_metricName: Enter a name for the query.
@@ -3124,4 +3177,222 @@ ceGcpBillingExport_tableId:
     width: "400"
 stepGitAuthForm_sshKey:
     content: Enter the SSH key to use for authentication with your Git provider account. [GitHub example](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+    width: "400"
+ArtifactoryUpload_stepName_StepConfig:
+    content: The Upload Artifacts to JFrog Artifactory step creates a Docker image from a Dockerfile and pushes it to a JFrog Artifactory Docker repository. [Learn More](https://ngdocs.harness.io/article/gjoggc66fy)
+    width: "400"
+jfrogArt_spec.connectorRef:
+    content: Select the Harness Artifactory Connector to use for this upload. [Learn More](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference)
+    width: "400"
+jfrogArt_timeout:
+    content: Enter a timeout for this step.
+    width: "400"
+BuildAndPushECR_stepName_StepConfig:
+    content: The Build and Push to ECR step creates a Docker image from a Dockerfile and pushes it to an ECR Docker repository. [Learn More](https://ngdocs.harness.io/article/aiqbxaef15)
+    width: "400"
+ciEcrStep_spec.connectorRef:
+    content: |-
+        The Harness AWS Connector to use to connect to ECR.
+
+        The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to push to ECR. [Learn More](https://ngdocs.harness.io/article/m5vkql35ca)
+    width: "400"
+ciEcrStep_spec.tags:
+    content: |-
+        Specify one or more [tags](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t) for the Docker image.
+
+        Each tag should added separately. 
+
+        Click **Add** to add each tag separately.
+    width: "600"
+ciEcrStep_spec.labels:
+    content: Use Labels to add metadata to the Docker image.
+    width: "400"
+ciEcrStep_spec.buildArgs:
+    content: The Docker [build-time variables](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg) (`--build-arg`).
+    width: "400"
+ciEcrStep_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
+ciGcrStep_spec.connectorRef:
+    content: The Harness GCP Connector to use to connect to GCR. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
+    width: "400"
+ciGcrStep_spec.tags:
+    content: |-
+        Specify one or more [tags](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t) for the Docker image.
+
+        Each tag should added separately. 
+
+        Click **Add** to add each tag separately.
+    width: "400"
+ciGcrStep_spec.labels:
+    content: "[Docker object labels](https://docs.docker.com/config/labels-custom-metadata/) to add metadata to the Docker image."
+    width: "400"
+ciGcrStep_spec.buildArgs:
+    content: The Docker [build-time variables](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg) (`--build-arg`).
+    width: "400"
+ciGcrStep_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
+BuildAndPushGCR_stepName_StepConfig:
+    content: The Build and Push to GCR step creates a Docker image from a Dockerfile and pushes it to a GCR Docker repository. [Learn More](https://ngdocs.harness.io/article/66ykcm0sf0)
+    width: "400"
+BuildAndPushDockerRegistry_stepName_StepConfig:
+    content: The Build and Push an Image to Docker Registry step creates a Docker image from a Dockerfile and pushes it to a Docker registry. [Learn More](https://ngdocs.harness.io/article/q6fr5bj63w)
+    width: "400"
+dockerHubStep_spec.connectorRef:
+    content: The Harness Docker Registry Connector to use for uploading the image. [Learn More](https://ngdocs.harness.io/article/u9bsd77g5a)
+    width: "400"
+dockerHubStep_spec.tags:
+    content: |-
+        Specify one or more [tags](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t) for the Docker image.
+
+        Each tag should added separately. 
+
+        Click **Add** to add each tag separately.
+    width: "400"
+dockerHubStep_spec.labels:
+    content: "[Docker object labels](https://docs.docker.com/config/labels-custom-metadata/) to add metadata to the Docker image."
+    width: "400"
+dockerHubStep_spec.buildArgs:
+    content: The Docker [build-time variables](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg) (`--build-arg`).
+    width: "400"
+dockerHubStep_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
+S3Upload_stepName_StepConfig:
+    content: Use this step to upload artifacts to AWS S3 or other providers that supports the S3 protocol, such as MinIo. [Learn More](https://ngdocs.harness.io/article/wdzojt3ep3)
+    width: "400"
+ciS3Base_spec.connectorRef:
+    content: |-
+        The Harness AWS Connector to use when connecting to AWS S3.
+
+        The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to push to S3. [Learn More](https://newdocs.helpdocs.io/article/m5vkql35ca)
+    width: "400"
+ciS3Base_name:
+    content: Enter a name for this step.
+    width: "400"
+ciS3Base_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
+ciGcsStep_spec.connectorRef:
+    content: The Harness GCP Connector for the GCP account where you want to upload the artifact. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
+    width: "400"
+ciGcsStep_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
+RestoreCacheGCS_stepName_StepConfig:
+    content: The Restore Cache from GCS step restores files and directories that were saved using the [Save Cache to GCS](https://ngdocs.harness.io/article/11nzeuntrz) step. [Learn More](https://ngdocs.harness.io/article/e2o4sektz1)
+    width: "400"
+restoreCacheGcs_spec.connectorRef:
+    content: The Harness GCP Connector for the GCP account where you saved the cache using the [Save Cache to GCS](https://ngdocs.harness.io/article/11nzeuntrz) step.
+    width: "400"
+restoreCacheGcs_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
+RestoreCacheS3_stepName_StepConfig:
+    content: The Save Cache to S3 step preserves files and directories between builds. You can restore cache using the [Restore Cache from S3](https://ngdocs.harness.io/article/zlpx6lli6d) step. [Learn More](https://ngdocs.harness.io/article/qtvjvrp9sn)
+    width: "400"
+restoreCacheS3_spec.connectorRef:
+    content: |-
+        The Harness AWS Connector to use when restoring the cache from AWS S3. [Learn More](https://newdocs.helpdocs.io/article/m5vkql35ca-aws-connector-settings-reference)
+
+        Typically, this is the same Connector used when you saved the cache using the [Save Cache to S3](https://ngdocs.harness.io/article/qtvjvrp9sn-save-cache-to-s-3-step-settings) step.
+
+        The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to read from S3.
+    width: "400"
+restoreCacheS3_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
+SaveCacheGCS_stepName_StepConfig:
+    content: |-
+        The Save Cache to GCS step saves files and directories to a GCS bucket. [Learn More](https://ngdocs.harness.io/article/11nzeuntrz)
+
+        The [Restore Cache from GCS](https://ngdocs.harness.io/article/e2o4sektz1) step restores files and directories that were saved using the Save Cache to GCS step.
+    width: "400"
+savedCacheGcs_spec.connectorRef:
+    content: |-
+        The Harness Connector to use when saving the cache to AWS S3. [Learn More](https://newdocs.helpdocs.io/article/m5vkql35ca)
+
+        The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to write to S3.
+    width: "400"
+savedCacheGcs_spec.sourcePaths:
+    content: A list of the files/folders to cache. Add each file/folder separately.
+    width: "400"
+savedCacheGcs_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
+Run_stepName_StepConfig:
+    content: |-
+        The Run step executes one or more commands on a host. [Learn More](https://ngdocs.harness.io/article/1i1ttvftm4)
+
+        Typically, this command is used to compile packages and dependencies.
+
+        The Run step pulls in a Docker image, like the Docker image for Maven, and then you run a script with the tool, like `mvn clean install`.
+    width: "400"
+ciRunStep_spec.command:
+    content: |-
+        POSIX shell script executed inside the container. In the **Shell** setting in **Optional Configuration**, you can select Bash or Shell.
+
+        The script is invoked as if it were the container’s entry point. [Learn More](https://ngdocs.harness.io/article/1i1ttvftm4)
+    width: "400"
+ciRunStep_spec.outputVariables:
+    content: Output Variables can be used to expose Environment Variables to be used by other steps/stages of the pipeline.
+    width: "400"
+ciRunStep_spec.envVariables:
+    content: Environment variables injected into the container and used in the script in **Command**. [Learn More](https://ngdocs.harness.io/article/1i1ttvftm4)
+    width: "400"
+ciRunTests_spec.connectorRef:
+    content: The Harness Connector for a container registry. This is the container registry for the image Harness will use run build commands on, such as DockerHub.
+    width: "400"
+ciRunTests_spec.preCommand:
+    content: |-
+        Enter the commands for setting up the environment before running the tests. For example: `printenv`
+
+        This script prints all or part of the environment.
+    width: "400"
+ciRunTests_spec.postCommand:
+    content: |-
+        Enter the commands used for cleaning up the environment after running the tests. 
+
+        For example, if you enter `sleep 600` this script suspends the process for 600 seconds.
+    width: "400"
+ciRunTests_spec.reportPaths:
+    content: |-
+        The path to the file(s) that store results in the JUnit XML format.
+
+        You can enter multiple paths. Regex is supported.
+    width: "400"
+ciRunTests_spec.envVariables:
+    content: Environment variables injected into the container to be used in the commands.
+    width: "400"
+ciRunTests_spec.outputVariables:
+    content: Output Variables can be used to expose Environment Variables to be used by other steps/stages of the pipeline.
+    width: "400"
+Plugin_stepName_StepConfig:
+    content: |-
+        Plugins are Docker containers that perform predefined tasks. 
+
+        Plugins are configured as steps in your stage. 
+
+        Plugins can be used to deploy code, publish artifacts, send notifications, and more. [Learn More](https://ngdocs.harness.io/article/8r5c3yvb8k)
+    width: "400"
+pluginStep_spec.connectorRef:
+    content: Harness Connector for the container registry where the plugin image is located.
+    width: "400"
+pluginImageInfo:
+    content: |-
+        The name of the Plugin Docker image.
+
+        The image name should include the tag and will default to the latest tag if unspecified.
+
+        You can use any Docker image from any Docker registry, including Docker images from private registries.
+    width: "400"
+pluginStep_spec.settings:
+    content: Plugin specific settings. Please refer to the plugin's documentation page.
+    width: "400"
+pluginStep_spec.reportPaths:
+    content: Enter paths to file(s) that store results in the JUnit XML format. Regex is supported.
+    width: "400"
+pluginStep_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
     width: "400"
