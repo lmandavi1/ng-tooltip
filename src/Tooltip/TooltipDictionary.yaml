@@ -205,7 +205,9 @@ restoreCacheKey:
 
         For example, `myApp-{ { checksum filePath1 } }`.
     width: "400"
-archiveFormat: Select archive format. Default is Tar
+archiveFormat:
+    content: Select archive format. The default format is TAR.
+    width: "400"
 failIfKeyNotFound: Fail step if the key doesn’t exist. Default is False.
 s3Bucket:
     content: The S3 bucket name for the uploaded artifact.
@@ -217,7 +219,12 @@ environmentVariables: Environment variables injected into the container to be us
 outputVariables: Output Variables can be used to expose Environment Variables to be used by other steps/stages of the pipeline.
 saveCacheKey: The key the cache will be identified by. You can use the checksum macro to create a key that is based on a file’s checksum. For example, myApp-{ { checksum filePath1 } }
 saveCacheSourcePaths: A list of files/folders to cache
-saveCacheOverride: Select whether you want to override the cache if the key already exists. default is true
+saveCacheOverride:
+    content: |-
+        Select this option to override the cache if the key already exists.
+
+        By default, the **Override Cache** option is set to False (unchecked).
+    width: "400"
 namespace: The Kubernetes namespace in the target cluster to use.
 cloneCodebase: Unless disabled, Harness automatically clones your codebase repository before executing the steps of this stage
 dependencyConnector: Container registry to pull the service dependency image from
