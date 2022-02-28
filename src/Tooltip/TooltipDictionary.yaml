@@ -1698,7 +1698,9 @@ ff_ffVariations_heading: |-
 ff_ffPrerequisites_heading: |-
     Prerequisites allow you to add a flag as a dependency to enable a feature. You can add any other existing flags from your environment as a prerequisite. 
     [Learn More](https://ngdocs.harness.io/article/iijdahygdm)
-ff_ffDefaultRules_heading: Using default rules, you can specify to serve a specific variation, or apply a percentage rollout of a variation
+ff_ffDefaultRules_heading:
+    content: Using default rules, you can specify to serve a specific variation.
+    width: "400"
 ff_ffCustomRules_heading: |
     Custom rules serve specific targets differently. In Custom Rules, you can add the following rules:
     •   Serve Variation to Target
