@@ -3405,3 +3405,5 @@ pluginStep_spec.reportPaths:
 pluginStep_timeout:
     content: Timeout for the step. Once the timeout is reached, the step fails.
     width: "400"
+artifactory_repo_name: Enter the name of the repo where the files are located. [Learn More](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference#repository)
+artifactory_file_path: Enter the full artifact file path. [Learn More](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference#artifactory_with_terraform_scripts_and_variable_definitions_tfvars_files)
