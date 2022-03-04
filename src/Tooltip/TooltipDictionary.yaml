@@ -3406,3 +3406,9 @@ pluginStep_timeout:
     content: Timeout for the step. Once the timeout is reached, the step fails.
     width: "400"
 artifactory_file_path: Enter the full artifact file path. [Learn More](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference#artifactory_with_terraform_scripts_and_variable_definitions_tfvars_files)
+samlProviderForm_clientId:
+    content: Enter the Application ID of your Azure app. [Learn more](https://ngdocs.harness.io/article/mlpksc7s6c-single-sign-on-saml#users_in_over_150_groups)
+    width: "400"
+samlProviderForm_clientSecret:
+    content: Enter the client secret from your Azure app. [Learn more](https://ngdocs.harness.io/article/mlpksc7s6c-single-sign-on-saml#users_in_over_150_groups)
+    width: "400"
