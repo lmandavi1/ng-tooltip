@@ -2892,7 +2892,7 @@ addEditServiceCustomVariableForm_name:
         You can also reference the Service variable using the FQN `<+stage.spec.serviceConfig.serviceDefinition.spec.variables.[var_name]>`.
 
         [Learn More](https://ngdocs.harness.io/article/lml71vhsim-harness-variables)
-    width: "550"
+    width: "350"
 addEditServiceCustomVariableForm_type:
     content: |-
         Select the variable type.
