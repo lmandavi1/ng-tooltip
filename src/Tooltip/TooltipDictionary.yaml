@@ -166,14 +166,14 @@ image:
         The image name should include the tag and will default to the latest tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries. [Learn More](https://ngdocs.harness.io/article/1i1ttvftm4)
     width: "400"
 privileged: Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker --privileged flag.
-tags: Specify one or more tags for the Docker image
+# tags: Specify one or more tags for the Docker image
 optimize: Enables redo snapshot mode
 dockerfile: If not provided assumed to be in the root folder of the codebase
 context: Context represents a directory containing a Dockerfile which kaniko will use to build your image. For example, a COPY command in your Dockerfile should refer to a file in the build context.
 labels:
     content: Use Labels to add metadata to the Docker image.
     width: "400"
-buildArgs: Build-time variables
+# buildArgs: Build-time variables
 target: Build the specified stage as defined inside the Dockerfile
 region:
     content: |-
@@ -215,10 +215,10 @@ s3Bucket:
 endpoint: Endpoint for S3 compatible providers (not needed for AWS).
 pathStyle: Select whether to use Virtual Hosted Style (http://bucket.host/key) or Path Style (http://host/bucket/key). For MinIO use Path Style (true). Default value is false.
 reportPaths: Enter paths to file(s) that store results in the JUnit XML format. Regex is supported.
-environmentVariables: Environment variables injected into the container to be used in the commands.
-outputVariables: Output Variables can be used to expose Environment Variables to be used by other steps/stages of the pipeline.
+# environmentVariables: Environment variables injected into the container to be used in the commands.
+# outputVariables: Output Variables can be used to expose Environment Variables to be used by other steps/stages of the pipeline.
 saveCacheKey: The key the cache will be identified by. You can use the checksum macro to create a key that is based on a file’s checksum. For example, myApp-{ { checksum filePath1 } }
-saveCacheSourcePaths: A list of files/folders to cache
+# saveCacheSourcePaths: A list of files/folders to cache
 saveCacheOverride:
     content: |-
         Select this option to override the cache if the key already exists.
@@ -231,7 +231,7 @@ dependencyConnector: Container registry to pull the service dependency image fro
 dependencyEnvironmentVariables: Environment variables injected into the container
 dependencyEntryPoint: Overrides the image ENTRYPOINT. Commands should be in exec form. Each command and parameter should be added separately. [Learn More](https://ngdocs.harness.io/article/vo4sjbd09g-configure-service-dependency-step-settings)
 dependencyArgs: Overrides the image COMMAND
-dockerHubConnector: Docker Connector to use for uploading the image
+# dockerHubConnector: Docker Connector to use for uploading the image
 dockerHubRepository:
     content: |-
         The name of the registry. For example, `plugins/s3`.
@@ -239,7 +239,7 @@ dockerHubRepository:
         When using private Docker registries, use a fully qualified repo name.
     width: "400"
 dockerHubRemoteCache: The remote cache repository needs to be created in the same account and organization as the build image. The repository must already exist for caching to work
-ecrConnector: AWS connector to use for uploading the image to ECR
+# ecrConnector: AWS connector to use for uploading the image to ECR
 ecrAccount:
     content: |-
         The AWS account ID to use when pushing the image.
@@ -249,17 +249,17 @@ ecrAccount:
         See [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html) from AWS.
     width: "400"
 ecrRemoteCache: The remote cache repository needs to be created in the same account and region as the build image. The repository must already exist for caching to work
-gcrConnector: GCP connector to use for uploading the image to GCR
+# gcrConnector: GCP connector to use for uploading the image to GCR
 gcrHost: GCR Host
 gcrProjectID: GCR Project ID
 gcrRemoteCache: The remote cache repository needs to be created in the same host and project as the build image. The repository will be automatically created if it doesn’t exist.
-gcsConnector: GCP connector to use for uploading the artifact(s) to GCS.
+# gcsConnector: GCP connector to use for uploading the artifact(s) to GCS.
 jFrogArtifactoryTarget: Repository name relative to the server URL in the connector. If pom.xml is not present then target should be full path to artifacts folder (groupID/artifactID/version)
 pluginImage: The name of the Plugin Docker image. The image name should include the tag and will default to the latest tag if unspecified. You can use any docker image from any docker registry, including docker images from private registries
 pluginSettings: Plugin specific settings. Please refer to the plugin's documentation page
 restoreCacheGcpConnector: GCP connector to use for restoring the cache from GCS
-restoreCacheAwsConnector: AWS connector to use for restoring the cache from S3
-runCommand: POSIX shell script executed inside the container. The script is invoked as if it were the container’s entrypoint.
+# restoreCacheAwsConnector: AWS connector to use for restoring the cache from S3
+# runCommand: POSIX shell script executed inside the container. The script is invoked as if it were the container’s entrypoint.
 runTestsArgs:
     content: The arguments to be passed to the build tool. For Maven, it will be goal.
     width: "400"
@@ -276,9 +276,9 @@ runTestsPackages:
         If you do not provide the list and leave it empty, Harness will auto-detect the package.
     width: "400"
 runTestsTestAnnotations: "List of test annotations used in unit testing. They should be separated by comma. Any method annotated with this will be treated as test method. The defaults are: org.junit.Test, org.junit.jupiter.api.Test, org.testng.annotations.Test"
-runTestsPreCommand: Commands used for setting up the environment before running tests.
-runTestsPostCommand: Commands used for cleaning up the environment after running the tests
-s3Connector: AWS connector to use for uploading the artifact(s) to S3
+# runTestsPreCommand: Commands used for setting up the environment before running tests.
+# runTestsPostCommand: Commands used for cleaning up the environment after running the tests
+# s3Connector: AWS connector to use for uploading the artifact(s) to S3
 gcpConnector: GCP connector to use for saving the cache to GCS
 saveCacheS3Connector: AWS connector to use for saving the cache to S3
 stageSpecificationsSharedPaths: By default, all of a stage’s steps use the same workspace to share data. If you need to share additional paths between steps, add Shared Paths.
@@ -3213,15 +3213,15 @@ ciEcrStep_spec.tags:
 
         Click **Add** to add each tag separately.
     width: "600"
-ciEcrStep_spec.labels:
-    content: Use Labels to add metadata to the Docker image.
-    width: "400"
+# ciEcrStep_spec.labels:
+#     content: Use Labels to add metadata to the Docker image.
+#     width: "400"
 ciEcrStep_spec.buildArgs:
     content: The Docker [build-time variables](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg) (`--build-arg`).
     width: "400"
-ciEcrStep_timeout:
-    content: Timeout for the step. Once the timeout is reached, the step fails.
-    width: "400"
+# ciEcrStep_timeout:
+#     content: Timeout for the step. Once the timeout is reached, the step fails.
+#     width: "400"
 ciGcrStep_spec.connectorRef:
     content: The Harness GCP Connector to use to connect to GCR. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
     width: "400"
@@ -3318,12 +3318,12 @@ SaveCacheGCS_stepName_StepConfig:
 
         The [Restore Cache from GCS](https://ngdocs.harness.io/article/e2o4sektz1) step restores files and directories that were saved using the Save Cache to GCS step.
     width: "400"
-savedCacheGcs_spec.connectorRef:
-    content: |-
-        The Harness Connector to use when saving the cache to AWS S3. [Learn More](https://newdocs.helpdocs.io/article/m5vkql35ca)
+# savedCacheGcs_spec.connectorRef:
+#     content: |-
+#         The Harness Connector to use when saving the cache to AWS S3. [Learn More](https://newdocs.helpdocs.io/article/m5vkql35ca)
 
-        The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to write to S3.
-    width: "400"
+#         The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to write to S3.
+#     width: "400"
 savedCacheGcs_spec.sourcePaths:
     content: A list of the files/folders to cache. Add each file/folder separately.
     width: "400"
@@ -3385,9 +3385,9 @@ Plugin_stepName_StepConfig:
 
         Plugins can be used to deploy code, publish artifacts, send notifications, and more. [Learn More](https://ngdocs.harness.io/article/8r5c3yvb8k)
     width: "400"
-pluginStep_spec.connectorRef:
-    content: Harness Connector for the container registry where the plugin image is located.
-    width: "400"
+# pluginStep_spec.connectorRef:
+#     content: Harness Connector for the container registry where the plugin image is located.
+#     width: "400"
 pluginImageInfo:
     content: |-
         The name of the Plugin Docker image.
@@ -3396,13 +3396,13 @@ pluginImageInfo:
 
         You can use any Docker image from any Docker registry, including Docker images from private registries.
     width: "400"
-pluginStep_spec.settings:
-    content: Plugin specific settings. Please refer to the plugin's documentation page.
-    width: "400"
-pluginStep_spec.reportPaths:
-    content: Enter paths to file(s) that store results in the JUnit XML format. Regex is supported.
-    width: "400"
-pluginStep_timeout:
-    content: Timeout for the step. Once the timeout is reached, the step fails.
-    width: "400"
+# pluginStep_spec.settings:
+#     content: Plugin specific settings. Please refer to the plugin's documentation page.
+#     width: "400"
+# pluginStep_spec.reportPaths:
+#     content: Enter paths to file(s) that store results in the JUnit XML format. Regex is supported.
+#     width: "400"
+# pluginStep_timeout:
+#     content: Timeout for the step. Once the timeout is reached, the step fails.
+#     width: "400"
 artifactory_file_path: Enter the full artifact file path. [Learn More](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference#artifactory_with_terraform_scripts_and_variable_definitions_tfvars_files)
