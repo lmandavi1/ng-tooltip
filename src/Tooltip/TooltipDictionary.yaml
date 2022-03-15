@@ -156,9 +156,9 @@ setContainerResources: |
     Resources limits allow setting maximum values for the resources the container is allowed to use at runtime.
     Use **Limit Memory** to limit the memory that the container can use. Limits for memory are measured in bytes. You can express memory as a plain integer or as a fixed-point number using one of these suffixes: G, M. You can also use the power-of-two equivalents: Gi, Mi.
     Use **Limit CPU** to limit the number of cores that the container can use. Limits for CPU resources are measured in cpu units. Fractional requests are allowed. The expression 0.1 is equivalent to the expression 100m, which can be read as **one hundred millicpu**.
-timeout:
-    content: Timeout for the step. Once the timeout is reached, the step fails.
-    width: "400"
+# timeout:
+#     content: Timeout for the step. Once the timeout is reached, the step fails.
+#     width: "400"
 image:
     content: |-
         The FQN (fully-qualified name) of the Docker image to use when running build commands. For example: `us.gcr.io/playground/quickstart-image`.
@@ -170,9 +170,9 @@ privileged: Enable this option to run the container with escalated privileges. T
 optimize: Enables redo snapshot mode
 dockerfile: If not provided assumed to be in the root folder of the codebase
 context: Context represents a directory containing a Dockerfile which kaniko will use to build your image. For example, a COPY command in your Dockerfile should refer to a file in the build context.
-labels:
-    content: Use Labels to add metadata to the Docker image.
-    width: "400"
+# labels:
+#     content: Use Labels to add metadata to the Docker image.
+#     width: "400"
 # buildArgs: Build-time variables
 target: Build the specified stage as defined inside the Dockerfile
 region:
@@ -196,9 +196,9 @@ sourcePath: |-
     You can use regex to upload multiple files.
     Harness will automatically create the compressed file.
 gcsS3Target: The path to store the cache in, relatively to the bucket. If not provided the cache will be save to [bucket]/
-connector: |-
-    The Harness Connector for a container registry. This is the container registry for the image Harness will use run build commands on, such as DockerHub.
-    [Learn More](https://ngdocs.harness.io/article/u9bsd77g5a)
+# connector: |-
+#     The Harness Connector for a container registry. This is the container registry for the image Harness will use run build commands on, such as DockerHub.
+#     [Learn More](https://ngdocs.harness.io/article/u9bsd77g5a)
 restoreCacheKey:
     content: |-
         The key that can be used to restore this cache. You can use the checksum macro to create a key that is based on a file’s checksum.
@@ -256,8 +256,8 @@ gcrRemoteCache: The remote cache repository needs to be created in the same host
 # gcsConnector: GCP connector to use for uploading the artifact(s) to GCS.
 jFrogArtifactoryTarget: Repository name relative to the server URL in the connector. If pom.xml is not present then target should be full path to artifacts folder (groupID/artifactID/version)
 pluginImage: The name of the Plugin Docker image. The image name should include the tag and will default to the latest tag if unspecified. You can use any docker image from any docker registry, including docker images from private registries
-pluginSettings: Plugin specific settings. Please refer to the plugin's documentation page
-restoreCacheGcpConnector: GCP connector to use for restoring the cache from GCS
+# pluginSettings: Plugin specific settings. Please refer to the plugin's documentation page
+# restoreCacheGcpConnector: GCP connector to use for restoring the cache from GCS
 # restoreCacheAwsConnector: AWS connector to use for restoring the cache from S3
 # runCommand: POSIX shell script executed inside the container. The script is invoked as if it were the container’s entrypoint.
 runTestsArgs:
@@ -279,7 +279,7 @@ runTestsTestAnnotations: "List of test annotations used in unit testing. They sh
 # runTestsPreCommand: Commands used for setting up the environment before running tests.
 # runTestsPostCommand: Commands used for cleaning up the environment after running the tests
 # s3Connector: AWS connector to use for uploading the artifact(s) to S3
-# gcpConnector: GCP connector to use for saving the cache to GCS
+gcpConnector: GCP connector to use for saving the cache to GCS
 saveCacheS3Connector: AWS connector to use for saving the cache to S3
 stageSpecificationsSharedPaths: By default, all of a stage’s steps use the same workspace to share data. If you need to share additional paths between steps, add Shared Paths.
 connectorDetailsStepFormGithub_name: Enter a name for this Connector. You will use this name to select the Connector.
@@ -3213,15 +3213,15 @@ ciEcrStep_spec.tags:
 
         Click **Add** to add each tag separately.
     width: "600"
-# ciEcrStep_spec.labels:
-#     content: Use Labels to add metadata to the Docker image.
-#     width: "400"
+ciEcrStep_spec.labels:
+    content: Use Labels to add metadata to the Docker image.
+    width: "400"
 ciEcrStep_spec.buildArgs:
     content: The Docker [build-time variables](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg) (`--build-arg`).
     width: "400"
-# ciEcrStep_timeout:
-#     content: Timeout for the step. Once the timeout is reached, the step fails.
-#     width: "400"
+ciEcrStep_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
 ciGcrStep_spec.connectorRef:
     content: The Harness GCP Connector to use to connect to GCR. [Learn More](https://ngdocs.harness.io/article/yykfduond6)
     width: "400"
