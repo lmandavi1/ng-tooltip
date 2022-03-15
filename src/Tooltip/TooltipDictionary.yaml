@@ -279,7 +279,7 @@ runTestsTestAnnotations: "List of test annotations used in unit testing. They sh
 # runTestsPreCommand: Commands used for setting up the environment before running tests.
 # runTestsPostCommand: Commands used for cleaning up the environment after running the tests
 # s3Connector: AWS connector to use for uploading the artifact(s) to S3
-gcpConnector: GCP connector to use for saving the cache to GCS
+# gcpConnector: GCP connector to use for saving the cache to GCS
 saveCacheS3Connector: AWS connector to use for saving the cache to S3
 stageSpecificationsSharedPaths: By default, all of a stage’s steps use the same workspace to share data. If you need to share additional paths between steps, add Shared Paths.
 connectorDetailsStepFormGithub_name: Enter a name for this Connector. You will use this name to select the Connector.
@@ -3318,12 +3318,10 @@ SaveCacheGCS_stepName_StepConfig:
 
         The [Restore Cache from GCS](https://ngdocs.harness.io/article/e2o4sektz1) step restores files and directories that were saved using the Save Cache to GCS step.
     width: "400"
-# savedCacheGcs_spec.connectorRef:
-#     content: |-
-#         The Harness Connector to use when saving the cache to AWS S3. [Learn More](https://newdocs.helpdocs.io/article/m5vkql35ca)
-
-#         The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to write to S3.
-#     width: "400"
+savedCacheGcs_spec.connectorRef:
+    content: |-
+        The Harness Connector to use when saving the cache to Google GCS. [Learn More](https://ngdocs.harness.io/article/v0agy0hlyj-save-cache-in-gcs)
+    width: "400"
 savedCacheGcs_spec.sourcePaths:
     content: A list of the files/folders to cache. Add each file/folder separately.
     width: "400"
