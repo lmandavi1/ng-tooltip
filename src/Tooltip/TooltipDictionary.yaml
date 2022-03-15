@@ -214,7 +214,7 @@ s3Bucket:
     width: "400"
 endpoint: Endpoint for S3 compatible providers (not needed for AWS).
 pathStyle: Select whether to use Virtual Hosted Style (http://bucket.host/key) or Path Style (http://host/bucket/key). For MinIO use Path Style (true). Default value is false.
-reportPaths: Enter paths to file(s) that store results in the JUnit XML format. Regex is supported.
+# reportPaths: Enter paths to file(s) that store results in the JUnit XML format. Regex is supported.
 # environmentVariables: Environment variables injected into the container to be used in the commands.
 # outputVariables: Output Variables can be used to expose Environment Variables to be used by other steps/stages of the pipeline.
 saveCacheKey: The key the cache will be identified by. You can use the checksum macro to create a key that is based on a file’s checksum. For example, myApp-{ { checksum filePath1 } }
@@ -3383,9 +3383,9 @@ Plugin_stepName_StepConfig:
 
         Plugins can be used to deploy code, publish artifacts, send notifications, and more. [Learn More](https://ngdocs.harness.io/article/8r5c3yvb8k)
     width: "400"
-# pluginStep_spec.connectorRef:
-#     content: Harness Connector for the container registry where the plugin image is located.
-#     width: "400"
+pluginStep_spec.connectorRef:
+    content: Harness Connector for the container registry where the plugin image is located.
+    width: "400"
 pluginImageInfo:
     content: |-
         The name of the Plugin Docker image.
@@ -3394,13 +3394,13 @@ pluginImageInfo:
 
         You can use any Docker image from any Docker registry, including Docker images from private registries.
     width: "400"
-# pluginStep_spec.settings:
-#     content: Plugin specific settings. Please refer to the plugin's documentation page.
-#     width: "400"
-# pluginStep_spec.reportPaths:
-#     content: Enter paths to file(s) that store results in the JUnit XML format. Regex is supported.
-#     width: "400"
-# pluginStep_timeout:
-#     content: Timeout for the step. Once the timeout is reached, the step fails.
-#     width: "400"
+pluginStep_spec.settings:
+    content: Plugin specific settings. Please refer to the plugin's documentation page.
+    width: "400"
+pluginStep_spec.reportPaths:
+    content: Enter paths to file(s) that store results in the JUnit XML format. Regex is supported.
+    width: "400"
+pluginStep_timeout:
+    content: Timeout for the step. Once the timeout is reached, the step fails.
+    width: "400"
 artifactory_file_path: Enter the full artifact file path. [Learn More](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference#artifactory_with_terraform_scripts_and_variable_definitions_tfvars_files)
