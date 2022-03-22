@@ -30,7 +30,7 @@ export interface TooltipDictionaryInterface {
 export interface TooltipEditorProps {
   tooltipDictionary: TooltipDictionaryInterface;
   onClose?: () => void;
-  setPreviewDatasetFromLocalStorage?: (value: number) => void;
+  setPreviewDatasetFromLocalStorage?: () => void;
 }
 
 const getDefaultTooltipRecord = (
@@ -303,7 +303,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                         "previewTooltipDataset",
                         JSON.stringify(withExpiry)
                       );
-                      props.setPreviewDatasetFromLocalStorage?.(Date.now());
+                      props.setPreviewDatasetFromLocalStorage?.();
                     }}
                   />
                 </div>
