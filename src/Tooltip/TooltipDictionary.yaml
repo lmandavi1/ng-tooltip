@@ -1595,8 +1595,6 @@ githubURLType: |-
 
     Later when you test this connection, you will use a repo in the org.
 
-    In either case, when you use the Connector later in Harness, you will specify which repo to use.
-
     [Learn More](https://ngdocs.harness.io/article/v9sigwjlgo)
 githubConnectionType:
     content: |-
@@ -1714,9 +1712,7 @@ bitbucketURLType: |-
 
     You can add a connection to your entire Git account or just a repo in the account. Selecting a Git account enables you to use one Connector for all of your subordinate repos.
 
-    Later when you test this connection, you will use a repo in the account.
-
-    In either case, when you use the Connector later in Harness, you will specify which repo to use. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
+    Later when you test this connection, you will use a repo in the account. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
 bitbucketConnectionType: |-
     You can select HTTPS or SSH for the connection.
 
@@ -1752,9 +1748,7 @@ gitURLType: |-
 
     You can add a connection to your entire Git account or just a repo in the account. Selecting a Git account enables you to use one Connector for all of your subordinate repos.
 
-    Later when you test this connection, you will use a repo in the account.
-
-    In either case, when you use the Connector later in Harness, you will specify which repo to use. [Learn More](https://ngdocs.harness.io/article/tbm2hw6pr6)
+    Later when you test this connection, you will use a repo in the account. [Learn More](https://ngdocs.harness.io/article/tbm2hw6pr6)
 gitConnectionType: |-
     You can select HTTPS or SSH for the connection.
 
@@ -1769,9 +1763,7 @@ gitlabURLType: |-
 
     You can add a connection to your entire GitLab account or just a repo in the account. Selecting a GitLab account enables you to use one Connector for all of your subordinate repos.
 
-    Later when you test this connection, you will use a repo in the account.
-
-    In either case, when you use the Connector later in Harness, you will specify which repo to use. [Learn More](https://ngdocs.harness.io/article/5abnoghjgo)
+    Later when you test this connection, you will use a repo in the account. [Learn More](https://ngdocs.harness.io/article/5abnoghjgo)
 gitlabConnectionType: |-
     You can select HTTPS or SSH for the connection.
 
@@ -3319,8 +3311,7 @@ SaveCacheGCS_stepName_StepConfig:
         The [Restore Cache from GCS](https://ngdocs.harness.io/article/e2o4sektz1) step restores files and directories that were saved using the Save Cache to GCS step.
     width: "400"
 savedCacheGcs_spec.connectorRef:
-    content: |-
-        The Harness Connector to use when saving the cache to Google GCS. [Learn More](https://ngdocs.harness.io/article/v0agy0hlyj-save-cache-in-gcs)
+    content: The Harness Connector to use when saving the cache to Google GCS. [Learn More](https://ngdocs.harness.io/article/v0agy0hlyj-save-cache-in-gcs)
     width: "400"
 savedCacheGcs_spec.sourcePaths:
     content: A list of the files/folders to cache. Add each file/folder separately.
@@ -3403,4 +3394,50 @@ pluginStep_spec.reportPaths:
 pluginStep_timeout:
     content: Timeout for the step. Once the timeout is reached, the step fails.
     width: "400"
-artifactory_file_path: Enter the full artifact file path. [Learn More](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference#artifactory_with_terraform_scripts_and_variable_definitions_tfvars_files)
+artifactory_file_path:
+    content: Enter the full artifact file path. [Learn More](https://ngdocs.harness.io/article/euueiiai4m-artifactory-connector-settings-reference#artifactory_with_terraform_scripts_and_variable_definitions_tfvars_files)
+    width: "400"
+editPolicyForm_name:
+    content: |-
+        Enter a name for this new Governance policy.
+
+        Use a name that describes the policy for other users. [Learn More](https://ngdocs.harness.io/article/1d3lmhv4jl)
+
+        **New to Harness Governance?**
+        Try the [Harness Governance Quickstart](https://ngdocs.harness.io/article/jws2znftay).
+    width: "400"
+CreatePolicySet_type:
+    content: |-
+        Select the type of Harness entity to apply the policy on. For example, **Pipeline**. [Learn More](https://ngdocs.harness.io/article/1d3lmhv4jl)
+
+        **New to Harness Governance?**
+        Try the [Harness Governance Quickstart](https://ngdocs.harness.io/article/jws2znftay).
+
+        **Note:** A Policy with the **Custom** entity type allows the flexibility to enforce policy evaluations during Pipeline execution with different input data. [Learn More](https://ngdocs.harness.io/article/1d3lmhv4jl)
+    width: "400"
+CreatePolicySet_event:
+    content: |-
+        Select what type of evaluation to perform. [Learn More](https://ngdocs.harness.io/article/1d3lmhv4jl)
+
+        **New to Harness Governance?**
+        Try the [Harness Governance Quickstart](https://ngdocs.harness.io/article/jws2znftay).
+    width: "400"
+CreatePolicySet_action:
+    content: |-
+        Select when to apply the policy on the entity type you selected. [Learn More](https://ngdocs.harness.io/article/1d3lmhv4jl)
+
+        **New to Harness Governance?**
+        Try the [Harness Governance Quickstart](https://ngdocs.harness.io/article/jws2znftay).
+    width: "400"
+CreatePolicySet_name:
+    content: |-
+        Enter a name for the policy set. Use a name that describes the policy set to others. [Learn More](https://ngdocs.harness.io/article/1d3lmhv4jl)
+
+        **New to Harness Governance?** Try the [Harness Governance Quickstart](https://ngdocs.harness.io/article/jws2znftay).
+    width: "400"
+pipelineCreate_description:
+    content: Enter a description that tells your team members the purpose of this Pipeline.
+    width: "400"
+pipelineCreate_tags:
+    content: Tag this Pipeline so you can filter and search for it in Harness. [Learn More](https://ngdocs.harness.io/article/i8t053o0sq)
+    width: "400"
