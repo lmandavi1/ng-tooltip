@@ -3473,3 +3473,9 @@ build:
 
         [Learn More](https://ngdocs.harness.io/article/c1eskrgngf)
     width: "400"
+samlProviderForm_clientId:
+    content: Enter the Application ID of your Azure app. [Learn more](https://ngdocs.harness.io/article/mlpksc7s6c-single-sign-on-saml#users_in_over_150_groups)
+    width: "400"
+samlProviderForm_clientSecret:
+    content: Enter the client secret from your Azure app. [Learn more](https://ngdocs.harness.io/article/mlpksc7s6c-single-sign-on-saml#users_in_over_150_groups)
+    width: "400"
