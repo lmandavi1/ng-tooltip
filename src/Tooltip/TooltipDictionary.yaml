@@ -1842,10 +1842,14 @@ pipelineEvents_types.PipelineEnd: Select this option to receive notifications wh
 pipelineEvents_types.PipelineSuccess: Select this option to receive notifications if the Pipeline execution is successful. For CD, Harness considers a deployment successful when the deployed service reaches steady state. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
 pipelineEvents_types.PipelineFailed: Select this option to receive notifications when the Pipeline execution fails. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
 pipelineEvents_types.PipelinePaused: Select this option to receive notifications when the Pipeline execution is paused. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
-pipelineEvents_types.StageFailed: Select this option to receive notifications when the Pipeline execution fails. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
+pipelineEvents_types.StageFailed:
+    content: Select this option to receive notifications when the Stage execution fails. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
+    width: "400"
 pipelineEvents_types.StageSuccess: Select this option to receive notifications when each Pipeline stage execution is successful. You can select the stages to use. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
 pipelineEvents_types.StageStart: Select this option to receive notifications when each Pipeline stage execution starts. You can select the stages to use. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
-pipelineEvents_types.StepFailed: Select this option to receive notifications when each Pipeline stage execution fails. You can select the stages to use. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
+pipelineEvents_types.StepFailed:
+    content: Select this option to receive notifications when each Pipeline step execution fails. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
+    width: "400"
 manifestDetails_repoName: Enter the name of the repo where the files are located. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
 manifestDetails_paths:
     content: |-
