@@ -396,14 +396,24 @@ k8BgSwap_name: Enter a name for this step. [Learn More](https://ngdocs.harness.i
 k8BG_name: Enter a name for this step.
 k8Apply_name: Enter a name for this step.
 k8DeleteData_name: Enter a name for this step.
-k8DeleteData_spec.deleteResources.type: |-
-    Select the resource(s) you want removed:
+k8DeleteData_spec.deleteResources.type:
+    content: |+
+        Select how you want to remove resources. 
 
-    - **Resource Name:** Use a resource name in the format `[namespace]/Kind/Name`, with `namespace` being optional. For example, `Deployment/harness-example-deployment-canary`.
-    - **Manifest Path:** Enter the path to the manifest for the resource you want to delete. The path is relative to the folder path entered in **File/Folder Path** in the **Manifest Details** settings.
-    - **Release Name:** Deletes all of the resources for a release. If you select the **Delete namespace** option, Harness will delete the namespace(s) defined in the release.
+        These can be resources Harness deployed as part of this Stage's **Service Definition**, or any resource in your target infrastructure.
 
-    [Learn More](https://ngdocs.harness.io/article/eaj0xuegln)
+        ### Resource Name
+        Delete specific resources by namespace, object type (Kind), and name.
+
+        ### Manifest Path
+        Delete specific resources that Harness deployed as part of this Stage's **Service Definition > Manifest Details**.
+
+        ### Release Name
+        Deletes all of the resources for a release.
+
+        [Learn More](https://ngdocs.harness.io/article/eaj0xuegln)
+
+    width: "400"
 k*CanaryDelete_name: Enter a name for this step.
 k8RolloutDeploy_name: Enter a name for this step.
 k8CanaryDeploy_name: Enter a name for this step.
@@ -695,7 +705,18 @@ k8DeleteData_timeout: |-
     The maximum is `53w`.
 
     Timeouts can be set at the Pipeline level also.
-k8DeleteData_spec.deleteResources.spec.deleteNamespace: If you select the **Delete namespace** option, Harness will delete the namespace(s) defined in the release.
+k8DeleteData_spec.deleteResources.spec.deleteNamespace:
+    content: |
+        **Release Name** deletes all of the resources for a release. 
+
+        Release names are configured in the Stage **Infrastructure** and release names can be viewed in the **Execution History** of a Pipeline.  
+
+        If you select the **Delete namespace** option, Harness will delete the namespace(s) defined in the release.
+
+        **Ensure that you are not deleting a namespace that is used by other deployments.**
+
+        [Learn More](https://ngdocs.harness.io/article/eaj0xuegln)
+    width: "400"
 K8sCanaryDelete_stepName: The **Canary Delete** step is used to clean up the workload deployed by the [Canary](https://ngdocs.harness.io/article/17wrdeuv0x-) step. [Learn More](https://ngdocs.harness.io/article/922mtcvank)
 k*CanaryDelete_timeout: |-
     Enter a timeout for this step. 
@@ -1826,7 +1847,15 @@ pipelineEvents_types.StageSuccess: Select this option to receive notifications w
 pipelineEvents_types.StageStart: Select this option to receive notifications when each Pipeline stage execution starts. You can select the stages to use. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
 pipelineEvents_types.StepFailed: Select this option to receive notifications when each Pipeline stage execution fails. You can select the stages to use. [Learn More](https://ngdocs.harness.io/article/4bor7kyimj)
 manifestDetails_repoName: Enter the name of the repo where the files are located. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
-manifestDetails_paths: Enter the path to the manifest file or folder in the repo. If the Connector you selected already has the repo name, you simply need to add the path from the root of the repo. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
+manifestDetails_paths:
+    content: |-
+        Enter the path to the manifest file or folder in the repo.
+
+        If the Connector you selected in **Specify K8s Manifest Store** already has the repo name, you simply need to add the path from the root of the repo. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
+
+        ### All manifests and values files
+        If you enter a folder, Harness will automatically detect and use all of the manifests and values YAML files in that folder. Values files can also be added separately as a [Values YAML type](https://ngdocs.harness.io/article/q002wjjl4d). 
+    width: "400"
 manifestDetails_skipResourceVersioning: |-
     By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters. Harness uses a ConfigMap for release versioning.
 
@@ -3473,3 +3502,23 @@ configureEmailNotifications_userGroups:
 configureEmailNotifications_emailIds:
     content: Enter the email addresses that you want to notify. [Learn more](https://ngdocs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_email_notifications)
     width: "400"
+k8DeleteData_spec.deleteResources.spec.resourceNames:
+    content: |-
+        Enter a resource name in the format `[namespace]/Kind/Name`, with `namespace` being optional. 
+
+        For example:
+
+        ```
+        Deployment/harness-example-deployment-canary
+        ``` 
+
+        [Learn More](https://ngdocs.harness.io/article/eaj0xuegln)
+    width: "400"
+k8DeleteData_spec.deleteResources.spec.manifestPaths:
+    content: |-
+        Enter the path to the manifest for the resource you want to delete. The path is relative to the folder path entered in **File/Folder Path** in the **Manifest Details** settings.
+
+        <figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/30bs4noarh/1649101864406/clean-shot-2022-04-04-at-12-50-51.png" /></figure>
+
+        [Learn More](https://ngdocs.harness.io/article/eaj0xuegln)
+    width: "500"
