@@ -2051,7 +2051,9 @@ azureSetupAccess: |-
     - DNS Link: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
     - SSH/RDP: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
     See [Setup Access Using DNS Link](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_dns_link) and [Setup Access Using SSH/RDP](https://ngdocs.harness.io/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure#setup_access_using_ssh_rdp)
-defineHealthsource_healthSourceName: Enter a name for the Health Source. [Learn More] (https://ngdocs.harness.io/article/e9z7944qhw-verify-deployment-with-prometheus#step_5_add_health_sources)
+defineHealthsource_healthSourceName:
+    content: "Enter a name for the Health Source. "
+    width: "400"
 mapGCOMetrics_metricTags: Select the desired query from the options displayed on the left side of the panel. The corresponding metric tag auto-populates in this field.
 mapGCOMetrics_metricName: Enter a name for the metric.
 mapGCOMetrics_riskCategory: Select a risk type. [Learn More](https://ngdocs.harness.io/article/owqpo59gp5-verify-deployments-with-google-cloud-operations#step_5_add_health_sources)
@@ -3531,3 +3533,125 @@ k8DeleteData_spec.deleteResources.spec.manifestPaths:
 
         [Learn More](https://ngdocs.harness.io/article/eaj0xuegln)
     width: "500"
+monitoredServicesTitle:
+    content: A Harness Monitored Service is a Service and Environment combination that Harness monitors for any changes (such as deployments, infrastructure changes (Kubernetes events, auditing, etc),and incidents (PagerDuty)) and health trend deviations (using logs, metrics, and errors obtained from Logging tools, APMS, and Harness Error Tracking respectively).
+    width: "400"
+monitoredServiceType:
+    content: Select the Service type. You can choose Application or Infrastructure.
+    width: "150"
+serviceSelectOrCreate:
+    content: Select a user journey from the list. To create a new user journey, click Add New. A user journey is a visualization of a user's interaction with a service to achieve a specific goal over time and across different channels.
+    width: "300"
+environmentSelectOrCreate:
+    content: Environment represents your deployment targets logically (QA, Prod, etc). Select the Environment where the Harness Service is deployed from the list or click Add New to create a new Environment.
+    width: "400"
+MonitoredServiceForm_name:
+    content: |+
+        The field auto-populates the concatenation of the selected Harness Service and Environment name.
+
+    width: "400"
+changeSourceaForm_name:
+    content: "Enter a name for the Change Source. "
+    width: "400"
+selectHealthSourceType:
+    content: "Select the Health Source type. "
+    width: "400"
+defineHealthsource_healthSourceIdentifier:
+    content: A Health Source monitors the health trends of the Monitored Service using logs or metrics collected from an APM or logging tool. [Learn More](https://ngdocs.harness.io/article/lwi37ku94x-change-impact-analysis-quickstart#step_3_define_a_health_source)
+    width: "400"
+selectHealthSourceConnector:
+    content: In the Connector settings, select an existing Connector or click New Connector to create a new one. Harness uses Connectors to authenticate and perform operations with a 3rd party tool.
+    width: "400"
+selectFeature:
+    content: Select the APM or logging tool feature to be used.
+    width: "400"
+NameIdDescriptionTagsHealthSource_description:
+    content: It is a text string.
+    width: "400"
+NameIdDescriptionTagsHealthSource_tags:
+    content: You can add Tags to Harness entities and then use the Tags to search for all matching entities.
+    width: "400"
+changeSourceProviderType:
+    content: Select the Change Source type.
+    width: "400"
+createSLO:
+    content: "A Service Level Objective (SLO) is an agreed-upon objective or a reliability target value for a system's availability, measured by service level indicator (SLI) metrics. It is the minimum reliability level, in terms of customer expectations, that you expect a service to achieve most of the time. "
+    width: "400"
+TotalSLOs_tooltip:
+    content: Total number of SLOs existing for all your services.
+    width: "400"
+Exhausted_tooltip:
+    content: |
+        Number of SLOs for which the remaining Error Budget is zero or less than zero.
+    width: "300"
+Unhealthy_tooltip:
+    content: Number of SLOs for which the remaining Error Budget is between 0 to 25%.
+    width: "400"
+NeedAttention_tooltip:
+    content: Number of SLOs for which the remaining Error Budget is greater than 25% but less than 50%.
+    width: "400"
+Observe_tooltip:
+    content: Number of SLOs for which the remaining Error Budget is greater than 50% but less than 75%.
+    width: "400"
+Healthy_tooltip:
+    content: Number of SLOs for which the remaining Error Budget is above 75%.
+    width: "400"
+slosMonitoredService:
+    content: Name of the Monitored Service for which the SLO is set.
+    width: "400"
+sliType:
+    content: SLI Type can be Latency or Availability. Latency indicates if a proportion of valid requests are served faster than the threshold. Availability indicates if valid requests are served successfully.
+    width: "400"
+slosHealthSource:
+    content: A Health Source is a combination of a Harness Service and the associated Environment that tracks changes in health trends of the service using logs or metrics collected from an APM or logging tool.
+    width: "400"
+burnRatePerDay:
+    content: Rate at which the Error Budget is being consumed.
+    width: "400"
+timeRemaining:
+    content: Time period for which a Service can violate the allowed SLO.
+    width: "400"
+SLOPerformanceTrend:
+    content: "It shows you the SLO and SLI percentages, which helps you understand how often the set threshold has been breached. This enables you to analyze if the reliability of the service during a given period meets the expectations of most of the users. "
+    width: "400"
+SLO:
+    content: Shows the SLO status percentage.
+    width: "400"
+SLI:
+    content: Shows the SLI status percentage.
+    width: "400"
+SLO_form_name:
+    content: Enter a name for the SLO.
+    width: "400"
+SLO_form_monitoredServiceRef:
+    content: Select the desired Monitored Service from the list or click New Monitored Service to create a new one.
+    width: "400"
+SLO_form_healthSourceRef:
+    content: "Select the Health Source for which you want to define an SLO. To create a new Health Source, click New Health Source. "
+    width: "400"
+SLO_form_eventType:
+    content: Select the event type. You can select Good or Bad.
+    width: "400"
+SLO_form_goodRequestMetric:
+    content: If you select Event Type as Good, select the metric for good requests. If you select Event Type as Bad select the metric for bad requests.
+    width: "400"
+SLO_form_validRequestMetric:
+    content: Select the metrics that will most accurately track the user experience. To create a new metric, click New Metric.
+    width: "400"
+SLO_form_objectiveValue:
+    content: Specify the threshold value for your SLI.
+    width: "400"
+SLO_form_SLIMissingDataType:
+    content: In some cases, a metric can deviate from expected behavior and miss out on data points. Harness SRM lets you interpret these undetected metric values from your Health Source as Good, Bad, or Ignore.
+    width: "400"
+SLO_form_periodType:
+    content: |+
+        Specifies the period for which the SLO runs its calculation. This helps to measure whether the reliability of a Service during a given duration meets the expectations of most of its users. 
+
+    width: "400"
+SLO_form_periodLength:
+    content: Specify the duration of the selected Period Type.
+    width: "400"
+SLO_form_SLOTargetPercentage:
+    content: You can enter a value from 1 to 99.9.
+    width: "400"
