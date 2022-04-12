@@ -1920,7 +1920,7 @@ gitSyncRepoForm_name: |-
 
     New to Harness Git Experience? See the [Quickstart](https://ngdocs.harness.io/article/dm69dkv34g-harness-git-experience-quickstart).
 gitSyncRepoForm_repo: |-
-    Once you add a Connector above you should see the repo URL in **Repository URL**.
+    Once you add a Connector above you should see the repo URL in **Repository Name**.
 
     Click **Test Connection**. Once Harness verifies the connection, you will see `Connection Successful`. [Learn More](https://ngdocs.harness.io/article/hzajxmb3oj) 
 
