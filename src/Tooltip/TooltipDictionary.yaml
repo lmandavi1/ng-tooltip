@@ -3770,3 +3770,15 @@ policyStepForm_spec.policySets:
 policyStepForm_spec.policySpec.payload:
     content: Enter the payload to be evaluated by the Policy Set(s) you selected in **Policy Set**. [Learn More](https://ngdocs.harness.io/article/xy8zsn8fa3)
     width: "400"
+nexusArtifact_repositoryUrl:
+    content: Enter the URL you would use in the Docker login to fetch the Artifact. This is the same as the domain name and port you use for docker login hostname:port. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    width: "400"
+nexusArtifact_repository:
+    content: Enter the name of the repository where the Artifact is located. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    width: "400"
+nexusArtifact_artifactPath:
+    content: Enter the name of the Artifact you want to deploy. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    width: "400"
+nexusArtifact_tag:
+    content: Select the Docker image tag. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    width: "400"
