@@ -3782,3 +3782,15 @@ nexusArtifact_artifactPath:
 nexusArtifact_tag:
     content: Select the Docker image tag. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
     width: "400"
+artifactoryArtifact_repository:
+    content: Enter the name of the repository where the Artifact is located. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    width: "400"
+artifactoryArtifact_repositoryUrl:
+    content: Enter the URL you would use in the Docker login to fetch the Artifact. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    width: "400"
+artifactoryArtifact_artifactPath:
+    content: Enter the name of the Artifact you want to deploy. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    width: "400"
+artifactoryArtifact_tag:
+    content: Enter the tag for the image/artifact. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    width: "400"
