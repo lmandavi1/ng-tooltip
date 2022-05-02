@@ -2580,7 +2580,7 @@ helmWithHttp_commandFlags:
         - [Fetch](https://v2.helm.sh/docs/helm/#helm-fetch): `helm fetch` (v1) or [`helm pull`](https://helm.sh/docs/helm/helm_pull/) (v2) to get the Helm chart.
     width: "400"
 "helmWithHttp_commandFlags[0].flag":
-    content: Add any options for the command. The option `--debug` is not supported.
+    content: Add any options for the command.
     width: "400"
 artifactManifestLabel:
     content: |-
@@ -2999,8 +2999,6 @@ helmWithGit_commandFlags:
         Harness supports all the flags (options) of the Helm command selected in **Command Type**. 
 
         See commands for [Helm 2](https://v2.helm.sh/docs/helm/) and [Helm 3](https://v3.helm.sh/docs/helm/).
-
-        **Note:** The option `--debug` is not supported.
     width: "400"
 helmWithGit_branch:
     content: |-
@@ -3067,7 +3065,7 @@ helmWithS3_commandFlags:
         - [Fetch](https://v2.helm.sh/docs/helm/#helm-fetch): `helm fetch` (v1) or [`helm pull`](https://helm.sh/docs/helm/helm_pull/) (v2) to get the Helm chart.
     width: "400"
 "helmWithS3_commandFlags[0].flag":
-    content: Add any options for the command. The option `--debug` is not supported.
+    content: Add any options for the command.
     width: "400"
 helmWithGcs_identifier:
     content: Enter a name that identifies this Helm chart. It doesn't have to be the chart name. It can be the name of the service you are deploying or another name. [Learn More](https://ngdocs.harness.io/article/7owpxsaqar)
@@ -3125,7 +3123,7 @@ helmWithGcs_commandFlags:
         - [Fetch](https://v2.helm.sh/docs/helm/#helm-fetch): `helm fetch` (v1) or [`helm pull`](https://helm.sh/docs/helm/helm_pull/) (v2) to get the Helm chart.
     width: "400"
 "helmWithGcs_commandFlags[0].flag":
-    content: Add any options for the command. The option `--debug` is not supported.
+    content: Add any options for the command.
     width: "400"
 gcrImagePath_registryHostname:
     content: Select the registry where the artifact source is located.
