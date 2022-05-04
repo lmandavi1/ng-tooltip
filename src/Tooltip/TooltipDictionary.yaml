@@ -3798,3 +3798,6 @@ artifactoryArtifact_artifactPath:
 artifactoryArtifact_tag:
     content: Enter the tag for the image/artifact. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
     width: "400"
+imagePath_version:
+    content: Enter your Artifact version. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    width: "400"
