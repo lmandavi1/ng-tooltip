@@ -3936,3 +3936,27 @@ zeroNorthStep_spec.settings:
 zeroNorthStep_timeout:
     content: Enter how long Harness should wait for this step to complete before timing out and initiating the [Failure Strategy](https://ngdocs.harness.io/article/0zvnn5s1ph).
     width: "400"
+tfRemoteWizardForm_spec.configuration.configFiles.store.spec.gitFetchType:
+    content: |-
+        Select **Latest from Branch** or **Specific Commit Id / Git Tag**. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+
+        When you run the Pipeline, Harness will fetch the script from the repo.
+
+        If you think the script might change often, you might want to use **Specific Commit Id**. 
+
+        For example, if you are going to be fetching the script multiple times in your Pipeline, Harness will fetch the script each time. If you select **Latest from Branch** and the branch changes between fetches, different scripts are run.
+    width: "400"
+tfRemoteWizardForm_spec.configuration.configFiles.store.spec.branch:
+    content: Enter the branch name.
+    width: "400"
+tfRemoteWizardForm_spec.configuration.configFiles.store.spec.folderPath:
+    content: Enter the path from the root of the repo to the folder containing the script. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
+    width: "400"
+tfRemoteWizardForm_spec.configuration.configFiles.store.spec.commitId:
+    content: |-
+        Enter the commit Id or Git tag to use.
+
+        If you think the script might change often, you might want to use a commit Id. 
+
+        For example, if you are going to be fetching the script multiple times in your Pipeline, Harness will fetch the script each time. If you select **Latest from Branch** and the branch changes between fetches, different scripts are run.
+    width: "400"
