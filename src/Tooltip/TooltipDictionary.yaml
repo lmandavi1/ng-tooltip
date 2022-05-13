@@ -3910,3 +3910,29 @@ ciBuildInfra_nodeSelector:
 ciBuildInfra_tolerations:
     content: A list of [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) the pods to schedule onto nodes with matching taints.
     width: "400"
+Security_stepName_StepConfig:
+    content: This step uses Harness Security Testing Orchestration (STO) to perform code and container security scanning. [Learn More](https://ngdocs.harness.io/article/b5jv0vlrvf)
+    width: "400"
+zeroNorthStep_name:
+    content: Enter a name for this step.
+    width: "400"
+zeroNorthStep_description:
+    content: Enter a description for this step.
+    width: "400"
+zeroNorthStep_spec.settings:
+    content: |-
+        The settings you enter here determine the scanner, target types, and scan approach to use in this step.
+
+        For example, to use Brakeman, you would start by entering the following settings:
+
+        - `product_name: brakeman`
+        - `scan_type: repository`
+        - `policy_type: orchestratedScan`
+
+        For an example, see the [Security Testing Orchestration Quickstart](https://ngdocs.harness.io/article/b5jv0vlrvf).
+
+        For a list of the supported scanners and their settings, see [Security Step Settings Reference](https://ngdocs.harness.io/article/0k0iubnzql).
+    width: "400"
+zeroNorthStep_timeout:
+    content: Enter how long Harness should wait for this step to complete before timing out and initiating the [Failure Strategy](https://ngdocs.harness.io/article/0zvnn5s1ph).
+    width: "400"
