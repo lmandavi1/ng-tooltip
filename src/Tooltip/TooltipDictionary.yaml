@@ -10,10 +10,14 @@ jiraApprovalIssueKey: |-
     The **Jira Create** or **Jira Update** step you want to reference must be *before* the **Jira Approval** step that references it in the Pipeline and stage. [Learn More](https://ngdocs.harness.io/article/2lhfk506r8)
 ONNtooltipId: Your pipeline name
 specifyYourService: Harness Services represent your microservices/apps logically. You can propagate the same Service to as many stages as you need.
-stageOverviewDeploymentType: |-
-    The deployment type is how your Service will be deployed. For example, using Kubernetes.
+stageOverviewDeploymentType:
+    content: |-
+        The deployment type is how your Service will be deployed. For example, using Kubernetes.
 
-    Select the platform for your deployment. When you select a platform, its specific settings appear.
+        Select the platform for your deployment. When you select a platform, its specific settings appear.
+
+        **Note:** If you change the deployment type (for example, from Kubernetes to Native Helm) there might be some conflicting resources in the target environment. As a result, Stage execution can fail. If this happens, delete all the conflicting resources and try again.
+    width: "400"
 deploymentTypeManifests: Add the configuration files that describe the desired state of your app in terms of Kubernetes API object descriptions. All files in **Manifests** must have the .yaml file extension. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
 deploymentTypeArtifacts: |-
     If the image location is not specified in your Deployment manifest, you can add the image location to Harness as an Artifact. 
