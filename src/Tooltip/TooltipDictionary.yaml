@@ -3964,3 +3964,9 @@ tfRemoteWizardForm_spec.configuration.configFiles.store.spec.commitId:
 
         For example, if you are going to be fetching the script multiple times in your Pipeline, Harness will fetch the script each time. If you select **Latest from Branch** and the branch changes between fetches, different scripts are run.
     width: "400"
+ciEcrStep_spec.baseImageConnectorRefs:
+    content: |-
+        Select an authenticated Connector to download base images from the container registry. Otherwise, the Step downloads base images without authentication. 
+
+        Specifying a Base Image Connector is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads. ​
+    width: "400"
