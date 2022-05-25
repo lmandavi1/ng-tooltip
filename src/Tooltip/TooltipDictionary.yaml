@@ -9,12 +9,16 @@ jiraApprovalIssueKey: |-
 
     The **Jira Create** or **Jira Update** step you want to reference must be *before* the **Jira Approval** step that references it in the Pipeline and stage. [Learn More](https://ngdocs.harness.io/article/2lhfk506r8)
 ONNtooltipId: Your pipeline name
-specifyYourService: Harness Services represent your microservices/apps logically. You can propagate the same Service to as many stages as you need.
+specifyYourService:
+    content: Harness Services represent your microservices/apps logically. You can propagate the same Service to as many stages as you need. [Learn More](https://ngdocs.harness.io/article/hv2758ro4e)
+    width: "400"
 stageOverviewDeploymentType:
     content: |-
-        The deployment type is how your Service will be deployed. For example, using Kubernetes.
+        The deployment type is how your Service will be deployed. For example, using Kubernetes, Native Helm, Serverless, etc.
+          
 
         Select the platform for your deployment. When you select a platform, its specific settings appear.
+          
 
         **Note:** If you change the deployment type (for example, from Kubernetes to Native Helm) there might be some conflicting resources in the target environment. As a result, Stage execution can fail. If this happens, delete all the conflicting resources and try again.
     width: "400"
@@ -120,12 +124,16 @@ deployService_name: |-
     When a Service is added to the stage in a Pipeline, you define its Service Definition. Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values. 
 
     You can also propagate and override a Service in subsequent stages by selecting its name in that stage's **Service** settings. [Learn More](https://ngdocs.harness.io/article/t57uzu1i41)
-specifyYourEnvironment: |-
-    Select or create a new Environment. You can select this Environment in subsequent stages.
+specifyYourEnvironment:
+    content: |-
+        Select or create a new Environment. You can select this Environment in subsequent stages.
+          
 
-    Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many stages are you need. Infrastructure Definitions represent your target infrastructure physically. They are the actual clusters, hosts, etc.
+        Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many stages are you need. Infrastructure Definitions represent your target infrastructure physically. They are the actual clusters, hosts, etc.
+          
 
-    By separating Environments and Infrastructure Definitions, you can use the same Environment in multiple stages while changing the target infrastructure settings with each stage.
+        By separating Environments and Infrastructure Definitions, you can use the same Environment in multiple stages while changing the target infrastructure settings with each stage.
+    width: "400"
 k8InfraConnector: |-
     Select or create the Connector that connects Harness to your target cluster. [Learn More](https://ngdocs.harness.io/article/0ud2ut4vt2)
 
@@ -302,22 +310,24 @@ k8ClusterForm_masterUrl: |-
     ```
     [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
 connectorDetailsStepFormArtifactory_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/euueiiai4m)
-stepArtifactoryAuthForm_artifactoryServerUrl: |-
-    Enter in your base URL followed by your module name.
+stepArtifactoryAuthForm_artifactoryServerUrl:
+    content: |-
+        Enter in your base URL followed by your module name.
 
-    For most artifacts, use `https://mycompany.jfrog.io/module_name/`.
+        For most artifacts, use `https://mycompany.jfrog.io/module_name/`.
 
-    For example: `https://harness.jfrog.io/artifactory/`
+        For example: `https://harness.jfrog.io/artifactory/`
 
-    In some cases, you can use `https://server_name/artifactory/module_name`.
+        In some cases, you can use `https://server_name/artifactory/module_name`.
 
-    The URL really depends on how you have set up Artifactory, and whether it is local, virtual, remote, or behind a proxy.
+        The URL really depends on how you have set up Artifactory, and whether it is local, virtual, remote, or behind a proxy.
 
-    To ensure you use the correct URL, copy it from your Artifactory settings.
+        To ensure you use the correct URL, copy it from your Artifactory settings.
 
-    [Learn More](https://ngdocs.harness.io/article/euueiiai4m)
+        [Learn More](https://ngdocs.harness.io/article/euueiiai4m)
 
-    **Note:** using `artifactory/` at the end of the URL often solves path issues.
+        **Note:** using `artifactory/` at the end of the URL often solves path issues.
+    width: "500"
 connectorDetailsStepFormDockerRegistry_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/u9bsd77g5a)
 dockerAuthForm_dockerRegistryUrl:
     content: |-
@@ -1512,18 +1522,20 @@ k8ClusterForm_clientKeyCertificate: |-
 k8ClusterForm_clientKeyPassphrase: Create or select a Harness secret to add the client key passphrase. The passphrase can be pasted in either Base64 encoded or decoded. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
 k8ClusterForm_clientKeyAlgo: Specify the encryption algorithm used when the certificate was created. Typically, RSA. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
 k8ClusterForm_clientKeyCACertificate: Create or select a Harness secret to add the Certificate authority root certificate used to validate client certificates presented to the API server. For more information, see [Authenticating](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) from Kubernetes. [Learn More](https://ngdocs.harness.io/article/sjjik49xww)
-artifactRepositoryAuthentication: |-
-    Make sure the following permissions are granted to the user:
+artifactRepositoryAuthentication:
+    content: |-
+        Make sure the following permissions are granted to the user:
 
-    - **Privileged User** is required to access the API, whether Anonymous or a using a specific username (username and passwords are not mandatory).
-    - **Read** permission to all Repositories.
+        - **Privileged User** is required to access the API, whether Anonymous or a using a specific username (username and passwords are not mandatory).
+        - **Read** permission to all Repositories.
 
-    If used as a Docker Repo, user needs:
+        If used as a Docker Repo, the user account needs:
 
-    - List images and tags
-    - Pull images
+        - List images and tags
+        - Pull images
 
-    See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions).
+        See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions).
+    width: "400"
 artifactRepositoryDetails: Harness supports both cloud and on-prem versions of Artifactory. [Learn More](https://ngdocs.harness.io/article/euueiiai4m)
 stepArtifactoryAuthForm_username: Username for the Artifactory account user.
 stepArtifactoryAuthForm_password: Select or create a new Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c`).
@@ -3171,10 +3183,8 @@ ecrArtifact_tag:
     width: "400"
 artifactConnForm_connectorId:
     content: |-
-        Select or add a cloud Connector to connect Harness with your cloud registry. For example, an AWS Elastic Container Registry (ECR) or Google Container Registry (GCR).
-
-          - **AWS ECR:** The IAM role you use for this Connector must have the `AmazonEC2ContainerRegistryReadOnly` policy to pull images from ECR and the `AmazonEC2ContainerRegistryFullAccess` policy to push images to ECR. [Learn More](https://ngdocs.harness.io/article/m5vkql35ca-aws-connector-settings-reference)
-          - **GCR**: The IAM roles required for this Connector are `Storage Object Viewer (roles/storage.objectViewer)` and `Storage Object Admin (roles/storage.objectAdmin)`. [Learn More](https://ngdocs.harness.io/article/yykfduond6-gcs-connector-settings-reference) 
+        Select or add a Connector to connect Harness with your cloud or registry. [Learn More](https://ngdocs.harness.io/article/euueiiai4m)
+          
 
         CD Pipelines typically pull from registries only. CI Pipelines typically pull and push with registries.
     width: "400"
@@ -3795,7 +3805,11 @@ nexusArtifact_tag:
     content: Select the Docker image tag. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
     width: "400"
 artifactoryArtifact_repository:
-    content: Enter the name of the repository where the Artifact is located. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    content: |-
+        Enter the name of the repository where the Artifact is located. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+
+        - <a href="https://files.helpdocs.io/i5nl071jo5/articles/2nx0de3w99/1649712423214/clean-shot-2022-04-11-at-14-26-40.png">Docker example</a>
+        - <a href="https://files.helpdocs.io/i5nl071jo5/articles/5fnx4hgwsa/1653344758802/clean-shot-2022-05-23-at-15-25-41.png">ZIP example</a>
     width: "400"
 artifactoryArtifact_repositoryUrl:
     content: Enter the URL you would use in the Docker login to fetch the Artifact. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
@@ -3804,7 +3818,7 @@ artifactoryArtifact_artifactPath:
     content: Enter the name of the Artifact you want to deploy. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
     width: "400"
 artifactoryArtifact_tag:
-    content: Enter the tag for the image/artifact. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+    content: Enter the image tag artifact name.
     width: "400"
 imagePath_version:
     content: Enter your Artifact version. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
@@ -3969,4 +3983,141 @@ ciEcrStep_spec.baseImageConnectorRefs:
         Select an authenticated Connector to download base images from the container registry. Otherwise, the Step downloads base images without authentication. 
 
         Specifying a Base Image Connector is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads. ​
+    width: "400"
+serverlessDeploymentTypeManifests:
+    content: |-
+        Add your serverless.yml file as a manifest. Harness will fetch your serverless.yml file at deployment runtim. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+          
+
+        **Notes:** 
+        - The serverless.yaml file you use with Harness can use Harness [secrets](https://ngdocs.harness.io/article/osfw70e59c) and [built-in and custom expressions](https://ngdocs.harness.io/article/lml71vhsim).
+        - Plugins are also supported in your serverless.yml file using the standard format. For example:
+
+        ```
+        plugins:
+          - serverless-deployment-bucket@latest
+        ```
+    width: "400"
+serverlessDeploymentTypeArtifacts:
+    content: |-
+        Add the function you want to deploy as an artifact. 
+
+        For example, a function stored in a cloud repo as a ZIP file. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+          
+
+        You do not have to use an Artifact if the serverless.yml file you added to **Manifests** has the `package: artifact` hardcoded.
+          
+
+        If you add an artifact to Harness in **Artifacts**, you need to use the Harness expression `<+artifact.path>` in your serverless.yml file like this:
+
+        ```
+        package:
+          artifact: <+artifact.path>
+        ```
+
+        At deployment runtime, Harness will resolve the expression to the artifact added in **Artifacts** and fetch the artifact from its repo.
+    width: "400"
+awsInfraConnector:
+    content: |-
+        Add or select an AWS Connector to connect Harness with the AWS account running your Lambda service. 
+
+          
+        Essentially, this AWS account is the deployment target. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "450"
+awsRegion:
+    content: Enter the [AWS region name](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) where the target Lambda service is located, such as `us-east-1`.
+    width: "400"
+awsStage:
+    content: |-
+        Enter the name of the stage in your service that you want to deploy to, such as `dev`. 
+          
+        This is the same as the `--stage` option in the `serverless deploy` command. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "400"
+serverlessAwsLambda_identifier:
+    content: Enter a name that identifies this Serverless manifest. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "400"
+serverlessAwsLambda_gitFetchType:
+    content: Select where you want to fetch your serverless.yml file from. You can fetch it from a branch, commit Id, or Git tag. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "400"
+serverlessAwsLambda_branch:
+    content: Enter the branch name where your serverless.yml file is located. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "350"
+serverlessAwsLambda_paths:
+    content: Enter the path from the root of the repo to the folder containing your serverless.yml file. You do not need to enter the filename. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "400"
+UseanyavailableDelegate:
+    content: |-
+        Select this option to let Harness select a Delegate at runtime.
+
+        When a task is ready to be assigned, the Harness Manager first validates its lists of Delegates to see which Delegate should be assigned the task.
+
+        The following information describes how the Harness Manager validates and assigns tasks to a Delegate:
+
+        - **Heartbeats:** running Delegates send heartbeats to the Harness Manager in 1 minute intervals. If the Manager does not have a heartbeat for a Delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
+
+        - **Tags:** see [Select Delegates with Tags](https://newdocs.helpdocs.io/article/nnuf8yv13o).
+
+        - **Allowlisting:** once a Delegate has been validated for a task, it is allowlisted for that task and will likely be used again for that task. The allowlisting criteria is the URL associated with the task, such as a connection to a cloud platform, repo, or API. A Delegate is allowlisted for all tasks using that URL. The Time-To-Live (TTL) for the allowlisting is 6 hours, and the TTL is reset with each successful task validation.
+
+        - **Blocklisting:** if a Delegate fails to perform a task that Delegate is blocklisted for that task and will not be tried again. TTL is 5 minutes. This is true if there is only one Delegate and even if the Delegate is selected for that task with a Selector.
+
+        [Learn how Harness picks Delegates](https://ngdocs.harness.io/article/2k7lnc7lvl)
+    width: "500"
+OnlyuseDelegateswithallofthefollowingtags:
+    content: |-
+        Select this option to use specific Delegates using their Tags. [Learn More](https://newdocs.helpdocs.io/article/nnuf8yv13o)
+          
+
+        You only need to select one of a Delegate's Tags to select it. All Delegates with the Tag are selected.
+          
+
+        This option is useful when you have installed specific software on specific Delegates and want to ensure that your Pipeline uses those Delegates.
+    width: "500"
+artifactoryArtifact_artifactDirectory:
+    content: Enter the name of the folder/directory where the artifact is located.
+    width: "400"
+artifactoryArtifact_tagType:
+    content: Select a specific artifact name or use regex.
+    width: "400"
+ServerlessAwsLambdaDeploy_name:
+    content: Enter a name for this Serverless Lambda step. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "400"
+ServerlessAwsLambdaDeploy_timeout:
+    content: Enter a timeout value for this step. Once the timeout is reached, the step or stage [failure strategy](https://ngdocs.harness.io/article/htrur23poj) is executed.
+    width: "400"
+serverlessDeployCommandOptions:
+    content: |-
+        Add any `serverless deploy` command options. See [Serverless AWS - Deploy](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy) for the list of options.
+          
+
+        In the deployment logs, you will see the options added to the serverless deploy command.
+          
+
+        For example, if you add `--conceal` in **Serverless Deploy Command Options** you will see the following:
+
+        ```
+        serverless deploy --stage dev --region us-east-1 --conceal
+        ```
+    width: "500"
+ServerlessAwsLambdaDeploy_stepName_StepConfig:
+    content: Use this step to deploy a Serverless Lambda serverless.yml and artifact. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "400"
+ServerlessAwsLambdaRollback_stepName_StepConfig:
+    content: Use this step to rollback a Serverless Lambda deployment to the last successful deployment. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "400"
+ServerlessLambdaRB_name:
+    content: Enter a name for this Serverless Lambda rollback step. [Learn More](https://ngdocs.harness.io/article/5fnx4hgwsa)
+    width: "400"
+ServerlessLambdaRB_timeout:
+    content: Enter a timeout value for this step. Once the timeout is reached, the step or stage [failure strategy](https://ngdocs.harness.io/article/htrur23poj) is executed.
+    width: "400"
+selectPropagatedState:
+    content: |-
+        You can use the same Service across your Pipeline stages. 
+          
+
+        In many cases, you'll want to use some of the propagated Service's settings, such as manifests, but want to override others, such as values.yaml files, artifacts, or variables. 
+          
+
+        Harness lets you propagate and override. [Learn More](https://ngdocs.harness.io/article/t57uzu1i41)
     width: "400"
