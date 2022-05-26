@@ -4121,3 +4121,10 @@ selectPropagatedState:
 
         Harness lets you propagate and override. [Learn More](https://ngdocs.harness.io/article/t57uzu1i41)
     width: "400"
+serverlessAwsLambda_configOverridePath:
+    content: |-
+        Use this setting when your Serverless manifest is not named `serverless.yml|.yaml|.js|.json`. 
+          
+
+        The is the same as the `--config` option in `serverless deploy`. See [AWS - deploy](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy) from Serverless.
+    width: "400"
