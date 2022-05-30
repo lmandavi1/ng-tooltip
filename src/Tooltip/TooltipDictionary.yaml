@@ -4179,3 +4179,26 @@ serviceNowCreate_spec.shortDescription:
 
     width: "400"
 
+ServiceNowSelectFromFieldList:
+
+    content: Select from the fields Harness retrieved from ServiceNow using the ServiceNow Connector and Ticket Type.
+
+    width: "400"
+
+ServiceNowProvideFromFieldList:
+
+    content: Add fields for the ticket.
+
+    width: "400"
+    
+  ServiceNowSelectFromFieldList:
+
+    content: Select from the fields Harness retrieved from ServiceNow using the ServiceNow Connector and Ticket Type.
+
+    width: "400"
+
+ServiceNowProvideFromFieldList:
+
+   content: Add fields for the ticket.
+
+    width: "400"
