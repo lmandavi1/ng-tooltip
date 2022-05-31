@@ -4178,4 +4178,14 @@ serviceNowCreate_spec.shortDescription:
     content: Enter a description of the ticket you are creating. This will be the title of the ticket.
 
     width: "400"
+ServiceNowSelectFromFieldList:
 
+    content: Select from the fields Harness retrieved from ServiceNow using the ServiceNow Connector and Ticket Type.
+
+    width: "400"
+
+ServiceNowProvideFromFieldList:
+
+    content: Add fields for the ticket. The properties are specified as key-value pairs, the name being the field name (not the label) in ServiceNow and a valid value.
+
+    width: "400"
