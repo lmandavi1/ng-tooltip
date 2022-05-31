@@ -4186,6 +4186,6 @@ ServiceNowSelectFromFieldList:
 
 ServiceNowProvideFromFieldList:
 
-    content: Add fields for the ticket.
+    content: Add fields for the ticket. The properties are specified as key-value pairs, the name being the field name (not the label) in ServiceNow and a valid value.
 
     width: "400"
