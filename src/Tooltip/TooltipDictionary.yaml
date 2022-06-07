@@ -4200,8 +4200,7 @@ conditionalExecutionCustomStage:
 failureStrategyCustomStage:
     content: Define the failure strategy for all steps and step groups in the stage. The stage-level strategy is overridden by step and step group failure strategies, if present. [Learn More](https://newdocs.helpdocs.io/article/htrur23poj)
     width: "400"
-    
-  pipelineCreate_connectorRef:
+pipelineCreate_connectorRef:
 
     content: Select or create a Git Connector to connect to the repo for your Project. [Learn More](https://newdocs.helpdocs.io/category/xyexvcc206-ref-source-repo-provider)
 
