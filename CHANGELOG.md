@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.31.1](https://github.com/harness/ng-tooltip/compare/v1.30.1...v1.31.1) (2022-06-07)
+
 ### [1.30.1](https://github.com/harness/ng-tooltip/compare/v1.30.116...v1.30.1) (2022-06-07)
 
 ### [1.30.116](https://github.com/harness/ng-tooltip/compare/v1.32.0...v1.30.116) (2022-06-07)
