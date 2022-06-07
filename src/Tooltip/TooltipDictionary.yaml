@@ -4200,3 +4200,26 @@ conditionalExecutionCustomStage:
 failureStrategyCustomStage:
     content: Define the failure strategy for all steps and step groups in the stage. The stage-level strategy is overridden by step and step group failure strategies, if present. [Learn More](https://newdocs.helpdocs.io/article/htrur23poj)
     width: "400"
+pipelineCreate_connectorRef:
+
+    content: Select or create a Git Connector to connect to the repo for your Project. [Learn More](https://newdocs.helpdocs.io/category/xyexvcc206-ref-source-repo-provider)
+
+    width: "400"
+
+pipelineCreate_repo:
+
+    content: Select your repository. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
+
+    width: "400"
+
+pipelineCreate_branch:
+
+    content: Select your branch. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
+
+    width: "400"
+
+pipelineCreate_filePath:
+
+    content: Enter the file path. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
+
+    width: "400"
