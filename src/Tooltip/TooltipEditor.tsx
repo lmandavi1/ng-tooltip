@@ -313,7 +313,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                       <Heading className={css.tooltipIdLabelHeading}>
                         ID
                       </Heading>
-                      <Heading>
+                      <Heading className={css.tooltipContentLabel}>
                         <label>
                           Tooltip Content (Markdown)&nbsp;
                           <a
@@ -325,6 +325,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                           </a>
                         </label>
                       </Heading>
+                      <Heading className={css.btnCol}>&nbsp;</Heading>
                     </div>
                     {Array.from(searchResults).map((node) => {
                       const tooltipId = getNodeTooltipId(node);
@@ -350,7 +351,7 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                               <textarea
                                 placeholder="Enter Markdown"
                                 style={{
-                                  minWidth: 550,
+                                  width: "50vw",
                                   maxWidth: 550,
                                   minHeight: 100,
                                   maxHeight: 300,
@@ -411,6 +412,10 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                                 {getTooltipContent(editedTooltips, tooltipId) ||
                                   ""}
                               </Label>
+                            </div>
+                          )}
+                          {!editMode[tooltipId] ? (
+                            <div className={css.btnCol}>
                               <Button
                                 text="Edit"
                                 icon="edit"
@@ -422,6 +427,8 @@ export const TooltipEditor = (props: TooltipEditorProps) => {
                                 }}
                               />
                             </div>
+                          ) : (
+                            <div className={css.btnCol}>&nbsp;</div>
                           )}
                         </div>
                       );
