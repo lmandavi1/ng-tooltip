@@ -376,7 +376,13 @@ awsCCDetailsForm_url: |-
 connectorDetailsStepFormBitbucket_name: Enter a name for this Bitbucket Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/iz5tucdwyu)
 connectorDetailsStepFormJira_name: Enter a name for this Connector. You will use this name to select the Connector in Pipeline steps and settings. [Learn More](https://ngdocs.harness.io/article/ud8rysntnz)
 k8InfraAllowSimultaneousDeployments: By default, Harness queues deployments to the same infrastructure to avoid conflicts. If you want to allow simultaneous deployments to this infrastructure, enable this option.
-infraProvisionerBase_provisionerEnabled: Select this option to use an infrastructure provisioner to dynamically provision the target infrastructure for the deployment. [Learn More](https://ngdocs.harness.io/article/boug6e884h)
+infraProvisionerBase_provisionerEnabled:
+    content: |-
+        Select this option to use an infrastructure provisioner to dynamically provision the target infrastructure for the deployment. 
+
+        - [Terraform](https://ngdocs.harness.io/article/w6i5f7cpc9)
+        - [CloudFormation](https://ngdocs.harness.io/article/vynj4hxt98)
+    width: "400"
 terraformPlanEditView-tfPlan-INFRASTRUCTURE_name: Enter a name for this step.
 terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.configuration.command: Identify if the plan created by this step will be used with a Terraform Apply or Terraform Destroy step. [Learn More](https://ngdocs.harness.io/article/uznls2lvod)
 terraformPlanEditView-tfPlan-INFRASTRUCTURE_spec.provisionerIdentifier: |-
@@ -4201,72 +4207,139 @@ failureStrategyCustomStage:
     content: Define the failure strategy for all steps and step groups in the stage. The stage-level strategy is overridden by step and step group failure strategies, if present. [Learn More](https://newdocs.helpdocs.io/article/htrur23poj)
     width: "400"
 pipelineCreate_connectorRef:
-
     content: Select or create a Git Connector to connect to the repo for your Project. [Learn More](https://newdocs.helpdocs.io/category/xyexvcc206-ref-source-repo-provider)
-
     width: "400"
-
 pipelineCreate_repo:
-
     content: Select your repository. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
-
     width: "400"
-
 pipelineCreate_branch:
-
     content: Select your branch. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
-
     width: "400"
-
 pipelineCreate_filePath:
-
     content: Enter the file path. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
-
     width: "400"
-    
 smtpStepDetailsForm_name:
-
     content: Enter a name for the SMTP Configuration.
-
     width: "400"
-
 smtpStepDetailsForm_host:
-
     content: Enter your SMTP server's URL.
-
     width: "400"
-
 smtpStepDetailsForm_port:
-
     content: Enter the port number on which the SMTP server is listening. Typically it is 25.
-
     width: "400"
-
 smtpStepDetailsForm_useSSL:
-
     content: Select Enable SSL for secure connections (SSL/TLS).
-
     width: "400"
-
 smtpStepDetailsForm_startTLS:
-
     content: Select Start TSL to enable SMTP over TLS, or when the connection is upgraded to SSL/TLS.
-
     width: "400"
-
 smtpStepDetailsForm_fromAddress:
-
     content: Enter the email address from which Harness will send notification emails.
-
     width: "400"
 smtpStepCredentialsForm_username:
-
     content: Enter the username for the email account.
+    width: "400"
+smtpStepCredentialsForm_password:
+    content: Enter the password for the email account.
+    width: "400"
+CreateStack_stepName_ProvisionerStepConfig:
+    content: Use the Create Stack step to run a CloudFormation template and supporting files inline or from your repos. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+cloudFormationCreateStack_name:
+    content: |-
+        Enter a name for the step, for example, **Create EC2 Instance**.
+
+        Harness will create an [Entity Id](https://ngdocs.harness.io/article/li0my8tcz3) using the name. The Id is very important. You can use a Harness expression and Id to refer to settings in this step from another step.
+    width: "400"
+cloudFormationCreateStack_timeout:
+    content: Enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](https://ngdocs.harness.io/article/htrur23poj).
+    width: "400"
+cloudFormationCreateStack_spec.provisionerIdentifier:
+    content: |-
+        Enter a unique value in **Provisioner Identifier**. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+
+        The **Provisioner Identifier** identifies the stack provisioned by this step. 
+
+        You reference the **Provisioner Identifier** in other steps to refer to the provisioning done by this step.
+
+        The most common use of **Provisioner Identifier** is between the Create Stack, Delete Stack, and Rollback Stack steps.
+
+        For example, in the case of a Create Stack failure, the Rollback Stack step rolls back the provisioning from the Create Stack step using its **Provisioner Identifier**.
+
+        **Note:** Only one **Create Stack** step with a specific **Provisioner Identifier** can be added in the same stage. If you add multiple Create Stack steps with the same **Provisioner Identifier**, only the first Create Stack step will be successful.
+
+        ### Provisioner Identifier Scope
+        The Provisioner Identifier is a Project-wide setting. You can reference it across Pipelines in the same Project.
+
+        For this reason, it's important that all your Project members know the Provisioner Identifiers. This will prevent one member building a Pipeline from accidentally impacting the provisioning of another member's Pipeline.
+    width: "500"
+cloudFormationCreateStack_spec.configuration.connectorRef:
+    content: |-
+        Add or select the Harness [AWS Connector](https://ngdocs.harness.io/article/m5vkql35ca) that will be used for this step. 
+
+        The AWS Connector will include the credentials needed to perform the provisioning.
+
+        The credentials required for provisioning depend on what you are provisioning.
+    width: "400"
+cloudFormationCreateStack_spec.configuration.region:
+    content: Select the region for the resources you are provisioning.
+    width: "400"
+cloudFormationCreateStack_spec.configuration.stackName:
+    content: |-
+        Enter a name for the CloudFormation stack Harness will create. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+
+        This is the same as the `--stack-name` option in the `aws cloudformation create-stack` command.
+    width: "500"
+cloudFormationCreateStack_spec.configuration.roleArn:
+    content: |+
+        Enter the AWS Role ARN to use when creating the stack. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+
+        Use an existing AWS Identity and Access Management (IAM) service role that CloudFormation can assume.
+
+        This is the same as the role you would use when creating a stack using the AWS console [Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html) setting or CLI.
+
+        See [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) from AWS.
 
     width: "400"
+cloudFormationCreateStack_spec.configuration.capabilities:
+    content: |
+        To acknowledge the capabilities in the CloudFormation template, click in **Specify Capabilities** and select capabilities. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
 
-smtpStepCredentialsForm_password:
+        This acknowledges that the template contains certain capabilities (for example, `CAPABILITY_AUTO_EXPAND`), giving AWS CloudFormation the specified capabilities before it creates the stack. This is the same as using the `--capabilities` option in the `aws cloudformation create-stack` CLI command. See [create-stack](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/create-stack.html).
+    width: "400"
+cloudFormationCreateStack_spec.configuration.tags.spec.content:
+    content: |-
+        Tags are arbitrary key-value pairs that can be used to identify your stack for purposes such as cost allocation. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
 
-    content: Enter the password for the email account.
+        - A Key consists of any alphanumeric characters or spaces. Tag keys can be up to 127 characters long.
 
+        - A Value consists of any alphanumeric characters or spaces. Tag values can be up to 255 characters long.
+
+        Enter the tags in JSON or YAML (lowercase is required)
+    width: "400"
+cloudFormationCreateStack_spec.configuration.skipOnStackStatuses:
+    content: |-
+        Add the stack states that allow provisioning. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+
+        **Note:** Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deployment. If present, Harness deletes the stack and then triggers the deployment.
+    width: "400"
+awsConnector_spec.configuration.parameters.store.spec.connectorRef:
+    content: |-
+        Select your Git platform, and then select or add a Git Connector. 
+
+        See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206) for steps on adding a Git Connector.
+
+        For AWS S3, see [Add an AWS Connector](https://ngdocs.harness.io/article/98ezfwox9u).
+    width: "400"
+RemoteStepTwo_spec.configuration.parameters.identifier:
+    content: Enter an Identifier for the file. This is just a name that indicates what the parameters are for. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+RemoteStepTwo_spec.configuration.parameters.store.spec.repoName:
+    content: If the Git Connector does not have the repo path, enter it here. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+RemoteStepTwo_spec.configuration.parameters.store.spec.gitFetchType:
+    content: Select **Latest from Branch** or use a Git commit Id or tag. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+RemoteStepTwo_spec.configuration.parameters.store.spec.paths:
+    content: Enter the path to the file from the root of the repo. To add multiple files, click **Add Path File**. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
     width: "400"
