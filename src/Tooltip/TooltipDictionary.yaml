@@ -4223,3 +4223,50 @@ pipelineCreate_filePath:
     content: Enter the file path. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
 
     width: "400"
+    
+smtpStepDetailsForm_name:
+
+    content: Enter a name for the SMTP Configuration.
+
+    width: "400"
+
+smtpStepDetailsForm_host:
+
+    content: Enter your SMTP server's URL.
+
+    width: "400"
+
+smtpStepDetailsForm_port:
+
+    content: Enter the port number on which the SMTP server is listening. Typically it is 25.
+
+    width: "400"
+
+smtpStepDetailsForm_useSSL:
+
+    content: Select Enable SSL for secure connections (SSL/TLS).
+
+    width: "400"
+
+smtpStepDetailsForm_startTLS:
+
+    content: Select Start TSL to enable SMTP over TLS, or when the connection is upgraded to SSL/TLS.
+
+    width: "400"
+
+smtpStepDetailsForm_fromAddress:
+
+    content: Enter the email address from which Harness will send notification emails.
+
+    width: "400"
+smtpStepCredentialsForm_username:
+
+    content: Enter the username for the email account.
+
+    width: "400"
+
+smtpStepCredentialsForm_password:
+
+    content: Enter the password for the email account.
+
+    width: "400"
