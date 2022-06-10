@@ -4343,3 +4343,6 @@ RemoteStepTwo_spec.configuration.parameters.store.spec.gitFetchType:
 RemoteStepTwo_spec.configuration.parameters.store.spec.paths:
     content: Enter the path to the file from the root of the repo. To add multiple files, click **Add Path File**. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
     width: "400"
+UserGroupRoleAssignmentForm_userGroups:
+    content: Select the user group(s) for role assignment.
+    width: "400"
