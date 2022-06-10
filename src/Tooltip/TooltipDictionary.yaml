@@ -20,14 +20,27 @@ stageOverviewDeploymentType:
         Select the platform for your deployment. When you select a platform, its specific settings appear.
           
 
-        **Note:** If you change the deployment type (for example, from Kubernetes to Native Helm) there might be some conflicting resources in the target environment. As a result, Stage execution can fail. If this happens, delete all the conflicting resources and try again.
+        **Note:** If you change the deployment type (for example, from Kubernetes to Native Helm) there might be some conflicting resources in the target environment. As a result, Stage execution can fail. If this happens, delete all the conflicting resources and try again. You will also lose any deployment type-specific steps in this stage's **Execution**.
     width: "400"
 deploymentTypeManifests: Add the configuration files that describe the desired state of your app in terms of Kubernetes API object descriptions. All files in **Manifests** must have the .yaml file extension. [Learn More](https://ngdocs.harness.io/article/ssbq0xh0hx)
-deploymentTypeArtifacts: |-
-    If the image location is not specified in your Deployment manifest, you can add the image location to Harness as an Artifact. 
-    Next, you reference the Artifact you added to Harness in your manifest like this:
-    `image: <+artifact.image>` 
-    [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+deploymentTypeArtifacts:
+    content: |-
+        If the path of the artifact is not hardcoded in the manifest you added in **Manifests**, you can add the artifact location to Harness in **Artifacts**. [Learn More](https://ngdocs.harness.io/article/4ifq51cp0i)
+
+
+        Next, you reference the artifact you added in **Artifacts** in your manifest like this:
+
+        ```
+        image: <+artifact.image>
+        ``` 
+
+
+        At runtime, this expression resolves to the full path of the artifact, like `docker.io/bitnami/nginx:1.22.0-debian-11-r0`.
+
+        If you only want the name of the artifact, use the expression `<+artifact.imagePath>`.
+
+        [Learn More about expressions](https://ngdocs.harness.io/article/lml71vhsim)
+    width: "650"
 ciEditStage_name: Enter a name for the stage. [Learn more](https://ngdocs.harness.io/article/2chyf1acil)
 ciEditStage_repoName: Enter the name of the Git repo containing your codebase. [Learn more](https://ngdocs.harness.io/article/8l31vtr4hi)
 ciBuildStage_name: Enter a name for the stage. [Learn More](https://ngdocs.harness.io/article/2chyf1acil-add-a-stage)
@@ -4401,4 +4414,56 @@ StepGroup_stepName_StepConfig:
     width: "500"
 stepGroup_name:
     content: Enter a name for this step group. [Learn More](https://ngdocs.harness.io/article/ihnuhrtxe3)
+    width: "400"
+manifestDetails_valuesPaths:
+    content: |-
+        Enter the path to the Values YAML file(s) you want to use in the same repo. Enter the path from the repo root to the file or folder. [Learn More](https://ngdocs.harness.io/article/q002wjjl4d)
+
+        If you add multiple Values YAML files and they have any identical `name` labels, the Values YAML files override in a reverse order. For example, the third Values YAML file listed overrides the second and first Values YAML files.
+
+        If the Values YAML file you want to use is in a separate repo, add it separately as a **Values YAML** manifest type.
+
+        [Watch a video](https://youtu.be/dVk6-8tfwJc)
+    width: "400"
+manifestPath_valuesPaths:
+    content: |-
+        Enter the path to the Kubernetes or Helm Chart Values YAML file(s), Kustomize Patches, OpenShift Parameters, etc you want to use in the same chart/repo. 
+
+        Enter the path from the chart/repo root to the file or folder. [Learn More](https://ngdocs.harness.io/article/q002wjjl4d)
+
+        If you add multiple files and they have any identical labels, the files override in a reverse order. For example, the third file listed overrides the second and first files.
+
+        If the file you want to use is in a separate repo, add it separately as a **Values YAML**, **Kustomize Patches**, or **OpenShift Params** manifest type.
+
+        [Watch a video](https://youtu.be/dVk6-8tfwJc)
+    width: "450"
+helmWithHttp_valuesPaths:
+    content: |-
+        Enter the path to the Values YAML file(s) you want to use in the same chart. Enter the path from the chart root to the file or folder. [Learn More](https://ngdocs.harness.io/article/q002wjjl4d)
+
+        If you add multiple Values YAML files and they have any identical `name` labels, the Values YAML files override in a reverse order. For example, the third Values YAML file listed overrides the second and first Values YAML files.
+
+        If the Values YAML file you want to use is in a separate repo, add it separately as a **Values YAML** manifest type.
+
+        [Watch a video](https://youtu.be/dVk6-8tfwJc)
+    width: "400"
+osTemplateWithGit_paramsPaths:
+    content: |-
+        Enter the path to the Parameters file(s) you want to use in the same repo. Enter the path from the repo root to the file or folder. [Learn More](https://ngdocs.harness.io/article/uajkpcmqjg)
+
+        If you add multiple Parameters files and they have any identical `name` parameters, the Parameters files override in a reverse order. For example, the third Parameters file listed overrides the second and first Parameters files.
+
+        If the Parameters file you want to use is in a separate repo, add it separately as a **OpenShift Param** manifest type.
+
+        [Watch a video](https://youtu.be/dVk6-8tfwJc)
+    width: "400"
+kustomizeGit_patchesPaths:
+    content: |-
+        Enter the path to the Patches file(s) you want to use in the same repo. Enter the path from the repo root to the file or folder. [Learn More](https://ngdocs.harness.io/article/98u2hvzj0t)
+
+        If you add multiple Patches files and they have any identical labels, the Patches files override in a reverse order. For example, the third Patches file listed overrides the second and first Patches files.
+
+        If the Patches file you want to use is in a separate repo, add it separately as a **Kustomize Patches** manifest type.
+
+        [Watch a video](https://youtu.be/dVk6-8tfwJc)
     width: "400"
