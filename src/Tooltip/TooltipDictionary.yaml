@@ -4346,3 +4346,59 @@ RemoteStepTwo_spec.configuration.parameters.store.spec.paths:
 UserGroupRoleAssignmentForm_userGroups:
     content: Select the user group(s) for role assignment.
     width: "400"
+DeleteStack_stepName_ProvisionerStepConfig:
+    content: You can use the Delete Stack step to remove resources provisioned by the Create Stack step or any resources created by CloudFormation. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+cloudFormationDeleteStack_name:
+    content: Enter a name for the step. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+cloudFormationDeleteStack_timeout:
+    content: Enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](https://ngdocs.harness.io/article/htrur23poj).
+    width: "400"
+cloudFormationDeleteStack_spec.configuration.type:
+    content: |-
+        Choose how you want to delete a stack:
+
+        - **Inline:** removes the stack you identify using AWS settings like stack name.
+        - **Inherit from Create:** removes the stack created by a Harness **Create Stack** step that you identify using its **Provisioner Identifier**.
+
+        [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+cloudFormationDeleteStack_spec.configuration.spec.connectorRef:
+    content: |-
+        Add or select the Harness AWS Connector for connecting to AWS. 
+
+        Ensure its credentials have the permissions needed to remove the resources. See [AWS Connector](https://ngdocs.harness.io/article/m5vkql35ca).
+    width: "400"
+cloudFormationDeleteStack_spec.configuration.spec.region:
+    content: Select the region for the resources you are removing.
+    width: "400"
+cloudFormationDeleteStack_spec.configuration.spec.roleArn:
+    content: Enter the AWS Role ARN to use when deleting the stack. This is the same as the role you would use when deleting a stack using the AWS console or CLI.
+    width: "400"
+cloudFormationDeleteStack_spec.configuration.spec.stackName:
+    content: Enter the name of the stack to delete.
+    width: "400"
+RollbackStack_stepName_ProvisionerStepConfig:
+    content: Use this step in the **Rollback** to roll back to the last successfully provisioned version of the stack. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+cloudFormationDeleteStack_spec.configuration.provisionerIdentifier:
+    content: Enter the Provisioner Identifier of the Create Stack step that created the stack you want to roll back. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+cloudFormationDeleteStack_spec.configuration.spec.provisionerIdentifier:
+    content: Enter the Provisioner Identifier of the Create Stack step that created the stack you want to delete. [Learn More](https://ngdocs.harness.io/article/6jfl7i6a5u)
+    width: "400"
+StepGroup_stepName_StepConfig:
+    content: |-
+        Steps can be added to Pipelines individually or as a step group. [Learn More](https://ngdocs.harness.io/article/ihnuhrtxe3)
+
+        Step groups can be run serially or in parallel.
+
+        Unlike individual steps, a step group can apply Conditional Execution (skip conditions), Failure Strategy, and Rollback steps to all steps in the group.
+
+
+        [Watch a video](https://www.youtube.com/watch?v=J5eHYSbE8cg)
+    width: "500"
+stepGroup_name:
+    content: Enter a name for this step group. [Learn More](https://ngdocs.harness.io/article/ihnuhrtxe3)
+    width: "400"
