@@ -1708,8 +1708,10 @@ ff_segments_heading: |-
     The Target Groups are a collection of targets. Target Groups allow you to serve flag variations to a list of targets in bulk.
 
     [Learn More](https://ngdocs.harness.io/article/5qz1qrugyk-add-target-groups)
-ff_env_heading: |
-    Harness Environments represent your deployment targets logically (QA, Prod, etc). You can add the same Environment to as many stages are you need.
+ff_env_heading:
+    content: |
+        Harness Environments represent your deployment targets (QA, Prod, etc). You can add the same Environment to as many Pipelines and stages as you need. [Learn More](https://ngdocs.harness.io/article/cqgeblt4uh)
+    width: "400"
 ff_ffVariations_heading: |-
     A Feature flag has default variations.  A boolean flag can have false set as its default off variation and true set as its default on variation. A multivariate flag could have variation 1 set as its default off variation and variation 2 set as its default on variation, with variation 3 configured to appear when a user has a certain email address
     [Learn More](https://ngdocs.harness.io/article/8bf3us11kz)
@@ -3743,7 +3745,20 @@ stepAuthenticationForm_port:
     content: Enter the SSH port. [Learn more](https://ngdocs.harness.io/article/xmp9j0dk8b-add-use-ssh-secrets#add_ssh_credential)
     width: "400"
 SecretsListViewname:
-    content: ""
+    content: |-
+        Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness account. 
+
+        Some key points about Secrets Management:
+
+        - Secrets are always stored in encrypted form and decrypted when they are needed.
+        - Harness Manager does not have access to your key management system, and only the Harness Delegate, which sits in your private network, has access to it. Harness never makes secrets management accessible publicly. This adds an important layer of security.
+        - You can connect Harness with your own secrets management tools, or use the built-in Harness Secrets Manager.
+
+        Learn More:
+        - [Secrets Management](https://ngdocs.harness.io/article/hngrlb7rd6)
+        - [Text Secrets](https://ngdocs.harness.io/article/osfw70e59c)
+        - [File Secrets](https://ngdocs.harness.io/article/77tfo7vtea)
+        - [SSH Credentials](https://ngdocs.harness.io/article/xmp9j0dk8b)
     width: "400"
 sshVerifyConnectionForm_host:
     content: Enter the hostname of the remote server you want to SSH into. [Learn more](https://ngdocs.harness.io/article/xmp9j0dk8b-add-use-ssh-secrets#add_ssh_credential)
@@ -4466,4 +4481,82 @@ kustomizeGit_patchesPaths:
         If the Patches file you want to use is in a separate repo, add it separately as a **Kustomize Patches** manifest type.
 
         [Watch a video](https://youtu.be/dVk6-8tfwJc)
+    width: "400"
+cdOverViewTitle:
+    content: |-
+        Deployments is where you build your CD Pipelines. [Learn More](https://ngdocs.harness.io/article/cqgeblt4uh)
+
+        Deployments are tracked in the **Overview** dashboard and Services are tracked in the **Services** dashboard. [Learn More](https://ngdocs.harness.io/article/phiv0zaoex)
+
+        The Overview dashboard provides status for deployments and workloads and an overall **Deployments Health** metric.
+    width: "400"
+overview_WORKLOAD:
+    content: View the deployments for each Service, including their success rate. [Learn More](https://ngdocs.harness.io/article/phiv0zaoex)
+    width: "400"
+overview_FAILED_DEPLOYMENT:
+    content: |-
+        View Pipeline deployment failures. [Learn More](https://ngdocs.harness.io/article/phiv0zaoex)
+
+        Click on a failed execution to see its details.
+    width: "400"
+overview_ACTIVE_DEPLOYMENT:
+    content: |-
+        View active deployments. [Learn More](https://ngdocs.harness.io/article/phiv0zaoex)
+
+        Click on a deployment to see its execution in detail.
+    width: "400"
+deploymentsText:
+    content: |-
+        View all of the deployments in this Project. [Learn More](https://ngdocs.harness.io/article/phiv0zaoex)
+
+        Click on a deployment to see its execution in detail.
+
+        Click **Run** to run a Pipeline.
+
+        Use **Status** to view Pipelines according to their execution status.
+
+        Click more options (⋮) to:
+        - Edit a Pipeline.
+        - Pause, Abort, or Resume a paused execution.
+        - Rerun a deployment.
+        - Retry a failed deployment. [Learn More](https://ngdocs.harness.io/article/z5n5llv35m)
+    width: "400"
+addPipeline:
+    content: |-
+        Create a new Pipeline. [Learn More](https://ngdocs.harness.io/article/cqgeblt4uh)
+
+        For quickstarts on different types of deployments, see [Quickstarts](https://ngdocs.harness.io/category/c9j6jejsws).
+    width: "400"
+pipelinesPageHeading:
+    content: A CD Pipeline is a series of Stages where each Stage deploys a Service to an Environment, performs an approval, or performs some other deployment-related operation. [Learn More](https://ngdocs.harness.io/article/cqgeblt4uh)
+    width: "400"
+SecretsListViewdetails:
+    content: View the different secret types.
+    width: "400"
+SecretsListViewactivity:
+    content: See when the secret was last used.
+    width: "400"
+ActiveUsersListViewuser:
+    content: |-
+        View the Harness Users with access to your resources.
+
+        Harness Role-Based Access Control (RBAC) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access. [Learn More](https://ngdocs.harness.io/article/vz5cq0nfg2)
+    width: "400"
+ActiveUsersListViewroleBinding:
+    content: |-
+        See the Role Bindings for each Users' User Group. [Learn More](https://ngdocs.harness.io/article/dfwuvmy33m)
+
+        Users are added to User Groups and bound to Roles using Role Bindings. 
+    width: "400"
+ActiveUsersListViewemail:
+    content: |-
+        View the email address for each User.
+
+        A Harness User is any individual registered with Harness using a unique email address. [Learn More](https://ngdocs.harness.io/article/hyoe7qcaz6)
+    width: "400"
+templatesPageHeading:
+    content: |-
+        Harness enables you to add Templates to create re-usable logic and Harness entities (like Steps, Stages, and Pipelines) in your Pipelines. 
+
+        You can link these Templates in your Pipelines or share them with your teams for improved efficiency. [Learn More](https://ngdocs.harness.io/article/6tl8zyxeol)
     width: "400"
