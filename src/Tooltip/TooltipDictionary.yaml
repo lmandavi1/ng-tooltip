@@ -1829,8 +1829,6 @@ connectorDetailsStepFormAwsKms_name: Enter a name for this AWS KMS Connector. [L
 awsKmsConfigForm_roleArn: |-
     Enter the Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target deployment AWS account.
 
-    Create or select a Harness [Encrypted Text secret](https://ngdocs.harness.io/article/osfw70e59c) for the role ARN.
-
     [Learn More](https://ngdocs.harness.io/article/pt52h8sb6z)
 awsKmsConfigForm_externalName: |-
     If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
