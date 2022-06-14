@@ -3734,7 +3734,7 @@ stepAuthenticationForm_userName:
     content: Enter the username for the user account on the remote server. [Learn more](https://ngdocs.harness.io/article/xmp9j0dk8b-add-use-ssh-secrets#add_ssh_credential)
     width: "400"
 stepAuthenticationForm_key:
-    content: Enter the Secret Key. You can either create a new Encrypted [File Secret](https://ngdocs.harness.io/article/77tfo7vtea-add-file-secrets#step_1_add_encrypted_file) or select an existing one.
+    content: Enter the Secret Key. You can either create a new Encrypted [File Secret](https://ngdocs.harness.io/article/77tfo7vtea-add-file-secrets#step_1_add_encrypted_file) or Encrypted [Text Secret](https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets) or select an existing one.
     width: "400"
 stepAuthenticationForm_encryptedPassphrase:
     content: Enter the SSH key [passphrase](https://www.ssh.com/academy/ssh/passphrase).
