@@ -269,10 +269,10 @@ gcrRemoteCache: The remote cache repository needs to be created in the same host
 jFrogArtifactoryTarget: Repository name relative to the server URL in the connector. If pom.xml is not present then target should be full path to artifacts folder (groupID/artifactID/version)
 pluginImage: The name of the Plugin Docker image. The image name should include the tag and will default to the latest tag if unspecified. You can use any docker image from any docker registry, including docker images from private registries
 runTestsArgs:
-    content: The arguments to be passed to the build tool. For Maven, it will be goal.
+    content: The runtime arguments for the test. This field is required. The correct format depends on the selected language and build tool. [Learn more](https://ngdocs.harness.io/article/axzckflbt2)
     width: "400"
 runTestsBuildTool:
-    content: "Select the build automation tool. "
+    content: "Select the build automation tool for the test. "
     width: "400"
 runTestsLanguage:
     content: "Select the programming language of the source code to build. If the language is not listed in this menu, test your code using a [Run Step](https://ngdocs.harness.io/article/ota4xj59le) instead. "
@@ -4557,4 +4557,13 @@ templatesPageHeading:
         Harness enables you to add Templates to create re-usable logic and Harness entities (like Steps, Stages, and Pipelines) in your Pipelines. 
 
         You can link these Templates in your Pipelines or share them with your teams for improved efficiency. [Learn More](https://ngdocs.harness.io/article/6tl8zyxeol)
+    width: "400"
+buildEnvironment:
+    content: Select the build environment for the test.
+    width: "400"
+frameworkVersion:
+    content: Select the framework version for the test.
+    width: "400"
+runTestsNamespaces:
+    content: A comma-separated list of the Namespace prefixes that you want to test. This field is required.
     width: "400"
