@@ -4236,10 +4236,10 @@ pipelineCreate_connectorRef:
     content: Select or create a Git Connector to connect to the repo for your Project. [Learn More](https://newdocs.helpdocs.io/category/xyexvcc206-ref-source-repo-provider)
     width: "400"
 pipelineCreate_repo:
-    content: Select your repository. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
+    content: Select your repository. Limited repositories are populated here, so if your repo is not included, enter its name. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
     width: "400"
 pipelineCreate_branch:
-    content: Select your branch. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
+    content: Select your branch. Limited branches are populated here, so if your branch is not included, enter its name. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
     width: "400"
 pipelineCreate_filePath:
     content: Enter the file path. [Learn more](https://ngdocs.harness.io/article/grfeel98am-configure-git-experience-for-harness-entities#step_1_add_a_remote_pipeline)
