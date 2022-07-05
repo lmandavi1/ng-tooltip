@@ -4257,7 +4257,7 @@ smtpStepDetailsForm_useSSL:
     content: Select Enable SSL for secure connections (SSL/TLS).
     width: "400"
 smtpStepDetailsForm_startTLS:
-    content: Select Start TSL to enable SMTP over TLS, or when the connection is upgraded to SSL/TLS.
+    content: Select Start TLS to enable SMTP over TLS, or when the connection is upgraded to SSL/TLS.
     width: "400"
 smtpStepDetailsForm_fromAddress:
     content: Enter the email address from which Harness will send notification emails.
