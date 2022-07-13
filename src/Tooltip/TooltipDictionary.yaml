@@ -4640,3 +4640,23 @@ pipelineAdvancedSteps_delegateSelectors:
 
         You only need to select one of a Delegate's Tags to select it. All Delegates with the Tag are selected. [Learn More](https://docs.harness.io/article/nnuf8yv13o)
     width: "400"
+ff_flagFilters_enabledFlags:
+    content: "Flags that are currently toggled on. "
+    width: "400"
+ff_flagFilters_permanentFlags:
+    content: Flags you intend to stay in your systems indefinitely and that you marked as permanent when creating them. Permanent flags are never marked as stale.
+    width: "400"
+ff_flagFilters_recentlyAccessed:
+    content: Flags that have been changed in the last 24 hours. Changes include enabling or disabling a flag, or adding new rules or targets.
+    width: "400"
+ff_flagFilters_activeFlags:
+    content: " Flags that have been evaluated in the last 7 days. "
+    width: "400"
+ff_flagFilters_potentiallyStaleFlags:
+    content: |-
+        Flags are marked as potentially stale if in the past 60 days:
+
+        - They haven't been changed or evaluated.
+        - Their default rules or target rules haven’t been added to or updated.
+        - They haven’t been toggled on or off.
+    width: "400"
