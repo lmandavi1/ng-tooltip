@@ -4660,3 +4660,75 @@ ff_flagFilters_potentiallyStaleFlags:
         - Their default rules or target rules haven’t been added to or updated.
         - They haven’t been toggled on or off.
     width: "400"
+Queue_stepName_StepConfig:
+    content: |-
+        The Queue step controls how Harness requests your resources during a deployment. 
+
+        You add Queue steps to multiple Pipelines and the second Pipeline/Stage execution is queued until the first Pipeline/Stage execution is completed.
+
+        Using the Queue step, you can prevent multiple Pipeline executions from requesting the same resources at the same time. [Learn More](https://docs.harness.io/article/5n96cc7cyo)
+
+        Queue steps can be used on different Pipelines or even multiple executions of the same Pipeline.
+    width: "400"
+queueStep_name:
+    content: Enter a name for this step. Harness will create an Id automatically. Ids are used to refer to steps and settings. [Learn More](https://docs.harness.io/article/7rsydu6iq2)
+    width: "400"
+queueStep_timeout:
+    content: |-
+        Enter how long Harness should wait for this step to finish before failing the step and initiating the step or stage [Failure Strategy](https://docs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps).
+
+
+        This step's Failure Strategy is defined in its **Advanced** settings. This stage's Failure Strategy is defined in the stage's **Advanced** settings.
+    width: "400"
+queueStep_spec.key:
+    content: |-
+        Enter a unique key. This is the same key you will add to the Queue steps in other Pipelines.
+
+        The key links Queue steps used in different Pipelines. [Learn More](https://docs.harness.io/article/5n96cc7cyo)
+    width: "400"
+queueStep_spec.scope:
+    content: |-
+        Select one of the following:
+
+        - **Pipeline:** the entire Pipeline must complete before any queued Pipelines can deploy.
+        - **Stage:** the current Stage must complete before any queued Pipelines can deploy.
+
+        Queue steps can be used on different Pipelines or even multiple executions of the same Pipeline. [Learn More](https://docs.harness.io/article/5n96cc7cyo)
+    width: "400"
+JenkinsBuild_stepName_StepConfig:
+    content: |-
+        This Jenkins step enables you to perform Jenkins tasks in a Continuous Delivery (CD) stage.
+
+        This step lets you to run Jenkins jobs and dynamically capture inputs and outputs from the jobs. [Learn More](https://docs.harness.io/article/as4dtppasg)
+
+        Typically, CI is performed in Harness using the [Continuous Integration](https://harness.io/products/continuous-integration) module and [CI stage](https://docs.harness.io/article/3amcd8hn53), and not the CD stage.
+
+        The Jenkins step is provided for when you are using the Harness CD module but not the Harness CI module, and lets you perform Jenkins tasks in your CD stage.
+    width: "400"
+JenkinsStep_name:
+    content: Enter a name for this step. Harness will create an Id automatically. Ids are used to refer to steps and settings. [Learn More](https://docs.harness.io/article/7rsydu6iq2)
+    width: "400"
+JenkinsStep_timeout:
+    content: |-
+        Enter how long Harness should wait for this step to finish before failing the step and initiating the step or stage [Failure Strategy](https://docs.harness.io/article/0zvnn5s1ph).
+
+        This step's Failure Strategy is defined in its **Advanced** settings. This stage's Failure Strategy is defined in the stage's **Advanced** settings.
+    width: "400"
+JenkinsStep_spec.connectorRef:
+    content: Select the Jenkins server you added as a Harness Jenkins Connector. [Learn More](https://docs.harness.io/article/as4dtppasg)
+    width: "400"
+JenkinsStep_spec.jobName:
+    content: |-
+        Select the Jenkins job to execute (also called a project). 
+
+        The list is automatically populated using the Jenkins Server you set up in **Jenkins Connector**. [Learn More](https://docs.harness.io/article/as4dtppasg)
+    width: "400"
+JenkinsStep_spec.jobParameter:
+    content: If you are using a [parameterized build](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build), when you select the job in **Job Name**, Harness will automatically populate any Job parameters from the server into **Job Parameters**. [Learn More](https://docs.harness.io/article/as4dtppasg)
+    width: "400"
+JenkinsStep_spec.unstableStatusAsSuccess:
+    content: If this setting is enabled then **Unstable** statuses will be considered as **Success**. [Learn More](https://docs.harness.io/article/as4dtppasg)
+    width: "400"
+JenkinsStep_spec.captureEnvironmentVariable:
+    content: If this setting is enabled then you can reference environment variables using Harness expressions. [Learn More](https://docs.harness.io/article/as4dtppasg)
+    width: "400"
