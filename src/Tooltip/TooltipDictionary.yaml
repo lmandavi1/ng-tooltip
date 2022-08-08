@@ -4734,3 +4734,11 @@ JenkinsStep_spec.unstableStatusAsSuccess:
 JenkinsStep_spec.captureEnvironmentVariable:
     content: If this setting is enabled then you can reference environment variables using Harness expressions. [Learn More](https://docs.harness.io/article/as4dtppasg)
     width: "400"
+et_EventList_Type:
+    content: Whether this event is an Exception, Log, HTTP Error, Timeout or Custom
+et_EventList_Description:
+    content: Description for an event
+et_EventList_Location:
+    content: Location of an event
+et_EventList_Count:
+    content: Number of times an event appeared
