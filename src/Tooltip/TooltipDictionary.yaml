@@ -2184,14 +2184,12 @@ overviewCostEfficiencyScore: |-
 
     [Learn more](https://docs.harness.io/article/hs7cyi1nix-harness-key-cloud-cost-concepts#cost_efficiency_score)
 ccmPerspectives: Perspectives allow you to group your resources in ways that are more meaningful to your business needs. It provides a unified view of your cloud cost data across the cloud environment. For example, you can group and filter by Account, Environment, Service, Region, Product, Label, Namespace, Workload, etc. and create a perspective for your business, finance, and engineering teams. [Learn more](https://docs.harness.io/article/dvspc6ub0v)
-perspectiveBuilder: |-
-    Perspectives allow you to group your resources in ways that are more meaningful to your business needs. It provides a unified view of your cloud cost data across the cloud environment.
+perspectiveBuilder:
+    content: |-
+        Perspectives help you add business context to CCM data. [Learn more](https://docs.harness.io/article/dvspc6ub0v)
 
-
-    You can create a Perspective by grouping your resources the way you wish. For example, if you want to create a perspective for your CFO, first add default or custom filters and then further group by Service, Account, Workload, Namespace, etc. that you would want to include in your Perspective.
-
-
-    [Learn more](https://docs.harness.io/article/dvspc6ub0v)
+        For example, add rules to group data by Account, Project, etc and then add Budgets, Reports, and Alerts.
+    width: "400"
 ccmRecommendations: |-
     One of the most impactful ways to reduce spend on Kubernetes infrastructure is to make sure your clusters are optimally sized for the workloads and node pools they run. Harness CCM recommends optimal compute resources for your workloads and node pools. It can help you reduce costs and improve performance, by analyzing your historical utilization metrics.
 
@@ -4736,9 +4734,29 @@ JenkinsStep_spec.captureEnvironmentVariable:
     width: "400"
 et_EventList_Type:
     content: Whether this event is an Exception, Log, HTTP Error, Timeout or Custom
+    width: "400"
 et_EventList_Description:
     content: Description for an event
+    width: "400"
 et_EventList_Location:
     content: Location of an event
+    width: "400"
 et_EventList_Count:
     content: Number of times an event appeared
+    width: "400"
+perspectiveReportsAndBudget:
+    content: |-
+        You can add Budgets, Reports, and Anomaly Detection Alerts to your Perspectives. See:
+
+        - [Create a Budget for Your Perspective](https://docs.harness.io/article/fs4glxwq79)
+        - [Share Your Cost Perspective Report](https://docs.harness.io/article/sujqj6o2k7)
+        - [Detect Cloud Cost Anomalies with CCM](https://docs.harness.io/article/x0z3r0bv99)
+    width: "400"
+perspectivePreferences:
+    content: Set preferences for the costs your Perspective displays. [Learn More](https://docs.harness.io/article/dvspc6ub0v)
+    width: "400"
+includeOthers:
+    content: |+
+        The graph displayed in a Perspective shows the top 12 costs only. Enable this setting to include the remaining costs as an **Others** item in the graph. [Learn More](https://docs.harness.io/article/dvspc6ub0v)
+
+    width: "400"
