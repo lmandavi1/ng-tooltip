@@ -125,7 +125,7 @@ azureKeyVaultForm_secretKey: Enter Azure authentication key.  [Learn More](https
 azureKeyVaultForm_vaultName: Select the Vault you want to use. [Learn More](https://docs.harness.io/article/53jrd1cv4i)
 azureKeyVaultForm_default: Make this your default secrets manager.  [Learn More](https://docs.harness.io/article/53jrd1cv4i)
 vaultConfigForm_vaultUrl: Enter the Vault URL. [Learn More](https://docs.harness.io/article/s65mzbyags)
-vaultConfigForm_basePath: Enter the Base Secret Path. [Learn More](https://docs.harness.io/article/s65mzbyags)
+vaultConfigForm_basePath: The Base Secret Path is used for writing secrets. When Harness reads secrets it uses the full path. [Learn More](https://docs.harness.io/article/s65mzbyags)
 vaultConfigForm_accessType: Select the Authentication Type. [Learn More](https://docs.harness.io/article/s65mzbyags)
 vaultConfigForm_authToken: Enter Periodic Token.  [Learn more](https://docs.harness.io/article/s65mzbyags-add-hashicorp-vault)
 vaultConfigForm_appRoleId: Enter the App Role ID. [Learn More](https://docs.harness.io/article/s65mzbyags)
