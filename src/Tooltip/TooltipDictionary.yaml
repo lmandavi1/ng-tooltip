@@ -2903,7 +2903,7 @@ ciBuildInfra_serviceAccountName:
     content: The Service Account for Step containers to use when communicating with the Kubernetes API server. Leave blank to use the default service account for the namespace. [Learn More](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
     width: "400"
 ciRunStep_timeout:
-    content: The default **Timeout** limit for the step is **10 minutes**. The Step fails when the Timeout is reached, and the Pipeline execution continues.
+    content: The default **Timeout** limit for the step is **10 hours**. The Step fails when the Timeout is reached, and the Pipeline execution continues.
     width: "400"
 limitMemory:
     content: Maximum memory that the container can use. You can specify an integer or fixed-point value with the suffix G, M, Gi, or Mi. Do not include spaces when entering a fixed value. Default is **500Mi**.
