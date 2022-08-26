@@ -3007,7 +3007,7 @@ helmWithGit_gitFetchType:
         For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
     width: "400"
 helmWithGit_folderPath:
-    content: Enter the path to the chart folder from the root of the repo.
+    content: Enter the path to the chart folder from the root of the repo. If the chart is already available at the root of the repo, enter a forward slash /
     width: "400"
 helmWithGit_helmVersion:
     content: |-
