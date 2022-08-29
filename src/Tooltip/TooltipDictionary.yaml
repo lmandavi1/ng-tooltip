@@ -22,10 +22,10 @@ stageOverviewDeploymentType:
 
         **Note:** If you change the deployment type (for example, from Kubernetes to Native Helm) there might be some conflicting resources in the target environment. As a result, Stage execution can fail. If this happens, delete all the conflicting resources and try again. You will also lose any deployment type-specific steps in this stage's **Execution**.
     width: "400"
-deploymentTypeManifests:
+KubernetesDeploymentTypeManifests:
     content: Add the manifests that describe the app you are deploying. All files in **Manifests** must have the .yaml file extension. [Learn More](https://docs.harness.io/article/ssbq0xh0hx)
     width: "400"
-deploymentTypeArtifacts:
+KubernetesDeploymentTypeArtifacts:
     content: |-
         If the path of the artifact is not hardcoded in the manifest you added in **Manifests**, you can add the artifact location to Harness in **Artifacts**. [Learn More](https://docs.harness.io/article/4ifq51cp0i)
 
@@ -2903,7 +2903,7 @@ ciBuildInfra_serviceAccountName:
     content: The Service Account for Step containers to use when communicating with the Kubernetes API server. Leave blank to use the default service account for the namespace. [Learn More](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
     width: "400"
 ciRunStep_timeout:
-    content: The default **Timeout** limit for the step is **10 minutes**. The Step fails when the Timeout is reached, and the Pipeline execution continues.
+    content: The default **Timeout** limit for the step is **10 hours**. The Step fails when the Timeout is reached, and the Pipeline execution continues.
     width: "400"
 limitMemory:
     content: Maximum memory that the container can use. You can specify an integer or fixed-point value with the suffix G, M, Gi, or Mi. Do not include spaces when entering a fixed value. Default is **500Mi**.
@@ -4022,7 +4022,7 @@ ciEcrStep_spec.baseImageConnectorRefs:
 
         Specifying a Base Image Connector is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads. ​
     width: "400"
-serverlessDeploymentTypeManifests:
+ServerlessAwsLambdaDeploymentTypeManifests:
     content: |-
         Add your serverless.yml file as a manifest. Harness will fetch your serverless.yml file at deployment runtim. [Learn More](https://docs.harness.io/article/5fnx4hgwsa)
           
@@ -4036,7 +4036,7 @@ serverlessDeploymentTypeManifests:
           - serverless-deployment-bucket@latest
         ```
     width: "400"
-serverlessDeploymentTypeArtifacts:
+ServerlessAwsLambdaDeploymentTypeArtifacts:
     content: |-
         Add the function you want to deploy as an artifact. 
 
