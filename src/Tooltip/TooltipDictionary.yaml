@@ -22,10 +22,10 @@ stageOverviewDeploymentType:
 
         **Note:** If you change the deployment type (for example, from Kubernetes to Native Helm) there might be some conflicting resources in the target environment. As a result, Stage execution can fail. If this happens, delete all the conflicting resources and try again. You will also lose any deployment type-specific steps in this stage's **Execution**.
     width: "400"
-deploymentTypeManifests:
+KubernetesDeploymentTypeManifests:
     content: Add the manifests that describe the app you are deploying. All files in **Manifests** must have the .yaml file extension. [Learn More](https://docs.harness.io/article/ssbq0xh0hx)
     width: "400"
-deploymentTypeArtifacts:
+KubernetesDeploymentTypeArtifacts:
     content: |-
         If the path of the artifact is not hardcoded in the manifest you added in **Manifests**, you can add the artifact location to Harness in **Artifacts**. [Learn More](https://docs.harness.io/article/4ifq51cp0i)
 
