@@ -4022,7 +4022,7 @@ ciEcrStep_spec.baseImageConnectorRefs:
 
         Specifying a Base Image Connector is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads. ​
     width: "400"
-serverlessDeploymentTypeManifests:
+ServerlessAwsLambdaDeploymentTypeManifests:
     content: |-
         Add your serverless.yml file as a manifest. Harness will fetch your serverless.yml file at deployment runtim. [Learn More](https://docs.harness.io/article/5fnx4hgwsa)
           
@@ -4036,7 +4036,7 @@ serverlessDeploymentTypeManifests:
           - serverless-deployment-bucket@latest
         ```
     width: "400"
-serverlessDeploymentTypeArtifacts:
+ServerlessAwsLambdaDeploymentTypeArtifacts:
     content: |-
         Add the function you want to deploy as an artifact. 
 
