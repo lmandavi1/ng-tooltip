@@ -4760,3 +4760,15 @@ includeOthers:
         The graph displayed in a Perspective shows the top 12 costs only. Enable this setting to include the remaining costs as an **Others** item in the graph. [Learn More](https://docs.harness.io/article/dvspc6ub0v)
 
     width: "400"
+customRemoteManifest_identifier:
+    content: Enter the name for the manifest.
+    width: "400"
+customRemoteManifest_extractionScript:
+    content: Enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate that is selected for the deployment.
+    width: "400"
+customRemoteManifest_filePath:
+    content: Enter the folder path for the manifests.
+    width: "400"
+customRemoteManifest_delegateSelectors:
+    content: Select a specific Delegate from the list of tags available for Delegates or leave this field blank and allow Harness to select a Delegate.
+    width: "400"
