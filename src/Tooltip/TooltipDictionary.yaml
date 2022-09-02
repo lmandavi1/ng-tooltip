@@ -2825,7 +2825,7 @@ kustomizeGit_branch:
     content: Enter the branch name or CommitId, depending on what you selected in **Git Fetch Type**. [Learn More](https://docs.harness.io/article/uiqe6jz9o1)
     width: "400"
 kustomizePathHelperText:
-    content: Enter the path from the root of the repo to the Kustomize folder. [Learn More](https://docs.harness.io/article/uiqe6jz9o1)
+    content: Enter the path from the root of the repo to the Kustomize folder. [Learn More](https://docs.harness.io/article/98u2hvzj0t). If you select Optimized Kustomize Manifest Collection, this field changes to Kustomize Base Path. For Kustomize Base Path, enter the folder for your Git repo inside which all of the Kustomize dependencies and base manifests are present. Harness fetches and downloads this folder instead of the entire Git repo.
     width: "400"
 pluginPathHelperText:
     content: |-
@@ -4771,4 +4771,7 @@ customRemoteManifest_filePath:
     width: "400"
 customRemoteManifest_delegateSelectors:
     content: Select a specific Delegate from the list of tags available for Delegates or leave this field blank and allow Harness to select a Delegate.
+    width: "400"
+kustomizeGit_optimizedKustomizeManifestCollection:
+    content: Enter the relative folder path for your Git repo where the kustomize.yaml file is located. [Learn More] (https://docs.harness.io/article/98u2hvzj0t)
     width: "400"
